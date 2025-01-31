@@ -42,8 +42,13 @@ body {
 .hero-title {
   font-size: 5em;
   font-weight: bold;
+  color: black;
 }
-
+.hero-content h2 {
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
 /* Navbar */
 #navbar-logo {
   width: 30px;
