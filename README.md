@@ -1,5 +1,6 @@
 # pasty-net
 
+
 1. Homepage with a Cornish Theme
    User Story:
    As a visitor, I want to see a welcoming homepage with a Cornish theme, so that I immediately feel immersed in the culture and style of Cornwall.
