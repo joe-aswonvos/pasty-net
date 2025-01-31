@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon" sizes="180x180"
       href="/assets/images/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
   </head>
   <body data-bs-theme="dark">
 
@@ -63,7 +64,7 @@
       <div class="hero-content">
         <h1 class="hero-title">PastyNet</h1>
         <h2 class="hero-subtitle">Bringing cornwall to the net</h2>
-        <button class="btn btn-primary">Play Game</button>
+        <button class="btn btn-primary">Play Our Game</button>
       </div>
       <video id="hero-video" class="hero-video" autoplay muted>
         <source id="hero-video-source" src="assets/videos/video1.mp4"
@@ -71,8 +72,28 @@
         Your browser does not support the video tag.
       </video>
     </header>
-
-    <!-- SECTION  -->
+    <main>
+      <!-- SECTION Game -->
+      <section id="game">
+        <div class="game-info">
+          <div id="score">Score: 0</div>
+          <div id="timer">Time: 60s</div>
+        </div>
+        <button id="startButton">Start Game</button>
+        <button id="endButton" disabled>End Game</button>
+        <div class="game-container">
+          <div class="hole" id="hole1"></div>
+          <div class="hole" id="hole2"></div>
+          <div class="hole" id="hole3"></div>
+          <div class="hole" id="hole4"></div>
+          <div class="hole" id="hole5"></div>
+          <div class="hole" id="hole6"></div>
+          <div class="hole" id="hole7"></div>
+          <div class="hole" id="hole8"></div>
+          <div class="hole" id="hole9"></div>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
     <!-- Bootstrap JS -->
