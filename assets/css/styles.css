@@ -1,0 +1,44 @@
+.game-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Static width for larger screens */
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.mole {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 30%; /* Adjust the size of the holes */
+    max-width: 30%; /* Ensure the holes don't exceed 30% of the container width */
+    height: 0;
+    padding-bottom: 30%; /* Maintain aspect ratio */
+    border-radius: 50%;
+    background-color: gray;
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+.mole.up {
+    background-color: green;
+}
+
+.mole:active {
+    background-color: darkred;
+}
+
+@media (min-width: 768px) {
+    .game-area {
+        width: 600px; /* Static width for larger screens */
+    }
+}
