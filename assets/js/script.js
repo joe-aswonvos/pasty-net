@@ -1,13 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const moles = document.querySelectorAll('.mole');
     const scoreBoard = document.getElementById('score');
+    const missStatusBoard = document.getElementById('miss-status');
     const timeBoard = document.getElementById('time');
     const startButton = document.getElementById('start-button');
+    const gameArea = document.querySelector('.game-area');
     let lastMole;
     let timeUp = false;
     let score = 0;
     let time = 60;
     let timer;
+    let consecutiveMisses = 0;
 
     const keyMap = {
         'Q': 'mole1',
@@ -69,7 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         score = 0;
         time = 60;
+        consecutiveMisses = 0;
         scoreBoard.textContent = score;
+        missStatusBoard.textContent = 'Safe';
+        gameArea.classList.remove('miss-one', 'miss-two');
+        gameArea.style.borderColor = 'green';
         timeBoard.textContent = time;
         timeUp = false;
         startButton.textContent = 'Stop Game';
@@ -92,10 +99,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hitMole(mole) {
-        if (!mole.classList.contains('up')) return;
-        mole.classList.remove('up');
-        score++;
-        scoreBoard.textContent = score;
+        if (mole.classList.contains('up')) {
+            mole.classList.remove('up');
+            mole.classList.add('whack');
+            mole.textContent = 'Whack!';
+            score++;
+            scoreBoard.textContent = score;
+            consecutiveMisses = 0;
+            missStatusBoard.textContent = 'Safe';
+            gameArea.classList.remove('miss-one', 'miss-two');
+            gameArea.style.borderColor = 'green';
+            setTimeout(() => {
+                mole.classList.remove('whack');
+                mole.textContent = Object.keys(keyMap).find(key => keyMap[key] === mole.id);
+            }, 500);
+        } else {
+            mole.classList.add('miss');
+            mole.textContent = 'Miss!';
+            consecutiveMisses++;
+            if (consecutiveMisses === 1) {
+                missStatusBoard.textContent = 'Next miss loses a point!';
+                gameArea.classList.add('miss-one');
+            } else if (consecutiveMisses === 2) {
+                score--;
+                scoreBoard.textContent = score;
+                consecutiveMisses = 0;
+                missStatusBoard.textContent = 'Safe';
+                gameArea.classList.remove('miss-one');
+                gameArea.classList.add('miss-two');
+                setTimeout(() => {
+                    gameArea.classList.remove('miss-two');
+                    gameArea.style.borderColor = 'green';
+                }, 500);
+            }
+            setTimeout(() => {
+                mole.classList.remove('miss');
+                mole.textContent = Object.keys(keyMap).find(key => keyMap[key] === mole.id);
+            }, 500);
+        }
     }
 
     moles.forEach(mole => mole.addEventListener('click', () => hitMole(mole)));

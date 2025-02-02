@@ -8,16 +8,31 @@
     margin: 0 auto;
     padding: 10px;
     box-sizing: border-box;
+    background-color: lightgreen; /* Default background color */
+    transition: background-color 0.3s;
+}
+
+.game-area.miss-one {
+    background-color: orange;
+}
+
+.game-area.miss-two {
+    background-color: red;
+    animation: flash-red 0.5s;
+}
+
+@keyframes flash-red {
+    0% { background-color: red; }
+    50% { background-color: green; }
+    100% { background-color: red; }
 }
 
 .mole {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 1 30%; /* Adjust the size of the holes */
-    max-width: 30%; /* Ensure the holes don't exceed 30% of the container width */
-    height: 0;
-    padding-bottom: 30%; /* Maintain aspect ratio */
+    width: 30%; /* Adjust the size of the holes */
+    aspect-ratio: 1; /* Maintain aspect ratio */
     border-radius: 50%;
     background-color: gray;
     margin: 5px;
@@ -27,14 +42,22 @@
     font-size: 24px;
     color: white;
     font-weight: bold;
+    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.8); /* Deeper inner shadow */
 }
 
 .mole.up {
     background-color: green;
+    box-shadow: none;
 }
 
-.mole:active {
-    background-color: darkred;
+.mole.whack {
+    background-color: chartreuse;
+    color: black;
+}
+
+.mole.miss {
+    background-color: red;
+    color: black;
 }
 
 @media (min-width: 768px) {
