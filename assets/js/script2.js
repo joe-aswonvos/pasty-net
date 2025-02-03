@@ -110,11 +110,17 @@ heroVideo.addEventListener('ended', () => {
 const canvas = document.getElementById('snake')
 const ctx = canvas.getContext('2d')
 
-const gameWidth = '500px'
-const gameHeight = '500px'
+const frameRate = 1000 / 10
 
-canvas.style.width = gameWidth
-canvas.style.height = gameHeight
+let userInput = 'ArrowUp'
+
+let frameCounter = 0
+
+const gameWidth = 1000
+const gameHeight = 1000
+
+canvas.width = gameWidth
+canvas.height = gameHeight
 
 const sSize = 10
 const snakeStartingLength = 3
@@ -123,7 +129,6 @@ for (let i = 0; i < snakeStartingLength; i++) {
   snake.push([canvas.width / 2 - sSize, canvas.height / 2 - sSize])
   console.log('snake', snake)
 }
-// let snake = [gameWidth / 2 - sSize, gameHeight / 2 - sSize]
 
 fruit = [
   Math.floor(Math.random() * 30) * 10,
@@ -132,7 +137,7 @@ fruit = [
 
 const fruitSize = 10
 
-let userInput = 'up'
+// let userInput = 'up'
 
 const scoreText = 'Score: '
 const timerText = 'Time: '
@@ -141,9 +146,49 @@ let timer = 0
 
 let gameOver = false
 
+document.addEventListener('keydown', e => {
+  console.log(e.key)
+  console.log('userddddInput', userInput)
+
+  switch (e.key) {
+    case 'ArrowUp' || 'w':
+      userInput = 'ArrowUp'
+      break
+    case 'ArrowDown' || 's':
+      userInput = 'ArrowDown'
+      break
+    case 'ArrowLeft' || 'a':
+      userInput = 'ArrowLeft'
+      break
+    case 'ArrowRight' || 'd':
+      userInput = 'ArrowRight'
+      break
+    // default:
+    //   userInput = userInput
+  }
+})
+
+// document.addEventListener('keydown', e => {
+//   console.log(e.key)
+//   switch (e.key) {
+//     case 'ArrowUp' || 'w':
+//       userInput = 'ArrowUp'
+//     case 'ArrowDown' || 's':
+//       userInput = 'ArrowDown'
+//     case 'ArrowLeft' || 'a':
+//       userInput = 'ArrowLeft'
+//     case 'ArrowRight' || 'd':
+//       userInput = 'ArrowRight'
+//     // default:
+//     //   userInput = userInput
+//   }
+// })
+
 function draw () {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+  ctx.fillStyle = 'green'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.fillStyle = 'red'
   ctx.fillRect(fruit[0], fruit[1], 10, 10)
 
@@ -172,71 +217,41 @@ setInterval(() => {
   timer++
 }, 1000)
 
-console.log('Game started')
+// console.log('Game started')
 
-// function moveSnake (input) {}
-
-function getInput (input) {
-  window.addEventListener('keydown', e => {
-    switch (e.key) {
-      case 'ArrowUp':
-        return 'up'
-      case 'ArrowDown':
-        return 'down'
-      case 'ArrowLeft':
-        return 'left'
-      case 'ArrowRight':
-        return 'right'
-      default:
-        return input
-    }
-  })
-}
-
-function collision (snake) {
-  // const [headX, headY] = snake[-1]
-  let sLength = snake.length - 1
-  if (snake.length) {
-    if (snake[sLength][0] === fruit[0] && snake[sLength][1] === fruit[1]) {
-      score++
-      fruit = [
-        Math.floor(Math.random() * 30) * 10,
-        Math.floor(Math.random() * 30) * 10
-      ]
-    } else {
-      snake.pop()
-    }
-    sLength = snake.length - 1
-
-    console.log(snake[sLength][0], snake[sLength][1])
-
-    if (
-      snake[sLength][0] < 0 ||
-      snake[sLength][0] >= canvas.width + sSize ||
-      snake[sLength][1] < 0 ||
-      snake[sLength][1] >= canvas.height - sSize
-    ) {
-      gameOver = true
-    }
-  }
-}
+// function getInput (input) {
+//   window.addEventListener('keydown', e => {
+//     switch (e.key) {
+//       case 'ArrowUp':
+//         return 'up'
+//       case 'ArrowDown':
+//         return 'down'
+//       case 'ArrowLeft':
+//         return 'left'
+//       case 'ArrowRight':
+//         return 'right'
+//       default:
+//         return input
+//     }
+//   })
+// }
 
 function moveSnake (input, sSize) {
   // console.log(input)
 
   let newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1]]
-
+  console.log('input', input)
   switch (input) {
-    case 'up':
+    case 'ArrowUp':
       newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1] - sSize]
       break
-    case 'down':
+    case 'ArrowDown':
       newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1] + sSize]
       break
-    case 'left':
+    case 'ArrowLeft':
       newHead = [snake[snake.length - 1][0] - sSize, snake[snake.length - 1][1]]
       break
-    case 'right':
+    case 'ArrowRight':
       newHead = [snake[snake.length - 1][0] + sSize, snake[snake.length - 1][1]]
       break
   }
@@ -267,167 +282,37 @@ function moveSnake (input, sSize) {
       gameOver = true
     }
   }
-
-  // Remove the tail to keep the snake the same length
 }
 
+function gameEnd () {
+  console.log('Game Over!')
+}
+function gameIntro () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  ctx.fillStyle = 'green'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.fillStyle = 'red'
+  ctx.fillRect(fruit[0], fruit[1], 10, 10)
+
+  ctx.fillText(`${scoreText}${score}`, 10, 10)
+  ctx.fillText(`${timerText}${timer}`, 10, 20)
+}
 function startGame () {
-  let userInput = 'up'
-  // for (let i = 0; i < snakeStartingLength; i++) {
-  //   snake.push([canvas.width / 2 - sSize, canvas.height / 2 - sSize])
-  // }
-  fruit = [
-    Math.floor(Math.random() * 30) * 10,
-    Math.floor(Math.random() * 30) * 10
-  ]
-
-  while (!gameOver) {
-    console.log('Game running')
-    userInput = getInput(userInput)
-    collision(snake)
-    moveSnake(userInput, sSize)
-
-    draw()
+  // frameCounter++
+  // console.log('frameCounter', frameCounter)
+  // userInput = getInput(userInput)
+  moveSnake(userInput, sSize)
+  draw()
+  if (gameOver) {
+    gameEnd()
+    gameIntro()
+    return
+  } else {
     setTimeout(() => {
       startGame()
-    }, 1000)
+    }, frameRate)
   }
-
-  // update()
 }
 
 startGame()
-// }
-
-// const fruitSize = 10
-// let input = 'up'
-
-// const scoreText = 'Score: '
-// const timerText = 'Time: '
-// let score = 0
-// let timer = 0
-
-// let gameOver = false
-// let snake = [[0, 0]]
-// let fruit = [
-//   Math.floor(Math.random() * 30) * 10,
-//   Math.floor(Math.random() * 30) * 10
-// ]
-
-// function draw () {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-//   ctx.fillStyle = 'red'
-//   ctx.fillRect(fruit[0], fruit[1], fruitSize, fruitSize)
-
-//   ctx.fillStyle = 'black'
-
-//   for (let i = 0; i < snake.length; i++) {
-//     ctx.fillStyle = 'black'
-//     ctx.fillRect(snake[i][0], snake[i][1], sSize, sSize)
-//   }
-//   ctx.fillStyle = 'black'
-//   ctx.fillText(`${scoreText}${score}`, 10, 10)
-//   ctx.fillText(`${timerText}${timer}`, 10, 20)
-// }
-
-// function moveSnake (input) {
-//   let newHead
-//   switch (input) {
-//     case 'up':
-//       newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1] - sSize]
-//       break
-//     case 'down':
-//       newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1] + sSize]
-//       break
-//     case 'left':
-//       newHead = [snake[snake.length - 1][0] - sSize, snake[snake.length - 1][1]]
-//       break
-//     case 'right':
-//       newHead = [snake[snake.length - 1][0] + sSize, snake[snake.length - 1][1]]
-//       break
-//   }
-//   snake.push(newHead)
-//   snake.shift() // Remove the tail to keep the snake the same length
-// }
-
-// function getInput () {
-//   window.addEventListener('keydown', e => {
-//     switch (e.key) {
-//       case 'ArrowUp':
-//         input = 'up'
-//         break
-//       case 'ArrowDown':
-//         input = 'down'
-//         break
-//       case 'ArrowLeft':
-//         input = 'left'
-//         break
-//       case 'ArrowRight':
-//         input = 'right'
-//         break
-//       default:
-//         break
-//     }
-//   })
-// }
-
-// function collision (snake) {
-//   let sLength = snake.length - 1
-
-//   if (snake[sLength][0] === fruit[0] && snake[sLength][1] === fruit[1]) {
-//     score++
-//     fruit = [
-//       Math.floor(Math.random() * 30) * 10,
-//       Math.floor(Math.random() * 30) * 10
-//     ]
-//   } else {
-//     snake.pop()
-//   }
-
-//   sLength = snake.length - 1
-//   if (snake.length) {
-//     console.log(snake[sLength][0], snake[sLength][1])
-//   }
-
-//   if (
-//     snake[sLength][0] < 0 ||
-//     snake[sLength][0] >= canvas.width ||
-//     snake[sLength][1] < 0 ||
-//     snake[sLength][1] >= canvas.height
-//   ) {
-//     gameOver = true
-//   }
-// }
-
-// function startGame () {
-//   gameOver = false
-//   score = 0
-//   timer = 0
-//   snake = [[0, 0]]
-//   fruit = [
-//     Math.floor(Math.random() * 30) * 10,
-//     Math.floor(Math.random() * 30) * 10
-//   ]
-
-//   getInput() // Initialize input event listener
-
-//   setInterval(() => {
-//     timer++
-//   }, 1000)
-
-//   function gameLoop () {
-//     if (!gameOver) {
-//       console.log('Game running')
-//       collision(snake)
-//       moveSnake(input)
-//       draw()
-//       setTimeout(gameLoop, 100) // Adjust the delay to control the game speed
-//     }
-//   }
-
-//   gameLoop()
-// }
-
-// // Call startGame to begin the game
-// startGame()
