@@ -4,8 +4,99 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pasty Net</title>
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
+    <!-- Header with Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="#">Pasty Net</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
+    <!-- Main Content -->
+    <main class="container mt-4 pt-5">
+
+        <!-- hero section -->
+
+        <section>
+            <h1 class="text-center">Welcome to Pasty Net</h1>
+            <p class="text-center">Play games and have fun!</p>
+        </section>
+
+        <!-- game tabs -->
+
+        <section>
+            <ul class="nav nav-tabs" id="gameTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="whack-a-mole-tab" data-toggle="tab" href="#whack-a-mole" role="tab" aria-controls="whack-a-mole" aria-selected="true">Whack-a-Mole</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="game2-tab" data-toggle="tab" href="#game2" role="tab" aria-controls="game2" aria-selected="false">Game 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="game3-tab" data-toggle="tab" href="#game3" role="tab" aria-controls="game3" aria-selected="false">Game 3</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="gameTabsContent">
+
+            <!-- Whack a mole section -->
+
+                <div class="tab-pane fade show active pb-4" id="whack-a-mole" role="tabpanel" aria-labelledby="whack-a-mole-tab">
+                    <div class="text-center mb-4">
+                        <h2>Whack-a-Mole</h2>
+                        <p>Score: <span id="score">0</span></p>
+                        <p>Time: <span id="time">60</span> seconds</p>
+                        <button id="start-button" class="btn btn-primary">Start Game</button>
+                    </div>
+                    <div class="game-area">
+                        <div class="mole" id="mole1">Q</div>
+                        <div class="mole" id="mole2">W</div>
+                        <div class="mole" id="mole3">E</div>
+                        <div class="mole" id="mole4">A</div>
+                        <div class="mole" id="mole5">S</div>
+                        <div class="mole" id="mole6">D</div>
+                        <div class="mole" id="mole7">Z</div>
+                        <div class="mole" id="mole8">X</div>
+                        <div class="mole" id="mole9">C</div>
+                    </div>
+                </div>
+
+            <!-- Beth's AnswerSmashh -->
+                <div class="tab-pane fade" id="game2" role="tabpanel" aria-labelledby="game2-tab">
+                </div>
+
+            <!-- Oscar's Snake -->
+                <div class="tab-pane fade" id="game3" role="tabpanel" aria-labelledby="game3-tab">Game 3 content</div>
+            </div>
+            
+        </section>
+    </main>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Custom Script -->
+    <script src="assets/js/script.js"></script>
     </body>
 </html>
