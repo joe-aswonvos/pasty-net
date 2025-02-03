@@ -1,21 +1,63 @@
-/* Colours
-HEX:#84a4af 
-#d0c8ba
-#090b0b
-*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+/* Global styles */
+
+:root {
+    --primary-color: #84a4af;
+    --secondary-color: #d0c8ba;
+    --text-color: #090b0b;
+    --primary-font:  "Cinzel", serif;
+    --secondary-font: "Josefin Sans", serif;
+}
 
 
 /* Body styles */
+
 body {
     background-image: url('../images/background-image.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    background-color: var(--primary-color);
     margin: 0;
     padding: 0;
     height: 100vh;
     overflow-x: hidden;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: var(--secondary-font);
+}
+
+/* Header styles */
+
+#mainNav {
+    font-family: var(--primary-font);
+    font-size: 2.5rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-top: 0;
+    padding-top: 1rem;
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#hero {
+    font-family: var(--primary-font);
+}
+
 
 /* Game area styles */
 .game-area {
