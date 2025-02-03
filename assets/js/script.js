@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const moles = document.querySelectorAll('.mole');
     const scoreBoard = document.getElementById('score');
-    const missStatusBoard = document.getElementById('miss-status');
     const timeBoard = document.getElementById('time');
     const startButton = document.getElementById('start-button');
     const gameArea = document.querySelector('.game-area');
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         time = 60;
         consecutiveMisses = 0;
         scoreBoard.textContent = score;
-        missStatusBoard.textContent = 'Safe';
         gameArea.classList.remove('miss-one', 'miss-two');
         gameArea.style.borderColor = 'green';
         timeBoard.textContent = time;
@@ -106,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             score++;
             scoreBoard.textContent = score;
             consecutiveMisses = 0;
-            missStatusBoard.textContent = 'Safe';
             gameArea.classList.remove('miss-one', 'miss-two');
             gameArea.style.borderColor = 'green';
             setTimeout(() => {
@@ -118,13 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
             mole.textContent = 'Miss!';
             consecutiveMisses++;
             if (consecutiveMisses === 1) {
-                missStatusBoard.textContent = 'Next miss loses a point!';
                 gameArea.classList.add('miss-one');
             } else if (consecutiveMisses === 2) {
                 score--;
                 scoreBoard.textContent = score;
                 consecutiveMisses = 0;
-                missStatusBoard.textContent = 'Safe';
                 gameArea.classList.remove('miss-one');
                 gameArea.classList.add('miss-two');
                 setTimeout(() => {
