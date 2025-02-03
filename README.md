@@ -140,3 +140,12 @@ Tasks:
 ✅ Design and implement the leaderboard UI.
 ✅ Store and update scores in local storage or a database.
 ✅ Create a form for players to enter their name when they get a high score.
+
+
+# Wireframes:
+
+![Balsamiq Desktop Wireframe](assets/images/wireframe-desktop.png)
+
+![Balsamiq Tablet Wireframe](assets/images/wireframe-tablet.png)
+
+![Balsamiq Mobile Wireframe](assets/images/wireframe-mobile.png)
