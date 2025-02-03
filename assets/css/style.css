@@ -1,27 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 /* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
     --primary-color: #84a4af;
     --secondary-color: #d0c8ba;
     --text-color: #090b0b;
-    --primary-font:  "Cinzel", serif;
+    --primary-font: "Cinzel", serif;
     --secondary-font: "Josefin Sans", serif;
 }
 
-
 /* Body styles */
-
 body {
     background-image: url('../images/background-image.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    background-color: var(--primary-color);
     margin: 0;
     padding: 0;
     height: 100vh;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    opacity: 0.5;
+    z-index: -1; /* Ensure the overlay is behind the content */
 }
 
 main {
@@ -33,31 +43,34 @@ main {
     font-family: var(--secondary-font);
 }
 
-/* Header styles */
-
-#mainNav {
-    font-family: var(--primary-font);
-    font-size: 2.5rem;
-    color: var(--text-color);
-    text-align: center;
-    margin-top: 0;
-    padding-top: 1rem;
-}
+/* Navbar styles */
 
 .navbar {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#hero {
     font-family: var(--primary-font);
+    background-color: var(--primary-color);
 }
 
+/* Floating audio toggle button styles */
+.floating-audio-toggle {
+    position: fixed;
+    top: 70px; /* Adjust based on the height of your navbar */
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.floating-audio-toggle i {
+    font-size: 1.5rem;
+}
 
 /* Game area styles */
 .game-area {

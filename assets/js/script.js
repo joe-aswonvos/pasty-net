@@ -5,12 +5,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeBoard = document.getElementById('time');
     const startButton = document.getElementById('start-button');
     const gameArea = document.querySelector('.game-area');
+    const playPauseButton = document.getElementById('play-pause-button');
+    const backgroundAudio = document.getElementById('background-audio');
     let lastMole;
     let timeUp = false;
     let score = 0;
     let time = 60;
     let timer;
     let consecutiveMisses = 0;
+
+    // Set initial volume and play audio
+    backgroundAudio.volume = 0.1;
+    
+    // Attempt to play audio and handle autoplay restrictions
+    function playAudio() {
+        backgroundAudio.play().catch(error => {
+            console.log('Autoplay prevented:', error);
+            // Show a message or button to prompt user interaction
+        });
+    }
+
+    playAudio();
+
+
+    // Update play/pause button icon based on audio state
+    function updatePlayPauseButton() {
+        if (backgroundAudio.paused) {
+            playPauseButton.classList.remove('fa-pause');
+            playPauseButton.classList.add('fa-play');
+        } else {
+            playPauseButton.classList.remove('fa-play');
+            playPauseButton.classList.add('fa-pause');
+        }
+    }
 
     // Map keys to mole IDs
     const keyMap = {
@@ -162,4 +189,21 @@ document.addEventListener('DOMContentLoaded', () => {
             stopGame();
         }
     });
+
+    // Add event listener to play/pause button
+    playPauseButton.addEventListener('click', () => {
+        if (backgroundAudio.paused) {
+            backgroundAudio.play();
+        } else {
+            backgroundAudio.pause();
+        }
+        updatePlayPauseButton();
+    });
+
+    // Update play/pause button text on audio play/pause events
+    backgroundAudio.addEventListener('play', updatePlayPauseButton);
+    backgroundAudio.addEventListener('pause', updatePlayPauseButton);
+
+    // Set initial state of play/pause button
+    updatePlayPauseButton();
 });
