@@ -1,6 +1,7 @@
 /* Variables */
 :root {
   --primary-color: #007bff;
+  --pasty: #c1a123;
   --bg-color: #f4f4f4;
   --fg-color: #333;
 }
@@ -9,10 +10,12 @@
 /* General */
 * {
   cursor: url('../images/pasty-curser.png'), auto;
+  padding: 0;
+  margin: 0;
 }
-*:hover {
-  cursor: url('../images/pasty-curser.png'), auto;
-}
+/* *:hover {
+  cursor: url('../images/mallet-curser.webp'), auto;
+} */
 body {
   font-family: 'Arial', sans-serif;
   padding: 0;
@@ -20,8 +23,19 @@ body {
 }
 body:hover,
 a:hover,
-button:hover {
+button:hover,
+carousel-control-next:hover {
   cursor: url('../images/mallet-curser.webp'), auto;
+}
+
+/* Navbar */
+#navbar-logo {
+  width: 30px;
+  height: 30px;
+}
+.navbar {
+  background-color: var(--pasty) !important;
+  color: white;
 }
 /* Header */
 #hero {
@@ -57,13 +71,66 @@ button:hover {
   font-weight: bold;
   color: white;
 }
-/* Navbar */
-#navbar-logo {
-  width: 30px;
-  height: 30px;
+/* img carousel */
+.section-div h2 {
+  font-size: 3rem;
+  padding: 0 0 2rem 0;
+}
+.carousel * {
+  /* color: white; */
+}
+.carousel-inner {
+  margin: 50px auto;
+}
+.carousel-item {
+  overflow: hidden;
+  width: 100%;
+  height: 600px;
+}
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Main */
+.section-div {
+  background-color: black;
+  padding: 5rem 0;
+  color: white;
+}
+.div-2 {
+  background-color: white;
+  color: black;
+  padding: 5rem 0;
+}
+#introduction img {
+  width: 248px;
+  /* height: 100px; */
+}
+.vertical {
+  position: absolute;
+  width: 10px;
+  height: 384px;
+  left: 100px;
+  top: 457px;
+  background-color: white;
+}
+.horizontal {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  left: 0px;
+  top: 750px;
+  background-color: white;
+}
+/* Introduction */
+#introduction .row .col-12 {
+  background-color: black;
+  width: 100%;
+}
+
+/* Game */
 #game {
   /* background-color: rgb(255, 228, 196); */
   display: flex;
@@ -104,7 +171,6 @@ button:hover {
   background: rgb(19, 55, 139);
   border: 5px solid rgb(30, 30, 30);
   cursor: url('../images/mallet-curser.webp'), auto;
-
   border-radius: 100px;
 }
 .mole {
