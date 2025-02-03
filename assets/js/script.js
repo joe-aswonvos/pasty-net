@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Select elements from the DOM
     const moles = document.querySelectorAll('.mole');
     const scoreBoard = document.getElementById('score');
     const timeBoard = document.getElementById('time');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timer;
     let consecutiveMisses = 0;
 
+    // Map keys to mole IDs
     const keyMap = {
         'Q': 'mole1',
         'W': 'mole2',
@@ -23,10 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'C': 'mole9'
     };
 
+    // Generate a random time between min and max
     function randomTime(min, max) {
         return Math.round(Math.random() * (max - min) + min);
     }
 
+    // Select a random mole that is not the same as the last one
     function randomMole(moles) {
         const idx = Math.floor(Math.random() * moles.length);
         const mole = moles[idx];
@@ -37,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return mole;
     }
 
+    // Show moles for a random time
     function peep() {
         let minTime = 1000; // 1 second
         let maxTime = 1000; // 1 second
@@ -68,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, time);
     }
 
+    // Start the game
     function startGame() {
         score = 0;
         time = 60;
@@ -90,12 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // Stop the game
     function stopGame() {
         clearInterval(timer);
         timeUp = true;
         startButton.textContent = 'Start Game';
     }
 
+    // Handle mole hit
     function hitMole(mole) {
         if (mole.classList.contains('up')) {
             mole.classList.remove('up');
@@ -134,8 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Add event listeners to moles
     moles.forEach(mole => mole.addEventListener('click', () => hitMole(mole)));
 
+    // Add event listener for keydown events
     document.addEventListener('keydown', (event) => {
         const moleId = keyMap[event.key.toUpperCase()];
         if (moleId) {
@@ -144,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Add event listener to start button
     startButton.addEventListener('click', () => {
         if (startButton.textContent === 'Start Game') {
             startGame();

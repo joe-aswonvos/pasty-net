@@ -1,3 +1,4 @@
+/* Body styles */
 body {
     background-image: url('../images/background-image.jpg');
     background-size: cover;
@@ -9,6 +10,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Game area styles */
 .game-area {
     display: flex;
     flex-wrap: wrap;
@@ -38,6 +40,7 @@ body {
     100% { background-color: red; }
 }
 
+/* Mole styles */
 .mole {
     display: flex;
     justify-content: center;
@@ -71,6 +74,7 @@ body {
     color: black;
 }
 
+/* Media query for larger screens */
 @media (min-width: 768px) {
     .game-area {
         width: 600px; /* Static width for larger screens */
