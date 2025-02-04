@@ -7,74 +7,103 @@
     --text-color: #090b0b;
     --primary-font: "Cinzel", serif;
     --secondary-font: "Josefin Sans", serif;
-}
+    --primary-blue: #84a4af;
+    --secondary-beige: #d0c8ba;
+    --dark-background: #090b0b;
 
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
 
 /* Body styles */
 
 body {
-    background-image: url('../images/background-image.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-x: hidden;
-    position: relative;
+  background-image: url('../images/background-image.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
-body::before {
-    content: "";
+/* Hero Carousel Styles */
+.hero-carousel {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slides {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    display: flex;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--secondary-color);
-    opacity: 0.5;
-    z-index: -1; /* Ensure the overlay is behind the content */
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 5s ease-in-out;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-family: var(--secondary-font);
+.hero-slide:first-child {
+    opacity: 1;
 }
 
-/* Navbar styles */
-
-.navbar {
-    font-family: var(--primary-font);
-    background-color: var(--primary-color);
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+    padding: 2rem;
+    border-radius: 10px;
 }
 
-/* Floating audio toggle button styles */
-.floating-audio-toggle {
-    position: fixed;
-    top: 70px; /* Adjust based on the height of your navbar */
-    left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure it stays on top */
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-.floating-audio-toggle i {
+.hero-content p {
     font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-/* Game area styles */
+.hero-content button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-content button:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* Game Area Styles */
 
 .mole-game-area {
     display: flex;
@@ -82,7 +111,7 @@ main {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    max-width: 600px; /* Static width for larger screens */
+    max-width: 600px;
     margin: 0 auto;
     padding: 3.3%;
     box-sizing: border-box;
@@ -126,6 +155,31 @@ main {
     background-color: var(--secondary-color);
     border-color: var(--primary-color);
 }
+
+}
+
+.game-area.miss-one {
+  background-color: orange;
+}
+
+.game-area.miss-two {
+  background-color: red;
+  animation: flash-red 0.5s;
+}
+
+@keyframes flash-red {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: green;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+/* Mole Styles */
 
 .mole {
     display: flex;
@@ -178,11 +232,19 @@ main {
     color: black;
 }
 
-/* Media query for larger screens */
-@media (min-width: 768px) {
-    .game-area {
-        width: 600px; /* Static width for larger screens */
-    }
+.mole.up {
+  background-color: green;
+  box-shadow: none;
+}
+
+.mole.whack {
+  background-color: chartreuse;
+  color: black;
+}
+
+.mole.miss {
+  background-color: red;
+  color: black;
 }
 
 /* Animation for the moles */
@@ -199,3 +261,37 @@ main {
         scale: 95%;
     }
   }
+
+/* Oscar */
+
+#snake-container {
+    width: 500px;
+    height: 500px;
+  }
+  #gameCanvas {
+    border-radius: 10px;
+    border: black 7px solid;
+  }
+  
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content button {
+        padding: 0.75rem 1.5rem;
+    }
+
+/* Media Queries */
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .game-area {
+      width: 600px; /* Static width for larger screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}

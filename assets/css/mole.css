@@ -1,0 +1,51 @@
+:root {
+  --primary-color: #007bff;
+  --pasty: #c1a123;
+  --bg-color: #f4f4f4;
+  --fg-color: #333;
+}
+* {
+  cursor: url('../images/pasty-curser.png'), auto;
+  padding: 0;
+  margin: 0;
+  caret-color: transparent;
+}
+/* Navbar */
+#navbar-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.mole-container {
+  /* height: 850px; */
+  width: 850px;
+  background-color: #c1a123;
+  padding: 10px 10px;
+  margin: 4rem auto;
+  border: #ffffff 5px solid;
+  border-radius: 1rem;
+  background: url('../images/dirt-texture2.webp') repeat black;
+}
+.hole {
+  background-color: black;
+  /* background: url('../images/dirt-texture2.webp') center center no-repeat black; */
+
+  border-radius: 50%;
+  margin: 10px;
+  border: #693800 5px solid;
+  width: 250px;
+  height: 250px;
+}
+.mole {
+  z-index: 99;
+  background-size: 150px;
+  /* background-image: url('https://media.geeksforgeeks.org/wp-content/uploads/20231130123541/mole.png'); */
+  background: url('../images/pasty-mole.png') center center/75% no-repeat black;
+}
+.mole:hover {
+  cursor: url('../images/mallet-large.webp') 32 16, auto;
+}
+/* .mole:active {
+  cursor: url('../images/mallet-pressed.webp'), auto;
+} */
+/*  */
