@@ -9,7 +9,9 @@
     --secondary-font: "Josefin Sans", serif;
 }
 
+
 /* Body styles */
+
 body {
     background-image: url('../images/background-image.jpg');
     background-size: cover;
@@ -73,66 +75,106 @@ main {
 }
 
 /* Game area styles */
-.game-area {
+
+.mole-game-area {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     max-width: 600px; /* Static width for larger screens */
     margin: 0 auto;
-    padding: 10px;
+    padding: 3.3%;
     box-sizing: border-box;
     background-color: lightgreen; /* Default background color */
+    background-image: url('../images/mole-board.jpg');
+    background-size: cover;
     transition: background-color 0.3s;
+    position: relative; /* Ensure the padding trick works */
+    z-index: 1;
 }
 
-.game-area.miss-one {
-    background-color: orange;
+.mole-game-area::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+    transition: background-color 0.5s;
 }
 
-.game-area.miss-two {
-    background-color: red;
-    animation: flash-red 0.5s;
+.mole-game-area.miss-one::before {
+    background-color: rgba(255, 165, 0, 0.2);
 }
 
-@keyframes flash-red {
-    0% { background-color: red; }
-    50% { background-color: green; }
-    100% { background-color: red; }
+.mole-game-area.miss-two::before {
+    background-color: rgba(255, 0, 0, 0.4);
 }
+
 
 /* Mole styles */
+
+#start-button {
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+
+#start-button:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
 .mole {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%; /* Adjust the size of the holes */
+    width: 27%; /* Adjust the size of the holes */
     aspect-ratio: 1; /* Maintain aspect ratio */
-    border-radius: 50%;
-    background-color: gray;
-    margin: 5px;
+    margin: 3.1%;
     position: relative;
     cursor: pointer;
     transition: background-color 0.1s;
     font-size: 24px;
     color: white;
     font-weight: bold;
-    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.8); /* Deeper inner shadow */
+}
+
+/* adjust the middle row of moles */
+
+#mole-4, #mole-5, #mole-6 {
+    margin-top: 50%;
+    margin-bottom: 50%;
+}
+
+/* Hide default text */
+.mole.hide-default-text::before {
+    content: attr(data-default-text);
+    visibility: hidden;
+}
+
+/* Show user info */
+.mole.show-user-info::before {
+    visibility: visible;
 }
 
 .mole.up {
-    background-color: green;
-    box-shadow: none;
+    background-image: url('../images/mole-token.jpg');
+    background-size: cover;
+    animation-name: grow-shrink;
+    animation-duration: 0.5s;
 }
 
 .mole.whack {
-    background-color: chartreuse;
-    color: black;
+    background-image: url('../images/mole-token-broken.png');
+    background-size: cover;
 }
 
 .mole.miss {
-    background-color: red;
+    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,0.5) 60%, rgba(255,0,0,0) 80%);
+    opacity: 0.5;
     color: black;
 }
 
@@ -142,3 +184,18 @@ main {
         width: 600px; /* Static width for larger screens */
     }
 }
+
+/* Animation for the moles */
+@keyframes grow-shrink {
+    25%{
+      scale: 80%;
+    }
+  
+    50% {
+      scale: 110%;
+    }
+
+    75% {
+        scale: 95%;
+    }
+  }
