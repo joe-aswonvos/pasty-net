@@ -23,6 +23,7 @@
     </head>
 
     <body>
+
         <!-- Header with Navbar -->
         <header>
             <nav class="navbar navbar-expand-lg navbar-light fixed-top"
@@ -63,10 +64,22 @@
 
             <!-- hero section -->
 
-            <section id="hero">
-                <h1 class="text-center">Welcome to Pasty Net</h1>
-                <p class="text-center">Play games and have fun!</p>
+            <section class="hero-carousel">
+                <div class="hero-slides">
+                    <div class="hero-slide"
+                        style="background-image: url('assets/images/wallhaven-lq897p-2893992123.jpg')"></div>
+                    <div class="hero-slide"
+                        style="background-image: url('assets/images/wp3142926-3617341430.jpg')"></div>
+                    <div class="hero-slide"
+                        style="background-image: url('assets/images/England_Coast_Houses_Boats_Motorboat_Cornwall_527346_1920x1080-3064057052.jpg')"></div>
+                </div>
+                <div class="hero-content">
+                    <h1>Pasty Net Games </h1>
+                    <p>Discover Epic Games</p>
+                    <button>Explore Games</button>
+                </div>
             </section>
+            <br>
 
             <!-- game tabs -->
 
@@ -91,6 +104,11 @@
                             <a class="nav-link" id="snake-tab" data-toggle="tab"
                                 href="#snake" role="tab" aria-controls="snake"
                                 aria-selected="false">Snake</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="game4-tab" data-toggle="tab"
+                                href="#game4" role="tab" aria-controls="game4"
+                                aria-selected="false">Game 4</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="gameTabsContent">
@@ -137,6 +155,7 @@
                         </div>
 
                         <!-- Oscar's Snake -->
+
                         <div class="tab-pane fade" id="snake" role="tabpanel"
                             aria-labelledby="snake-tab">
                             <div class="text-center mb-4">
@@ -151,23 +170,29 @@
                         </div>
                     </div>
 
-                </section>
-            </main>
+                    <!-- Ewan's Game -->
+                    <div class="tab-pane fade" id="hangman" role="tabpanel"
+                        aria-labelledby="game4-tab">Game 4 content
+                        <div class="game-modal" id="over">
 
-            <!-- Audio Element -->
-            <audio id="background-audio" src="assets/audio/background-music.mp3"
-                loop></audio>
+                        </section>
+                    </main>
 
-            <!-- Bootstrap JS and dependencies -->
-            <script
-                src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-            <script
-                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-            <script
-                src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            <!-- Custom Script -->
-            <script src="assets/js/script.js"></script>
-            <!-- snek -->
-            <script src="assets/js/snek.js"></script>
-        </body>
-    </html>
+                    <!-- Audio Element -->
+                    <audio id="background-audio"
+                        src="assets/audio/background-music.mp3"
+                        loop></audio>
+
+                    <!-- Bootstrap JS and dependencies -->
+                    <script
+                        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                    <script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                    <script
+                        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                    <!-- Custom Script -->
+                    <script src="assets/js/script.js"></script>
+                    <!-- snek -->
+                    <script src="assets/js/snek.js"></script>
+                </body>
+            </html>

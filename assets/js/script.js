@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select elements from the DOM
+    // Hero Carousel Logic
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        slides[currentSlide].style.opacity = '0';
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.opacity = '1';
+    }
+
+    setInterval(nextSlide, 5000);
+
+    // Whack-a-Mole Game Logic
     const moles = document.querySelectorAll('.mole');
     const scoreBoard = document.getElementById('score');
     const timeBoard = document.getElementById('time');
@@ -207,3 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial state of play/pause button
     updatePlayPauseButton();
 });
+
+
+
