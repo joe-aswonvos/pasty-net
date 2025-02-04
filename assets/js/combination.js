@@ -43,7 +43,7 @@ function runGame() {
 	document.getElementById("combo-next").style.display = "none";
 	wrongTries = 0;
 	/* Display answer on page for debugging/cheating: */
-	// document.getElementById("answer-test").textContent = getAnswer();
+	document.getElementById("answer-test").textContent = getAnswer();
 	document.getElementById("combo-submit").onclick = checkAnswer;
 }
 
