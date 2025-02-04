@@ -209,11 +209,6 @@
             </div>
           </div>
 
-          <script>
-            document.getElementById("currentYear").textContent =
-              new Date().getFullYear();
-          </script>
-
           <!-- Beth's AnswerSmash -->
           <div
             class="tab-pane fade"
@@ -235,7 +230,7 @@
                 <p>Enter answer:</p>
                 <input id="answer-box" />
                 <button id="combo-submit">Submit Answer</button>
-                <!-- <p id="answer-test">Answer</p> -->
+                <button id="next-question">Next Question</button>
               </div>
             </div>
           </div>
@@ -255,6 +250,7 @@
               <button id="snakeButton" class="btn btn-primary">
                 Start Game
               </button>
+              <button id="snake-fullscreen">Fullscreen</button>
             </div>
             <canvas id="gameCanvas"></canvas>
           </div>

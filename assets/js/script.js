@@ -238,15 +238,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
-    
+
+      const heroSection = document.getElementById("hero-section");
+
+      if (heroSection.style.position = "absolute") {heroSection.style.position = "relative"};
+
       const targetId = this.getAttribute("href").substring(1);
       const targetElement = document.getElementById(targetId);
       const offset = 60; // Adjust this value based on the height of your navbar
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
-      const heroSection = document.getElementById("hero-section");
-
-      if (heroSection.style.position === "absolute") heroSection.style.position = "relative";
 
       window.scrollTo({
         top: offsetPosition,
