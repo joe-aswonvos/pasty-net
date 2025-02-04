@@ -170,7 +170,7 @@ main {
   border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
 }
 
-#gametabs > .navitem > .nav-link.active {
+#gametabs > .navitem > .active {
   color: var(--text-color);
   background-color: var(--primary-color);
 }
