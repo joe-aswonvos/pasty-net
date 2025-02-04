@@ -225,18 +225,18 @@
               </p>
               <p class="col-12 col-md-4">Instructions: The last letters of the answer to the question, and the first letters of what's depicted in the image will be the same. Overlap them and combine them together to make a new word or phrase!</p>
               <div class="game-area col-12 text-center">
-                <div>
-                  <p id="question"></p>
-                  <img id="picture" src=".." />
+                <div class="my-3">
+                  <p id="combo-question"></p>
+                  <img id="combo-picture" src=".." />
                 </div>
-                <div class = "my-2">
+                <div id="combo-input" class="my-3">
                   <p>Enter answer:</p>
-                  <input id="answer-box" />
+                  <input id="combo-answer" maxlength="30" autocapitalize="on" />
                   <button id="combo-submit">Submit Answer</button>
                 </div>
-                <div id="answered">
-                  <p id="result"></p>
-                  <button id="next-question">Next Question</button>
+                <div id="combo-answered">
+                  <p id="combo-result"></p>
+                  <button id="combo-next">Next Question</button>
                 </div>
               </div>
             </div>
