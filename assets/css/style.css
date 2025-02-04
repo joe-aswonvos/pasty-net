@@ -1,15 +1,23 @@
-/* Colour Palette */
+
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
+    --primary-color: #84a4af;
+    --secondary-color: #d0c8ba;
+    --text-color: #090b0b;
+    --primary-font: "Cinzel", serif;
+    --secondary-font: "Josefin Sans", serif;
     --primary-blue: #84a4af;
     --secondary-beige: #d0c8ba;
     --dark-background: #090b0b;
-}
 
 /* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
@@ -20,6 +28,57 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    opacity: 0.5;
+    z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: var(--secondary-font);
+}
+
+/* Navbar styles */
+
+.navbar {
+    font-family: var(--primary-font);
+    background-color: var(--primary-color);
+}
+
+/* Floating audio toggle button styles */
+.floating-audio-toggle {
+    position: fixed;
+    top: 70px; /* Adjust based on the height of your navbar */
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.floating-audio-toggle i {
+    font-size: 1.5rem;
 }
 
 /* Hero Carousel Styles */
