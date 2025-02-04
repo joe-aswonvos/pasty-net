@@ -1,3 +1,4 @@
+/* Questions and answers are arrays containing the questions as objects */
 const questions = [];
 const pictures = [];
 questions[0] = {question:"The name of what predatory arthropod, usually found in dark, humid environments, means one hundred feet in Latin?", answer:"CENTIPEDE", lastLetters:"EDE"};
@@ -10,6 +11,9 @@ let wrongTries = 0;
 
 document.addEventListener("DOMContentLoaded", init);
 
+/**
+ * Initialises the program
+ */
 function init() {
 	let textInput = document.getElementById("combo-answer");
 	textInput.addEventListener("keypress", function(event) {
@@ -22,6 +26,9 @@ function init() {
 	runGame();
 }
 
+/**
+ * Starts the game, also restarts core game loop with next question
+ */
 function runGame() {
 	document.getElementById("combo-question").textContent = questions[questionNumber].question;
 	document.getElementById("combo-picture").src = pictures[questionNumber].url;
@@ -31,17 +38,25 @@ function runGame() {
 	document.getElementById("combo-answered").style.display = "none";
 	document.getElementById("combo-next").style.display = "none";
 	wrongTries = 0;
-	// debugging/cheating:
+	/* Display answer on page for debugging/cheating: */
 	// document.getElementById("answer-test").textContent = getAnswer();
 	document.getElementById("combo-submit").onclick = checkAnswer;
 }
 
+/**
+ * Works out the answer by taking the first letters off the picture answer and concatenates the strings
+ */
 function getAnswer() {
 	let suffix = pictures[questionNumber].answer.slice(pictures[questionNumber].lettersToCut);
 	let combination = questions[questionNumber].answer.concat(suffix);
 	return combination;
 }
 
+/**
+ * Acquires user input answer and compares it to calculated answer
+ * If correct, congratulates user, moves to next question and restarts game loop
+ * If incorrect, gives two more attempts, if attempts are depleted then gives user the answer and a button to go to next question
+ */
 function checkAnswer() {
 	let userAnswer = document.getElementById("combo-answer").value;
 	userAnswer = userAnswer.toUpperCase();
@@ -75,6 +90,11 @@ function checkAnswer() {
 	}
 }
 
+/**
+ * Increases score for this game, not the overall website score
+ * Can currently be increased forever as the game loop doesn't end if the user puts in the same right answer for repeated questions
+ * I'll set a cap soon
+ */
 function incrementScore() {
 	let oldScore = parseInt(document.getElementById("combo-score").innerText);
 	document.getElementById("combo-score").innerText = ++oldScore
