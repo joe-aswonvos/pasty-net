@@ -1,35 +1,10 @@
-<<<<<<< HEAD
 /* Colours
 HEX:#84a4af 
 #d0c8ba
 #090b0b
 */
-=======
-
-/* Global styles */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-
-:root {
-    --primary-color: #84a4af;
-    --secondary-color: #d0c8ba;
-    --text-color: #090b0b;
-    --primary-font: "Cinzel", serif;
-    --secondary-font: "Josefin Sans", serif;
-    --primary-blue: #84a4af;
-    --secondary-beige: #d0c8ba;
-    --dark-background: #090b0b;
-
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
->>>>>>> 97114351006a7009511c6f0d0b42bacfdbdc0bac
 
 body {
-<<<<<<< HEAD
   background-image: url('../images/background-image.jpg');
   background-size: cover;
   background-attachment: fixed;
@@ -38,66 +13,6 @@ body {
   padding: 0;
   height: 100vh;
   overflow-x: hidden;
-=======
-    
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--secondary-color);
-    opacity: 0.5;
-    z-index: -1; /* Ensure the overlay is behind the content */
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-family: var(--secondary-font);
-}
-
-/* Navbar styles */
-
-.navbar {
-    font-family: var(--primary-font);
-    background-color: var(--primary-color);
-}
-
-/* Floating audio toggle button styles */
-.floating-audio-toggle {
-    position: fixed;
-    top: 70px; /* Adjust based on the height of your navbar */
-    left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure it stays on top */
-}
-
-.floating-audio-toggle i {
-    font-size: 1.5rem;
->>>>>>> 97114351006a7009511c6f0d0b42bacfdbdc0bac
 }
 
 /* Hero Carousel Styles */
@@ -173,19 +88,6 @@ main {
 
 /* Game Area Styles */
 .game-area {
-<<<<<<< HEAD
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  max-width: 600px; /* Static width for larger screens */
-  margin: 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
-  background-color: lightgreen; /* Default background color */
-  transition: background-color 0.3s;
-=======
     
     display: flex;
     flex-wrap: wrap;
@@ -197,7 +99,6 @@ main {
     padding: 10px;
     background-color: lightgreen;
     transition: background-color 0.3s;
->>>>>>> 97114351006a7009511c6f0d0b42bacfdbdc0bac
 }
 
 .game-area.miss-one {
@@ -223,23 +124,6 @@ main {
 
 /* Mole Styles */
 .mole {
-<<<<<<< HEAD
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30%; /* Adjust the size of the holes */
-  aspect-ratio: 1; /* Maintain aspect ratio */
-  border-radius: 50%;
-  background-color: gray;
-  margin: 5px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.1s;
-  font-size: 24px;
-  color: white;
-  font-weight: bold;
-  box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.8); /* Deeper inner shadow */
-=======
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,7 +138,6 @@ main {
     color: white;
     font-weight: bold;
     box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.8);
->>>>>>> 97114351006a7009511c6f0d0b42bacfdbdc0bac
 }
 
 .mole.up {
@@ -272,24 +155,56 @@ main {
   color: black;
 }
 /* Oscar */
-#snake-container {
+/* #snake-container {
   width: 500px;
   height: 500px;
-}
+} */
+/* #snakeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+} */
 #gameCanvas {
-  border-radius: 10px;
-  border: black 7px solid;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) 10px solid;
 }
-<<<<<<< HEAD
-/* Media query for larger screens */
-@media (min-width: 768px) {
-  .game-area {
-    width: 600px; /* Static width for larger screens */
-  }
+/* #gameCanvas {
+  width: 100%;
+  height: 100%;  */
+  /* display: block; */
+/* }
+#snakeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
-=======
-  
-  
+
+#gameCanvas {
+  display: block; 
+  width: auto;
+  height: 100%;
+} */
+
+/* #gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#gameCanvas {
+  display: block; 
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -309,4 +224,3 @@ main {
         font-size: 18px;
     }
     
->>>>>>> 97114351006a7009511c6f0d0b42bacfdbdc0bac

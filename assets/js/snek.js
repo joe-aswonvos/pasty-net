@@ -2,6 +2,7 @@ const canvas = document.getElementById('gameCanvas')
 const ctx = canvas.getContext('2d')
 const scoreElement = document.getElementById('snake-score')
 const timerElement = document.getElementById('snake-time')
+const fullscreenButton = document.getElementById('snake-fullscreen')
 
 console.log('canvas.width', canvas.width)
 const frameRate = 1000 / 10
@@ -18,7 +19,9 @@ const gameHeight = 300
 
 canvas.width = gameWidth
 canvas.height = gameHeight
+canvas.style.maxWidth = '600px'
 canvas.style.width = '100%'
+canvas.style.maxHeight = '600px'
 canvas.style.height = '100%'
 
 const sSize = 10
@@ -61,7 +64,7 @@ fruit = [
 
 // Background Image
 let background = new Image()
-background.src = 'assets/snake/grass.png'
+background.src = 'assets/snake/snek-bg.png'
 
 // Scores & Timer
 const scoreText = 'Score: '
@@ -82,6 +85,25 @@ const eatSound = new Audio('assets/snake/sounds/EatSound.ogg')
 const backgroundMusic = new Audio('assets/snake/sounds/level-1-bg.wav')
 backgroundMusic.loop = true
 backgroundMusic.volume = 0.2 // Set volume to 20%
+
+// Fullscreen Functionality
+fullscreenButton.addEventListener('click', () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+  } else {
+    document.getElementById('snakeContainer').requestFullscreen()
+  }
+})
+
+document.addEventListener('fullscreenchange', () => {
+  if (document.fullscreenElement) {
+    canvas.style.width = '100vw'
+    canvas.style.height = '100vh'
+  } else {
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
+  }
+})
 
 // Timer
 setInterval(() => {
@@ -134,11 +156,7 @@ function initGame () {
 
   snake = []
   for (let i = 0; i < snakeStartingLength; i++) {
-    snake.push([
-      canvas.width / 2 - sSize,
-      canvas.height / 2 - sSize,
-      spriteRotation
-    ])
+    snake.push([canvas.width / 2 - sSize, canvas.height / 2 - sSize])
   }
 
   fruit = [
@@ -147,25 +165,31 @@ function initGame () {
   ]
 }
 
-function drawSnakePart (part, x, y, rotation) {
-  ctx.save()
-  ctx.translate(x + sSize / 2, y + sSize / 2)
-  ctx.rotate((rotation * Math.PI) / 180)
-  ctx.drawImage(part, -sSize / 2, -sSize / 2, sSize, sSize)
-}
-
 /**
  * Draw the game to the screen
  */
-
 function draw () {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-  ctx.fillStyle = 'black'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
-  ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+  drawBackground()
   ctx.drawImage(fruitImage, fruit[0], fruit[1], fruitSize, fruitSize)
+  drawSnake()
+  drawScore()
+}
 
+/**
+ * Draw the score and timer
+ */
+function drawScore () {
+  ctx.font = '10px Arial'
+  ctx.fillStyle = 'yellow'
+  ctx.fillText(`${scoreText}${score}`, 10, 10)
+  ctx.fillText(`${timerText}${timer}`, 10, 20)
+  timerElement.innerText = timer
+  scoreElement.innerText = score
+}
+/**
+ * Draw the snake to the screen & calculates segment direction
+ */
+function drawSnake () {
   if (snake.length) {
     for (let i = 0; i < snake.length; i++) {
       let segment = snake[i]
@@ -199,15 +223,22 @@ function draw () {
       }
     }
   }
-
-  ctx.font = '10px Arial'
-  ctx.fillStyle = 'yellow'
-  ctx.fillText(`${scoreText}${score}`, 10, 10)
-  ctx.fillText(`${timerText}${timer}`, 10, 20)
-  timerElement.innerText = timer
-  scoreElement.innerText = score
 }
-
+/**
+ * Draw the background image
+ */
+function drawBackground () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.fillStyle = 'black'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+}
+/**
+ * Draw a segment of the snake
+ * @param {*} ctx
+ * @param {*} image
+ * @param {*} segment
+ */
 function drawSegment (ctx, image, segment) {
   if (image && image.complete) {
     ctx.drawImage(image, segment[0], segment[1], sSize, sSize)
@@ -215,7 +246,12 @@ function drawSegment (ctx, image, segment) {
     console.error('Image not loaded or invalid:', image)
   }
 }
-
+/**
+ * Returns the direction of the snake segment
+ * @param {*} segment
+ * @param {*} nextSegment
+ * @returns
+ */
 function getDirection (segment, nextSegment) {
   if (segment[0] < nextSegment[0]) return 'right'
   if (segment[0] > nextSegment[0]) return 'left'
@@ -224,6 +260,12 @@ function getDirection (segment, nextSegment) {
   return 'right' // Default direction
 }
 
+/**
+ * Returns the bend key based on the previous and next direction
+ * @param {*} prevDirection
+ * @param {*} nextDirection
+ * @returns bend key
+ */
 function getBendKey (prevDirection, nextDirection) {
   if (prevDirection === 'up' && nextDirection === 'right')
     return 'bend_bottomright'
@@ -249,46 +291,7 @@ function getBendKey (prevDirection, nextDirection) {
  * @returns none
  */
 function moveSnake (input, sSize) {
-  let newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1]]
-  switch (input) {
-    case 'ArrowUp':
-      newHead = [
-        snake[snake.length - 1][0],
-        snake[snake.length - 1][1] - sSize,
-        0
-      ]
-      break
-    case 'ArrowDown':
-      newHead = [
-        snake[snake.length - 1][0],
-        snake[snake.length - 1][1] + sSize,
-        180
-      ]
-      break
-    case 'ArrowLeft':
-      newHead = [
-        snake[snake.length - 1][0] - sSize,
-        snake[snake.length - 1][1],
-        270
-      ]
-      break
-    case 'ArrowRight':
-      newHead = [
-        snake[snake.length - 1][0] + sSize,
-        snake[snake.length - 1][1],
-        90
-      ]
-      break
-  }
-  lastInput = input
-
-  for (let i = 0; i < snake.length; i++) {
-    if (newHead[0] === snake[i][0] && newHead[1] === snake[i][1]) {
-      gameState = 'gameover'
-      return
-    }
-  }
-  snake.push(newHead)
+  newHead(input, sSize)
 
   let sLength = snake.length - 1
   if (snake.length) {
@@ -322,6 +325,39 @@ function moveSnake (input, sSize) {
 }
 
 /**
+ * Adds new head to snake
+ * @param {*} input User input
+ * @param {*} sSize Size of snake
+ * @returns
+ */
+function newHead (input, sSize) {
+  let newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1]]
+  switch (input) {
+    case 'ArrowUp':
+      newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1] - sSize]
+      break
+    case 'ArrowDown':
+      newHead = [snake[snake.length - 1][0], snake[snake.length - 1][1] + sSize]
+      break
+    case 'ArrowLeft':
+      newHead = [snake[snake.length - 1][0] - sSize, snake[snake.length - 1][1]]
+      break
+    case 'ArrowRight':
+      newHead = [snake[snake.length - 1][0] + sSize, snake[snake.length - 1][1]]
+      break
+  }
+  lastInput = input
+
+  for (let i = 0; i < snake.length; i++) {
+    if (newHead[0] === snake[i][0] && newHead[1] === snake[i][1]) {
+      gameState = 'gameover'
+      return
+    }
+  }
+  snake.push(newHead)
+}
+
+/**
  * End the game and reset variables
  */
 function gameEnd () {
@@ -352,6 +388,7 @@ function gameIntro () {
     canvas.height / 2 + 30
   )
 }
+
 /**
  * Start the game loop and call game functions
  */
