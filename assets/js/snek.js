@@ -1,31 +1,7 @@
-// const videos = [
-//   'assets/videos/video1.mp4',
-//   'assets/videos/video2.webm',
-//   'assets/videos/video3.webm',
-//   'assets/videos/video4.webm'
-// ]
-// let currentVideoIndex = 0
-
-// const heroVideo = document.getElementById('hero-video')
-// const heroVideoSource = document.getElementById('hero-video-source')
-
-// heroVideo.addEventListener('ended', () => {
-//   currentVideoIndex = (currentVideoIndex + 1) % videos.length
-//   heroVideoSource.src = videos[currentVideoIndex]
-//   heroVideo.load()
-//   heroVideo.play()
-// })
-
-// SNAKE GAME
-// function snakeGame () {
 const canvas = document.getElementById('gameCanvas')
 const ctx = canvas.getContext('2d')
 const scoreElement = document.getElementById('snake-score')
 const timerElement = document.getElementById('snake-time')
-
-// const parentContainer = document.getElementById('snake-container')
-// canvas.width = parentContainer.clientWidth
-// canvas.height = parentContainer.clientHeight
 
 console.log('canvas.width', canvas.width)
 const frameRate = 1000 / 10
