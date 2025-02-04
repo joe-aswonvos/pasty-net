@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreBoard = document.getElementById('score');
     const timeBoard = document.getElementById('time');
     const startButton = document.getElementById('start-button');
-    const gameArea = document.querySelector('.game-area');
+    const gameArea = document.querySelector('.mole-game-area');
     const playPauseButton = document.getElementById('play-pause-button');
     const backgroundAudio = document.getElementById('background-audio');
     let lastMole;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let consecutiveMisses = 0;
 
     // Set initial volume and play audio
-    backgroundAudio.volume = 0.1;
+    backgroundAudio.volume = 0.05;
     
     // Attempt to play audio and handle autoplay restrictions
     function playAudio() {
@@ -82,19 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show moles for a random time
     function peep() {
-        let minTime = 1000; // 1 second
-        let maxTime = 1000; // 1 second
+        let minTime = 1200; 
+        let maxTime = 1500; 
         let moleCount = 1;
 
         if (score >= 10) {
-            minTime = 500; // 0.5 seconds
-            maxTime = 500; // 0.5 seconds
+            minTime = 900;
+            maxTime = 1200;
             moleCount = 2;
         }
 
         if (score >= 20) {
-            minTime = 300; // 0.3 seconds
-            maxTime = 300; // 0.3 seconds
+            minTime = 600;
+            maxTime = 900;
             moleCount = 3;
         }
 
