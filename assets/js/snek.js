@@ -70,10 +70,10 @@ background.src = 'assets/snake/snek-bg.png'
 const scoreText = 'Score: '
 const timerText = 'Time: '
 let score = 0
-let timer = 0
+let snakeTimer = 0
 
 // Intro & Game Over Text
-const introText = 'Welcome to Snake'
+const introText = 'Welcome to snek2048'
 const startText = 'Press Enter to Start'
 const gameOverText = 'Game Over'
 
@@ -105,20 +105,38 @@ document.addEventListener('fullscreenchange', () => {
   }
 })
 
-// Timer
-setInterval(() => {
-  timer++
-}, 1000)
+function startTimer () {
+  timerInterval = setInterval(() => {
+    if (gameState === 'playing') {
+      snakeTimer++
+      timerElement.innerText = snakeTimer
+    }
+  }, 1000)
+}
+
+function stopTimer () {
+  clearInterval(timerInterval)
+}
 
 // Start Button Event Listener
 let startButton = document.getElementById('snakeButton')
+let startButtonLabel = document.getElementById('snakeButtonLabel')
+startButtonLabel.innerText = 'Play'
 startButton.addEventListener('click', e => {
-  gameState = 'playing'
+  if (startButtonLabel.innerHTML === 'Play') {
+    gameState = 'playing'
+    startButtonLabel.innerText = 'Pause'
+    startTimer()
+  } else {
+    gameState = 'pause'
+    startButtonLabel.innerText = 'Play'
+    stopTimer()
+  }
 })
 
 // Keyboard Event Listener
 document.addEventListener('keydown', e => {
-  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
     e.preventDefault()
   }
   switch (e.key) {
@@ -149,8 +167,8 @@ document.addEventListener('keydown', e => {
  */
 function initGame () {
   let spriteRotation = 0
-  score.innerText = '0'
-  timer.innerText = '0'
+  score = '0'
+  timer = '0'
   lastInput = 'ArrowUp'
   userInput = 'ArrowUp'
 
@@ -182,10 +200,11 @@ function drawScore () {
   ctx.font = '10px Arial'
   ctx.fillStyle = 'yellow'
   ctx.fillText(`${scoreText}${score}`, 10, 10)
-  ctx.fillText(`${timerText}${timer}`, 10, 20)
-  timerElement.innerText = timer
+  ctx.fillText(`${timerText}${snakeTimer}`, 10, 20)
+  timerElement.innerText = snakeTimer
   scoreElement.innerText = score
 }
+
 /**
  * Draw the snake to the screen & calculates segment direction
  */
@@ -233,6 +252,7 @@ function drawBackground () {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
 }
+
 /**
  * Draw a segment of the snake
  * @param {*} ctx
@@ -246,6 +266,7 @@ function drawSegment (ctx, image, segment) {
     console.error('Image not loaded or invalid:', image)
   }
 }
+
 /**
  * Returns the direction of the snake segment
  * @param {*} segment
@@ -363,8 +384,12 @@ function newHead (input, sSize) {
 function gameEnd () {
   initGame()
   gameState = 'intro'
+  startButtonLabel.innerText = 'Play'
 }
 
+function pauseGame () {
+  //
+}
 /**
  * Display intro screen
  */
@@ -384,7 +409,7 @@ function gameIntro () {
   ctx.fillStyle = 'red'
   ctx.fillText(
     startText,
-    canvas.width / 2 - ctx.measureText(introText).width / 2,
+    canvas.width / 2 - ctx.measureText(startText).width / 2,
     canvas.height / 2 + 30
   )
 }
@@ -398,8 +423,10 @@ function startGame () {
   } else if (gameState === 'playing') {
     moveSnake(userInput, sSize)
     draw()
-
     backgroundMusic.play()
+  } else if (gameState === 'pause') {
+    backgroundMusic.pause()
+    pauseGame()
   } else if (gameState === 'gameover') {
     backgroundMusic.pause()
     gameEnd()
@@ -423,6 +450,7 @@ let touchStartX = 0
 let touchStartY = 0
 
 function handleTouchStart (event) {
+  event.preventDefault()
   const touch = event.touches[0]
   touchStartX = touch.clientX
   touchStartY = touch.clientY

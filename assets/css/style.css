@@ -2,53 +2,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
-    --primary-color: #84a4af;
-    --secondary-color: #d0c8ba;
-    --text-color: #090b0b;
-    --primary-font: "Cinzel", serif;
-    --secondary-font: "Josefin Sans", serif;
-    --primary-blue: #84a4af;
-    --secondary-beige: #d0c8ba;
-    --dark-background: #090b0b;
+  --primary-color: #84a4af;
+  --secondary-color: #d0c8ba;
+  --text-color: #090b0b;
+  --primary-font: 'Cinzel', serif;
+  --secondary-font: 'Josefin Sans', serif;
+  --primary-blue: #84a4af;
+  --secondary-beige: #d0c8ba;
+  --dark-background: #090b0b;
 
-/* Reset and Base Styles */
-* {
+  /* Reset and Base Styles */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
 
-}
+  /* Body styles */
 
-/* Body styles */
+  body {
+    background-image: url('../images/background-image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden;
+  }
 
-body {
-  background-image: url('../images/background-image.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  overflow-x: hidden;
-}
-
-/* Hero Carousel Styles */
-.hero-carousel {
+  /* Hero Carousel Styles */
+  .hero-carousel {
     display: flex;
     width: 100%;
     height: 100vh;
     position: relative;
     overflow: hidden;
-}
+  }
 
-.hero-slides {
+  .hero-slides {
     display: flex;
     position: absolute;
     width: 100%;
     height: 100%;
-}
+  }
 
-.hero-slide {
+  .hero-slide {
     display: flex;
     position: absolute;
     top: 0;
@@ -59,13 +58,13 @@ body {
     background-position: center;
     opacity: 0;
     transition: opacity 1s ease-in-out, transform 5s ease-in-out;
-}
+  }
 
-.hero-slide:first-child {
+  .hero-slide:first-child {
     opacity: 1;
-}
+  }
 
-.hero-content {
+  .hero-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -73,22 +72,22 @@ body {
     text-align: center;
     color: white;
     z-index: 10;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 10px;
-}
+  }
 
-.hero-content h1 {
+  .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-}
+  }
 
-.hero-content p {
+  .hero-content p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-}
+  }
 
-.hero-content button {
+  .hero-content button {
     background-color: white;
     color: black;
     border: none;
@@ -96,16 +95,16 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+  }
 
-.hero-content button:hover {
+  .hero-content button:hover {
     background-color: var(--primary-blue);
     color: white;
-}
+  }
 
-/* Game Area Styles */
+  /* Game Area Styles */
 
-.mole-game-area {
+  .mole-game-area {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -121,10 +120,10 @@ body {
     transition: background-color 0.3s;
     position: relative; /* Ensure the padding trick works */
     z-index: 1;
-}
+  }
 
-.mole-game-area::before {
-    content: "";
+  .mole-game-area::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -133,29 +132,27 @@ body {
     background-color: transparent;
     z-index: -1;
     transition: background-color 0.5s;
-}
+  }
 
-.mole-game-area.miss-one::before {
+  .mole-game-area.miss-one::before {
     background-color: rgba(255, 165, 0, 0.2);
-}
+  }
 
-.mole-game-area.miss-two::before {
+  .mole-game-area.miss-two::before {
     background-color: rgba(255, 0, 0, 0.4);
-}
+  }
 
+  /* Mole styles */
 
-/* Mole styles */
-
-#start-button {
+  #start-button {
     background-color: var(--primary-color);
     border-color: var(--secondary-color);
-}
+  }
 
-#start-button:hover {
+  #start-button:hover {
     background-color: var(--secondary-color);
     border-color: var(--primary-color);
-}
-
+  }
 }
 
 .game-area.miss-one {
@@ -182,54 +179,61 @@ body {
 /* Mole Styles */
 
 .mole {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 27%; /* Adjust the size of the holes */
-    aspect-ratio: 1; /* Maintain aspect ratio */
-    margin: 3.1%;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.1s;
-    font-size: 24px;
-    color: white;
-    font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27%; /* Adjust the size of the holes */
+  aspect-ratio: 1; /* Maintain aspect ratio */
+  margin: 3.1%;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
 }
 
 /* adjust the middle row of moles */
 
-#mole-4, #mole-5, #mole-6 {
-    margin-top: 50%;
-    margin-bottom: 50%;
+#mole-4,
+#mole-5,
+#mole-6 {
+  margin-top: 50%;
+  margin-bottom: 50%;
 }
 
 /* Hide default text */
 .mole.hide-default-text::before {
-    content: attr(data-default-text);
-    visibility: hidden;
+  content: attr(data-default-text);
+  visibility: hidden;
 }
 
 /* Show user info */
 .mole.show-user-info::before {
-    visibility: visible;
+  visibility: visible;
 }
 
 .mole.up {
-    background-image: url('../images/mole-token.jpg');
-    background-size: cover;
-    animation-name: grow-shrink;
-    animation-duration: 0.5s;
+  background-image: url('../images/mole-token.jpg');
+  background-size: cover;
+  animation-name: grow-shrink;
+  animation-duration: 0.5s;
 }
 
 .mole.whack {
-    background-image: url('../images/mole-token-broken.png');
-    background-size: cover;
+  background-image: url('../images/mole-token-broken.png');
+  background-size: cover;
 }
 
 .mole.miss {
-    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,0.5) 60%, rgba(255,0,0,0) 80%);
-    opacity: 0.5;
-    color: black;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 0.5) 60%,
+    rgba(255, 0, 0, 0) 80%
+  );
+  opacity: 0.5;
+  color: black;
 }
 
 .mole.up {
@@ -249,96 +253,96 @@ body {
 
 /* Animation for the moles */
 @keyframes grow-shrink {
-    25%{
-      scale: 80%;
-    }
-  
-    50% {
-      scale: 110%;
-    }
-
-    75% {
-        scale: 95%;
-    }
+  25% {
+    scale: 80%;
   }
 
-/* Oscar */
-/* #snake-container {
-  width: 500px;
-  height: 500px;
-} */
-/* #snakeContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-} */
-#gameCanvas {
-  border-radius: 20px;
-  border: rgb(255, 255, 255) 10px solid;
+  50% {
+    scale: 110%;
+  }
+
+  75% {
+    scale: 95%;
+  }
 }
-/* #gameCanvas {
-  width: 100%;
-  height: 100%;  */
-  /* display: block; */
-/* }
+
+/* Oscar */
 #snakeContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#gameCanvas {
-  display: block; 
-  width: auto;
-  height: 100%;
-} */
-
-/* #gameContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#gameCanvas {
-  display: block; 
   width: 100%;
   height: 100%;
-  object-fit: contain; 
-} */
+}
+/* #gameCanvas { */
+/* padding: 0;
+  margin: 0; */
+/* border-radius: 20px; */
+/* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); Strong box shadow */
+/* } */
+#snakeDiv {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  max-height: 600px;
+  margin: 1rem;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 50px solid transparent; /* Set a transparent border to define the border width */
+  border-image: url('../images/mole-board.jpg') 30 round;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
+button.snakeButton {
+  background-color: var(--primary-color);
+  border-color: var(--secondary-color);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+}
+button.snakeButton:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
+}
+button.snakeButton:focus {
+  /* border: none; */
+  box-shadow: none;
+}
+button.snakeButton:active {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
 
-    .hero-content p {
-        font-size: 1rem;
-    }
+  .hero-content p {
+    font-size: 1rem;
+  }
 
-    .hero-content button {
-        padding: 0.75rem 1.5rem;
-    }
+  .hero-content button {
+    padding: 0.75rem 1.5rem;
+  }
+}
 
 /* Media Queries */
 
 /* Media query for larger screens */
 @media (min-width: 768px) {
-    .game-area {
-      width: 600px; /* Static width for larger screens */
-    }
+  .game-area {
+    width: 600px; /* Static width for larger screens */
   }
+}
 
-  @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
 }
