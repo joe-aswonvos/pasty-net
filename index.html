@@ -19,28 +19,30 @@
     <!-- Header with Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <img id="icon" src="assets/images/pasty-icon.png" alt="Pasty Icon">
-            <a class="navbar-brand" href="#">Pasty Net</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Games</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                </ul>
+            <div class="container">
+                <img id="icon" src="assets/images/pasty-icon.png" alt="Pasty Icon">
+                <a class="navbar-brand" href="#">Pasty Net</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Games</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="navbar-text">
+                    Total Score: <span id="totalscore">0</span>
+                </span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-            <span class="navbar-text">
-                Total Score: <span id="totalscore">0</span>
-            </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
         </nav>
     </header>
 
@@ -48,34 +50,36 @@
     <div class="floating-audio-toggle">
         <i id="play-pause-button" class="fa-solid fa-pause"></i>
     </div>
-        <!-- hero section -->
+    <!-- hero section -->
 
-        <section id="hero-section" class="container-fluid">
-            <div class="hero-carousel">
-                <div class="hero-slides">
-                    <div class="hero-slide"
-                        style="background-image: url('assets/images/wallhaven-lq897p-2893992123.jpg')"></div>
-                    <div class="hero-slide" style="background-image: url('assets/images/wp3142926-3617341430.jpg')">
-                    </div>
-                    <div class="hero-slide"
-                        style="background-image: url('assets/images/England_Coast_Houses_Boats_Motorboat_Cornwall_527346_1920x1080-3064057052.jpg')">
-                    </div>
+    <section id="hero-section" class="container-fluid">
+        <div class="hero-carousel">
+            <div class="hero-slides">
+                <div class="hero-slide" style="background-image: url('assets/images/wallhaven-lq897p-2893992123.jpg')">
                 </div>
-                <div class="hero-content">
-                    <h1>Pasty Net Games </h1>
-                    <p>Discover Epic Games</p>
-                    <button>Explore Games</button>
+                <div class="hero-slide" style="background-image: url('assets/images/wp3142926-3617341430.jpg')">
+                </div>
+                <div class="hero-slide"
+                    style="background-image: url('assets/images/England_Coast_Houses_Boats_Motorboat_Cornwall_527346_1920x1080-3064057052.jpg')">
                 </div>
             </div>
-        </section>
+            <div class="hero-content">
+                <h1>Pasty Net Games </h1>
+                <p>Discover Epic Games</p>
+                <button>Explore Games</button>
+            </div>
+        </div>
+    </section>
 
     <!-- Main Content -->
     <main>
-        <section class="container mt-5 pt-5 col-md-8 h-100">
+
+        <section id="game-section" class="container mt-5 col-md-8 h-100">
             <ul class="nav nav-tabs" id="gameTabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab"
                         aria-controls="about" aria-selected="true">About</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" id="whack-a-mole-tab" data-toggle="tab" href="#whack-a-mole" role="tab"
                         aria-controls="whack-a-mole" aria-selected="true">Whack-a-Mole</a>
@@ -134,6 +138,19 @@
 
                 <!-- Beth's AnswerSmash -->
                 <div class="tab-pane fade" id="smash" role="tabpanel" aria-labelledby="smash-tab">
+                    <div class="container row my-4 d-flex text-center align-items-center">
+                        <h2 class="col-6 text-center">Cornish Combination</h2>
+                        <p class="col-6 text-center">Score: <span id="combo-score">0</span></p>
+                        <div class="game-area col-12 text-center">
+                            <p id="question"></p>
+                            <img id="picture" src="..">
+                            <p>Enter answer:</p>
+                            <input id="answer-box">
+                            <button id="combo-submit">Submit Answer</button>
+                            <!-- <p id="answer-test">Answer</p> -->
+                            
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Oscar's Snake -->
@@ -183,6 +200,8 @@
     <script src="assets/js/script.js"></script>
     <!-- snek -->
     <script src="assets/js/snek.js"></script>
+    <!-- Smash -->
+    <script src="assets/js/combination.js"></script>
 </body>
 
 </html>
