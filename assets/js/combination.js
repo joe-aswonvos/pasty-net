@@ -30,9 +30,8 @@ function runGame() {
 	document.getElementById("answered").style.display = "none";
 	document.getElementById("next-question").style.display = "none";
 	wrongTries = 0;
-	// document.getElementById("result").textContent = "";
-	// debugging
-	document.getElementById("answer-test").textContent = getAnswer();
+	// debugging/cheating:
+	// document.getElementById("answer-test").textContent = getAnswer();
 	document.getElementById("combo-submit").onclick = checkAnswer;
 }
 
