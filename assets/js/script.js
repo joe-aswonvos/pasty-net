@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Whack-a-Mole Game Logic
     const moles = document.querySelectorAll('.mole');
-    const scoreBoard = document.getElementById('score');
+    const moleScoreBoard = document.getElementById('molescore');
     const timeBoard = document.getElementById('time');
     const startButton = document.getElementById('start-button');
     const gameArea = document.querySelector('.mole-game-area');
     const playPauseButton = document.getElementById('play-pause-button');
     const backgroundAudio = document.getElementById('background-audio');
     let lastMole;
-    let timeUp = false;
+    let timeUp = true;
     let score = 0;
     let time = 60;
     let timer;
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         score = 0;
         time = 60;
         consecutiveMisses = 0;
-        scoreBoard.textContent = score;
+        moleScoreBoard.textContent = score;
         gameArea.classList.remove('miss-one', 'miss-two');
         gameArea.style.borderColor = 'green';
         timeBoard.textContent = time;
@@ -144,12 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle mole hit
     function hitMole(mole) {
+        if(timeUp) return;
+
         if (mole.classList.contains('up')) {
             mole.classList.remove('up');
             mole.classList.add('whack');
             mole.textContent = 'Whack!';
             score++;
-            scoreBoard.textContent = score;
+            moleScoreBoard.textContent = score;
             consecutiveMisses = 0;
             gameArea.classList.remove('miss-one', 'miss-two');
             gameArea.style.borderColor = 'green';
@@ -165,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameArea.classList.add('miss-one');
             } else if (consecutiveMisses === 2) {
                 score--;
-                scoreBoard.textContent = score;
+                moleScoreBoard.textContent = score;
                 consecutiveMisses = 0;
                 gameArea.classList.remove('miss-one');
                 gameArea.classList.add('miss-two');
@@ -218,6 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set initial state of play/pause button
     updatePlayPauseButton();
+
+        // Scroll behavior for hero section
+        window.addEventListener('scroll', () => {
+            const heroSection = document.getElementById('hero-section');
+            if (window.scrollY > 0) {
+                heroSection.style.position = 'relative';
+            } else {
+                heroSection.style.position = 'absolute';
+            }
+        });
 });
 
 
