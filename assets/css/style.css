@@ -90,6 +90,7 @@ main {
   height: 100vh; /* Full viewport height */
   z-index: 10; /* Ensure it floats over other content */
   overflow: hidden;
+  transition: position 0.3s ease-in-out;
 }
 
 .hero-carousel {
@@ -159,11 +160,6 @@ main {
 .hero-content button:hover {
   background-color: var(--primary-blue);
   color: white;
-}
-
-/* Ensure the rest of the content is below the hero section */
-main {
-  margin-top: 100vh; /* Push the main content below the hero section */
 }
 
 /* Game Area Styles */
