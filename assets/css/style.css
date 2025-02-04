@@ -299,6 +299,15 @@ main {
   }
 }
 
+/* Cornish Combination */
+#combo-question {
+  font-size: 1.5rem;
+}
+
+#combo-attempt {
+  text-transform: uppercase;
+}
+
 /* Oscar */
 /* #snake-container {
   width: 500px;
