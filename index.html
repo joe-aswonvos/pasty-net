@@ -154,6 +154,18 @@
                         <!-- Beth's AnswerSmash -->
                         <div class="tab-pane fade" id="smash" role="tabpanel"
                             aria-labelledby="smash-tab">
+                            <div class="game-area">
+                                <p>Instructions: The last letters of the answer to the question, and the first letters of what's depicted in the image will be the same. Overlap them and combine them together to make a new word or phrase!</p>
+                                <div id="puzzle">
+                                    <p id="question"></p>
+                                    <img id="picture" src="..">
+                                </div>
+                                <p>Enter answer:</p>
+                                <input id="answer-box">
+                                <button id="combo-submit">Submit Answer</button>
+                                <!-- <p id="answer-test">Answer</p> -->
+                                <p>Score: <span id="combo-score">0</span></p>
+                            </div>
                         </div>
 
                         <!-- Oscar's Snake -->
@@ -207,5 +219,7 @@
                     <script src="assets/js/script.js"></script>
                     <!-- snek -->
                     <script src="assets/js/snek.js"></script>
+                    <!-- combination -->
+                    <script src="assets/js/combination.js"></script>
                 </body>
             </html>

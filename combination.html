@@ -11,17 +11,21 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 </head>
 
 <body>
     <h1>Cornish Combination</h1>
     <div class="game-area">
-        <p id="question"></p>
-        <img id="picture" src="..">
+        <p>Instructions: The last letters of the answer to the question, and the first letters of what's depicted in the image will be the same. Overlap them and combine them together to make a new word or phrase!</p>
+        <div id="puzzle">
+            <p id="question"></p>
+            <img id="picture" src="..">
+        </div>
         <p>Enter answer:</p>
         <input id="answer-box">
         <button id="combo-submit">Submit Answer</button>
+        
         <!-- <p id="answer-test">Answer</p> -->
         <p>Score: <span id="combo-score">0</span></p>
     </div>
