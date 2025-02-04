@@ -4,6 +4,7 @@
 :root {
     --primary-color: #84a4af;
     --secondary-color: #d0c8ba;
+    --tertiary-color: #f4f4f4;
     --text-color: #090b0b;
     --primary-font: "Cinzel", serif;
     --secondary-font: "Josefin Sans", serif;
@@ -148,7 +149,7 @@ main {
   margin-bottom: 2rem;
 }
 
-.hero-content button {
+.hero-content .btn {
   background-color: white;
   color: black;
   border: none;
@@ -161,6 +162,10 @@ main {
 .hero-content button:hover {
   background-color: var(--primary-blue);
   color: white;
+}
+
+.hero-content .btn:active {
+  background-color: var(--primary-color);
 }
 
 /* Game Area Styles */
@@ -179,6 +184,11 @@ main {
 #gameTabs > .nav-item > .nav-link.active {
   color: var(--text-color);
   background-color: var(--primary-color);
+}
+
+#gameTabs > .nav-item > .nav-link {
+  color: var(--text-color);
+  border-color: var(--tertiary-color);
 }
 
 /* Mole Game Styles */
