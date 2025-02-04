@@ -91,6 +91,7 @@ main {
   z-index: 10; /* Ensure it floats over other content */
   overflow: hidden;
   transition: position 0.3s ease-in-out;
+  padding: 0;
 }
 
 .hero-carousel {
@@ -170,7 +171,12 @@ main {
   border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
 }
 
-#gametabs > .navitem > .active {
+#gameTabs > .nav-item > .nav-link.active {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+}
+
+#gameTabs > .nav-item > .nav-link.active {
   color: var(--text-color);
   background-color: var(--primary-color);
 }
