@@ -16,6 +16,7 @@ function init() {
 			checkAnswer();
 		}
 	});
+	document.getElementById("next-question").style.display = "none";
 	runGame();
 }
 
@@ -39,7 +40,8 @@ function checkAnswer() {
 	let calculatedAnswer = getAnswer();
 	let isCorrect = userAnswer === calculatedAnswer;
 	if (isCorrect) {
-		alert("Hey! You got it right! :D");
+		document.getElementById("result").textContent = "Correct!";
+		document.getElementById("next-question").style.display = "inline";
 		incrementScore();
 		++questionNumber;
 		if (questionNumber == questionsTotal) {
