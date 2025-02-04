@@ -1,12 +1,14 @@
 /* Questions and answers are arrays containing the questions as objects */
 const questions = [];
 const pictures = [];
-questions[0] = {question:"The name of what predatory arthropod, usually found in dark, humid environments, means one hundred feet in Latin?", answer:"CENTIPEDE", lastLetters:"EDE"};
-pictures[0] = {url:"assets/images/comboPicture1.jpg", answer:"EDEN PROJECT", firstLetters:"EDE", lettersToCut:3};
-questions[1] = {question:"Which game in The Legend of Zelda series released on the Super NES saw Link travel between the Light World and the Dark World?", answer:"A LINK TO THE PAST", lastLetters: "PAST"};
-pictures[1] = {url:"assets/images/comboPicture2.png", answer:"PASTY", firstLetters:"PAST", lettersToCut:4};
+questions[0] = {question:"The name of what predatory arthropod, usually found in dark, humid environments, means one hundred feet in Latin?", answer:"centipede", lastLetters:"ede"};
+pictures[0] = {url:"assets/images/comboPicture1.jpg", answer:"Eden Project", firstLetters:"ede", lettersToCut:3};
+questions[1] = {question:"Which game in The Legend of Zelda series released on the Super NES saw Link travel between the Light World and the Dark World?", answer:"A Link to the Past", lastLetters: "past"};
+pictures[1] = {url:"assets/images/comboPicture2.png", answer:"pasty", firstLetters:"past", lettersToCut:4};
+questions[2] = {question:"Which star of sitcom The Vicar of Dibley was named as the Chancellor of Falmouth University in 2014?", answer:"Dawn French", lastLetters: "ch"};
+pictures[2] = {url:"assets/images/comboPicture3.jpg", answer:"chough", firstLetters:"ch", lettersToCut:2};
 let questionNumber = 0;
-let questionsTotal = 2;
+let questionsTotal = 3;
 let wrongTries = 0;
 
 document.addEventListener("DOMContentLoaded", init);
@@ -15,27 +17,29 @@ document.addEventListener("DOMContentLoaded", init);
  * Initialises the program
  */
 function init() {
-	let textInput = document.getElementById("combo-answer");
+	let textInput = document.getElementById("combo-attempt");
 	textInput.addEventListener("keypress", function(event) {
 		if (event.key === "Enter") {
 			checkAnswer();
 		}
 	});
-	document.getElementById("combo-answered").style.display = "none";
+	document.getElementById("combo-feedback").style.display = "none";
 	document.getElementById("combo-next").style.display = "none";
 	runGame();
 }
 
 /**
  * Starts the game, also restarts core game loop with next question
+ * Hides elements that are shown after answer attempts are made
  */
 function runGame() {
 	document.getElementById("combo-question").textContent = questions[questionNumber].question;
 	document.getElementById("combo-picture").src = pictures[questionNumber].url;
 	document.getElementById("combo-picture").style.maxHeight = "300px";
 	document.getElementById("combo-input").style.display = "block";
-	document.getElementById("combo-answer").value = "";
-	document.getElementById("combo-answered").style.display = "none";
+	document.getElementById("combo-attempt").value = "";
+	document.getElementById("combo-answer").style.display = "none";
+	document.getElementById("combo-feedback").style.display = "none";
 	document.getElementById("combo-next").style.display = "none";
 	wrongTries = 0;
 	/* Display answer on page for debugging/cheating: */
@@ -49,6 +53,7 @@ function runGame() {
 function getAnswer() {
 	let suffix = pictures[questionNumber].answer.slice(pictures[questionNumber].lettersToCut);
 	let combination = questions[questionNumber].answer.concat(suffix);
+	combination = combination.toUpperCase();
 	return combination;
 }
 
@@ -58,14 +63,16 @@ function getAnswer() {
  * If incorrect, gives two more attempts, if attempts are depleted then gives user the answer and a button to go to next question
  */
 function checkAnswer() {
-	let userAnswer = document.getElementById("combo-answer").value;
+	let userAnswer = document.getElementById("combo-attempt").value;
 	userAnswer = userAnswer.toUpperCase();
 	let calculatedAnswer = getAnswer();
 	let isCorrect = userAnswer === calculatedAnswer;
 	if (isCorrect) {
 		document.getElementById("combo-input").style.display = "none";
-		document.getElementById("combo-result").textContent = "Correct!";
-		document.getElementById("combo-answered").style.display = "inline";
+		document.getElementById("combo-answer").textContent = calculatedAnswer;
+		document.getElementById("combo-answer").style.display = "block";
+		document.getElementById("combo-feedback").style.display = "block";
+		document.getElementById("combo-feedback").textContent = "Correct!";
 		document.getElementById("combo-next").style.display = "inline";
 		incrementScore();
 		++questionNumber;
@@ -75,15 +82,15 @@ function checkAnswer() {
 		document.getElementById("combo-next").onclick = runGame;
 	} else {
 		++wrongTries;
-		document.getElementById("combo-answered").style.display = "inline";
-		document.getElementById("combo-result").textContent = "Incorrect, try again! " + (3 - wrongTries) + " tries left.";
+		document.getElementById("combo-feedback").style.display = "block";
+		document.getElementById("combo-feedback").textContent = "Incorrect, try again! " + (3 - wrongTries) + " tries left.";
 		if (wrongTries == 3) {
 			++questionNumber;
 			if (questionNumber == questionsTotal) {
 				questionNumber = 0;
 			}
 			document.getElementById("combo-input").style.display = "none";
-			document.getElementById("combo-result").textContent = `Your answer of ${userAnswer} was wrong, the correct answer is ${calculatedAnswer}!`;
+			document.getElementById("combo-feedback").textContent = `Your answer of ${userAnswer} was wrong, the correct answer is ${calculatedAnswer}!`;
 			document.getElementById("combo-next").style.display = "inline";
 			document.getElementById("combo-next").onclick = runGame;
 		}
