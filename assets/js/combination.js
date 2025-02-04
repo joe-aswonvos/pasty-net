@@ -1,9 +1,9 @@
 const questions = [];
 const pictures = [];
 questions[0] = {question:"The name of which arthropod means one hundred feet in Latin?", answer:"centipede", lastLetters:"ede"};
-pictures[0] = {url:"assets/images/Eden_project.jpg", answer:"eden project", firstLetters:"ede", lettersToCut:3};
+pictures[0] = {url:"assets/images/comboPicture1.jpg", answer:"eden project", firstLetters:"ede", lettersToCut:3};
 questions[1] = {question:"Which game in The Legend of Zelda series released on the Super NES saw Link travel between the Light World and the Dark World?", answer:"a link to the past", lastLetters: "past"};
-pictures[1] = {url:"assets/images/picture2.png", answer:"pasty", firstLetters:"past", lettersToCut:4};
+pictures[1] = {url:"assets/images/comboPicture2.png", answer:"pasty", firstLetters:"past", lettersToCut:4};
 questionNumber = 0;
 questionsTotal = 2;
 
@@ -16,6 +16,7 @@ function init() {
 			checkAnswer();
 		}
 	});
+	document.getElementById("next-question").style.display = "none";
 	runGame();
 }
 
@@ -39,7 +40,8 @@ function checkAnswer() {
 	let calculatedAnswer = getAnswer();
 	let isCorrect = userAnswer === calculatedAnswer;
 	if (isCorrect) {
-		alert("Hey! You got it right! :D");
+		document.getElementById("result").textContent = "Correct!";
+		document.getElementById("next-question").style.display = "inline";
 		incrementScore();
 		++questionNumber;
 		if (questionNumber == questionsTotal) {
