@@ -194,6 +194,7 @@
                 </div>
 
                 <!-- Oscar's Snake -->
+<<<<<<< HEAD
 
                 <div class="tab-pane fade" id="snake" role="tabpanel" aria-labelledby="snake-tab">
                     <div class="text-center my-4 d-flex justify-content-center align-items-center">
@@ -214,11 +215,50 @@
                                 <canvas id="gameCanvas"></canvas>
                             </div>
                         </div>
+=======
+                <div class="tab-pane container text-center fade"
+                id="snake"
+                role="tabpanel"
+                aria-labelledby="snake-tab">
+                <div
+                    class="text-center justify-content-around row mb-4">
+                    <h2 class="p-6 m-6">Snek2048</h2>
+                    <p>Use the arrow keys or WASD to move.
+                    <br>Press Enter/Spacebar to begin & Escape to pause
+                    <br>On a touchscreen you can swipe up/down/left/right
+                    <br>Press F to go fullscreen</p>
+                    <div class="col-12 col-md-4 text-start">
+                        <p>Score: <span id="snake-score" class="scoreToTot">0</span></p>
+                        <p>Time: <span id="snake-time">0</span></p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <button id="snakeButton"
+                            class="btn snakeButton">
+                            <i class="fa-solid fa-play"></i>
+                            <span id="snakeButtonLabel">Start
+                                Game</span>
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <button id="snake-fullscreen"
+                            class="btn snakeButton">
+                            <i class="fa-solid fa-expand"></i>
+                            Fullscreen
+                        </button>
+>>>>>>> feature-branch
                     </div>
 
                 </div>
 
+                <div id="snakeContainer">
+                    <div id="snakeDiv">
+                        <canvas id="gameCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
                 <!-- Hangman Game -->
+<<<<<<< HEAD
                 <div class="tab-pane fade " id="hangman" role="tabpanel" aria-labelledby="hangman-tab">
                     <div class="container game d-flex justify-content-center align-items-center h-100">
                         <div class="col-12 row text-center">
@@ -247,6 +287,25 @@
 
 
                             </div>
+=======
+                <div class="tab-pane fade" id="hangman" role="tabpanel" aria-labelledby="hangman-tab">
+                    <div class="container game">
+                        <h1>Hangman</h1>
+                        <button class="btn btn-primary" id="hangman-play-btn" type="button">Play</button>
+                        <button class="btn btn-primary" id="hangman-reset-btn" type="button">Reset</button>
+                        <h2 id="gameOverText"></h2>
+                        <div>
+                            <div id="count-down">Time Left: 5:00</div>
+                            <img id="hangman-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png"
+                                alt="hangman-img" />
+                        </div>
+                
+                        <div>
+                            <p id="guessed-letters">_ _ _</p>
+                            <ul id="unguessed-letters"></ul>
+                            <p id="hint-text">Hint: Blank</p>
+                            <p class="guesses-count"> Incorrect Guesses: 0 / 6</p>
+>>>>>>> feature-branch
                         </div>
                     </div>
                 </div>

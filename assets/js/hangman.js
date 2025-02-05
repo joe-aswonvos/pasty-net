@@ -1,9 +1,10 @@
 const maxGuesses = 6;
-const gameTimeLimit = 300;
+const gameTimeLimit = 180;
 var randomWord;
 var wrongGuessCount = 0;
 var guesses;
 var timerInterval;
+var runningScore = 0;
 
 //When the document finishes loading, call the initialiseHangman function.
 $("#hangman-tab").click(function () {
@@ -138,6 +139,9 @@ function gameOver(winLose) {
 
     //Display a differnet modal depending on if they won or not.
     if (winLose == true) {
+        runningScore = runningScore + 10;
+        $("#hangman-score").text(runningScore);
+        updateTotalScore();
         $("#gameOverText").text("Congratulations! You won! The phrase was: " + randomWord.word);
      } else {
         $("#gameOverText").text("You Lost! You ran out of time or guesses! The correct phrase was: " + randomWord.word);
@@ -149,7 +153,7 @@ function resetGame() {
     randomWord = "";
     wrongGuessCount = 0;
     clearInterval(timerInterval);
-    $("#count-down").text("Time Left: 5:00");
+    $("#count-down").text("Time Left: 3:00");
     $(".guesses-count").text(`Incorrect Guesses: 0 / ${maxGuesses}`);
     $("#guessed-letters").text("_ _ _");
     $("#hangman-img").attr("src", "https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png");
@@ -157,6 +161,21 @@ function resetGame() {
     $("#unguessed-letters").empty();
     $("#gameOverText").text("");
 }
+
+//Update the total score. stolen from joe ;)
+function updateTotalScore() {
+    const scoreElements = document.querySelectorAll(".scoreToTot");
+    let totalScore = 0;
+
+    scoreElements.forEach((element) => {
+      totalScore += parseInt(element.textContent, 10) || 0;
+    });
+
+    const totalScoreElement = document.getElementById("totalscore");
+    if (totalScoreElement) {
+      totalScoreElement.textContent = totalScore;
+    }
+  }
 
 //Custom string function for replacing chars at specific indexes.
 String.prototype.replaceAt = function (index, replacement) {

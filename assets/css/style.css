@@ -2,16 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
-    --primary-color: #84a4af;
-    --secondary-color: #d0c8ba;
-    --tertiary-color: #f4f4f4;
-    --text-color: #090b0b;
-    --primary-font: "Cinzel", serif;
-    --secondary-font: "Josefin Sans", serif;
-    --primary-blue: #84a4af;
-    --secondary-beige: #d0c8ba;
-    --dark-background: #090b0b;
-  }
+  --primary-color: #84a4af;
+  --secondary-color: #d0c8ba;
+  --tertiary-color: #f4f4f4;
+  --text-color: #090b0b;
+  --primary-font: 'Cinzel', serif;
+  --secondary-font: 'Josefin Sans', serif;
+  --primary-blue: #84a4af;
+  --secondary-beige: #d0c8ba;
+  --dark-background: #090b0b;
+}
 
 /* Body styles */
 
@@ -27,19 +27,35 @@ body {
   position: relative;
 }
 
+<<<<<<< HEAD
+=======
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 210vh;
+  background-color: var(--secondary-color);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+>>>>>>> feature-branch
 main {
   font-family: var(--secondary-font);
 }
 
 /* Navbar styles */
 
-.navbar, footer {
+.navbar,
+footer {
   font-family: var(--primary-font);
   background-color: var(--primary-color);
 }
 
 #icon {
-  height:30px;
+  height: 30px;
   padding-right: 1rem;
 }
 
@@ -212,7 +228,7 @@ main {
 }
 
 .mole-game-area::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -231,10 +247,10 @@ main {
   animation: flash 1s infinite alternate; /* Apply flash animation */
 }
 
-.mole-game-area:hover, .mole-game-area:hover * {
+.mole-game-area:hover,
+.mole-game-area:hover * {
   cursor: url('../images/mallet-large.webp') 32 16, auto;
 }
-
 
 /* Mole Styles */
 
@@ -261,7 +277,9 @@ main {
   font-weight: bold;
 }
 /* adjust the middle row of moles */
-#mole-4, #mole-5, #mole-6 {
+#mole-4,
+#mole-5,
+#mole-6 {
   margin-top: 50%;
   margin-bottom: 50%;
 }
@@ -279,15 +297,19 @@ main {
 }
 
 .mole.miss {
-  background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,0.5) 60%, rgba(255,0,0,0) 80%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 0.5) 60%,
+    rgba(255, 0, 0, 0) 80%
+  );
   opacity: 0.5;
   color: black;
 }
 
-
 /* Animation for the moles */
 @keyframes grow-shrink {
-  25%{
+  25% {
     scale: 80%;
   }
 
@@ -295,7 +317,7 @@ main {
     scale: 110%;
   }
   75% {
-      scale: 95%;
+    scale: 95%;
   }
 }
 
@@ -321,10 +343,60 @@ main {
   text-transform: uppercase;
 }
 
+<<<<<<< HEAD
 #gameCanvas {
   border-radius: 20px;
   border: rgb(255, 255, 255) 10px solid;
 }
+=======
+/* Oscar */
+#snake h2 {
+  padding: 1rem 0 1rem 0;
+}
+#snakeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#snakeDiv {
+  width: -webkit-fill-available;
+}
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 50px solid transparent; /* Set a transparent border to define the border width */
+  border-image: url('../images/mole-board.jpg') 30 round;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
+button.snakeButton {
+  background-color: var(--primary-color);
+  border-color: var(--secondary-color);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+}
+button.snakeButton:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
+}
+button.snakeButton:focus {
+  /* border: none; */
+  box-shadow: none;
+}
+button.snakeButton:active {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
+>>>>>>> feature-branch
 
 /* Hangman styles */
 
@@ -334,8 +406,15 @@ ul > li {
 }
 
 #hangman-reset-btn {
+  background-color: gray !important; 
+  color: white !important;
   display: none;
 }
+
+#hangman-score {
+  display: none;
+}
+
 
 #hangman .btn {
   background-color: var(--primary-color);
@@ -363,31 +442,36 @@ ul > li {
   margin: 0 auto;
 }
 
+#gameOverText {
+  width: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
 
-    .hero-content p {
-        font-size: 1rem;
-    }
+  .hero-content p {
+    font-size: 1rem;
+  }
 
-        .hero-content button {
-            padding: 0.75rem 1.5rem;
-        }
-    }
+  .hero-content button {
+    padding: 0.75rem 1.5rem;
+  }
+}
 
 /* Media Queries */
 
 /* Media query for larger screens */
 @media (min-width: 768px) {
-    .game-area {
-      width: 600px; /* Static width for larger screens */
-    }
+  .game-area {
+    width: 600px; /* Static width for larger screens */
   }
+}
 
-  @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }}
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}
