@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "whack-a-mole-tab",
             "smash-tab",
             "snake-tab",
-            "game4-tab",
+            "hangman-tab",
           ];
           const activeTab = document.querySelector(".nav-link.active").id;
           const availableTabs = tabs.filter((tab) => tab !== activeTab);
@@ -305,6 +305,15 @@ document.addEventListener("DOMContentLoaded", () => {
             tab.show();
           }
         }
+      }
+
+      // Collapse the navbar
+      const navbarCollapse = document.querySelector(".navbar-collapse");
+      if (navbarCollapse.classList.contains("show")) {
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+          toggle: true,
+        });
+        bsCollapse.hide();
       }
     });
   });

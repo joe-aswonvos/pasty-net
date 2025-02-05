@@ -93,8 +93,8 @@
                         aria-selected="false">Snake</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="game4-tab" data-toggle="tab" href="#game4" role="tab" aria-controls="game4"
-                        aria-selected="false">Game 4</a>
+                    <a class="nav-link" id="hangman-tab" data-toggle="tab" href="#hangman" role="tab" aria-controls="hangman"
+                        aria-selected="false">Hangman</a>
                 </li>
             </ul>
             <div class="tab-content" id="gameTabsContent">
@@ -173,20 +173,29 @@
                 <!-- Oscar's Snake -->
 
                 <div class="tab-pane fade" id="snake" role="tabpanel" aria-labelledby="snake-tab">
-                    <div class="text-center my-4">
-                        <h2 class="pt-2">Snek - 9000</h2>
-                        <p>Score: <span id="snake-score" class="scoreToTot">0</span></p>
-                        <p>Time: <span id="snake-time">60</span> seconds</p>
+                    <div class="text-center my-4 d-flex justify-content-center align-items-center">
+                        <div class="col-12 row">
+                        <h2 class="pt-2 col-12 col-md-6">Snek - 9000</h2>
+                        <p class="col-12 col-md-3">Score: <span id="snake-score" class="scoreToTot">0</span></p>
+                        <p class="col-12 col-md-3">Time: <span id="snake-time">60</span> seconds</p>
+                        
+                        <div class="col-12">
                         <button id="snakeButton" class="btn btn-primary">
                             Start Game
                         </button>
                         <button id="snake-fullscreen">Fullscreen</button>
+                        </div>
+                        
+                        <div class="col-12 mt-4">
+                        <canvas id="gameCanvas"></canvas>
+                        </div>
                     </div>
-                    <canvas id="gameCanvas"></canvas>
+                    </div>
+                    
                 </div>
 
                 <!-- Ewan's Game -->
-                <div class="tab-pane fade" id="hangman" role="tabpanel" aria-labelledby="game4-tab">
+                <div class="tab-pane fade" id="hangman" role="tabpanel" aria-labelledby="hangman-tab">
                     Game 4 content
                     <div class="game-modal" id="over"></div>
                 </div>
