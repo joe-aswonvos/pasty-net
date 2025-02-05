@@ -267,6 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
   // Adjust scroll position for navbar offset
   document.querySelectorAll(".linky").forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
