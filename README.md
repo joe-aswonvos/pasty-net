@@ -1,5 +1,61 @@
 # pasty-net
 
+/_ Oscar _/
+#snakeContainer {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+}
+/_ #gameCanvas { _/
+/_ padding: 0;
+margin: 0; _/
+/_ border-radius: 20px; _/
+/_ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); Strong box shadow _/
+/_ } _/
+#snakeDiv {
+padding: 0;
+/_ width: 100%;
+height: 100%; _/
+/_ max-width: 600px;
+max-height: 600px; _/
+margin: 0;
+overflow: hidden;
+border-radius: 10px;
+border: 50px solid transparent; /_ Set a transparent border to define the border width _/
+border-image: url('../images/mole-board.jpg') 30 round;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
+#gameCanvas {
+width: 100%;
+height: 100%;
+background-color: #f0f0f0;
+/_ border-radius: 10px; _/
+}
+button.snakeButton {
+background-color: var(--primary-color);
+border-color: var(--secondary-color);
+color: white;
+padding: 1rem 2rem;
+font-size: 1rem;
+cursor: pointer;
+transition: background-color 0.3s;
+border-radius: 10px;
+}
+button.snakeButton:hover {
+background-color: var(--secondary-color);
+border-color: var(--primary-color);
+}
+button.snakeButton:focus {
+/_ border: none; _/
+box-shadow: none;
+}
+button.snakeButton:active {
+background-color: var(--secondary-color) !important;
+border-color: var(--primary-color);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
 
 1. Homepage with a Cornish Theme
    User Story:
@@ -140,7 +196,6 @@ Tasks:
 ✅ Design and implement the leaderboard UI.
 ✅ Store and update scores in local storage or a database.
 ✅ Create a form for players to enter their name when they get a high score.
-
 
 # Wireframes:
 

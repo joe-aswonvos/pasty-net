@@ -164,29 +164,33 @@ startButton.addEventListener('click', e => {
 
 // Keyboard Event Listener
 document.addEventListener('keydown', e => {
-  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-    e.preventDefault()
-  }
-  switch (e.key) {
-    case 'ArrowUp':
-    case 'w':
-      if (lastInput !== 'ArrowDown') userInput = 'ArrowUp'
-      break
-    case 'ArrowDown':
-    case 's':
-      if (lastInput !== 'ArrowUp') userInput = 'ArrowDown'
-      break
-    case 'ArrowLeft':
-    case 'a':
-      if (lastInput !== 'ArrowRight') userInput = 'ArrowLeft'
-      break
-    case 'ArrowRight':
-    case 'd':
-      if (lastInput !== 'ArrowLeft') userInput = 'ArrowRight'
-      break
-    case 'Enter':
-      gameState = 'playing'
-      break
+  const snakeTab = document.getElementById('snake-tab')
+  if (snakeTab && snakeTab.classList.contains('active')) {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      e.preventDefault()
+    }
+    switch (e.key) {
+      case 'ArrowUp':
+      case 'w':
+        if (lastInput !== 'ArrowDown') userInput = 'ArrowUp'
+        break
+      case 'ArrowDown':
+      case 's':
+        if (lastInput !== 'ArrowUp') userInput = 'ArrowDown'
+        break
+      case 'ArrowLeft':
+      case 'a':
+        if (lastInput !== 'ArrowRight') userInput = 'ArrowLeft'
+        break
+      case 'ArrowRight':
+      case 'd':
+        if (lastInput !== 'ArrowLeft') userInput = 'ArrowRight'
+        break
+      case 'Enter':
+      case 'Space':
+        gameState = 'playing'
+        break
+    }
   }
 })
 

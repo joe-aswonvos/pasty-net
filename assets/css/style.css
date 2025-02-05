@@ -4,180 +4,249 @@
 :root {
   --primary-color: #84a4af;
   --secondary-color: #d0c8ba;
+  --tertiary-color: #f4f4f4;
   --text-color: #090b0b;
   --primary-font: 'Cinzel', serif;
   --secondary-font: 'Josefin Sans', serif;
   --primary-blue: #84a4af;
   --secondary-beige: #d0c8ba;
   --dark-background: #090b0b;
-
-  /* Reset and Base Styles */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  /* Body styles */
-
-  body {
-    background-image: url('../images/background-image.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Hero Carousel Styles */
-  .hero-carousel {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-slides {
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero-slide {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 5s ease-in-out;
-  }
-
-  .hero-slide:first-child {
-    opacity: 1;
-  }
-
-  .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    border-radius: 10px;
-  }
-
-  .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .hero-content button {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .hero-content button:hover {
-    background-color: var(--primary-blue);
-    color: white;
-  }
-
-  /* Game Area Styles */
-
-  .mole-game-area {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 3.3%;
-    box-sizing: border-box;
-    background-color: lightgreen; /* Default background color */
-    background-image: url('../images/mole-board.jpg');
-    background-size: cover;
-    transition: background-color 0.3s;
-    position: relative; /* Ensure the padding trick works */
-    z-index: 1;
-  }
-
-  .mole-game-area::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    z-index: -1;
-    transition: background-color 0.5s;
-  }
-
-  .mole-game-area.miss-one::before {
-    background-color: rgba(255, 165, 0, 0.2);
-  }
-
-  .mole-game-area.miss-two::before {
-    background-color: rgba(255, 0, 0, 0.4);
-  }
-
-  /* Mole styles */
-
-  #start-button {
-    background-color: var(--primary-color);
-    border-color: var(--secondary-color);
-  }
-
-  #start-button:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--primary-color);
-  }
 }
 
-.game-area.miss-one {
-  background-color: orange;
+/* Body styles */
+
+body {
+  background-image: url('../images/background-image.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.game-area.miss-two {
-  background-color: red;
-  animation: flash-red 0.5s;
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 210vh;
+  background-color: var(--secondary-color);
+  opacity: 0.5;
+  z-index: -1;
 }
 
-@keyframes flash-red {
-  0% {
-    background-color: red;
-  }
-  50% {
-    background-color: green;
-  }
-  100% {
-    background-color: red;
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: var(--secondary-font);
+}
+
+/* Navbar styles */
+
+.navbar,
+footer {
+  font-family: var(--primary-font);
+  background-color: var(--primary-color);
+}
+
+#icon {
+  height: 30px;
+  padding-right: 1rem;
+}
+
+/* Floating audio toggle button styles */
+.floating-audio-toggle {
+  position: fixed;
+  top: 70px; /* Adjust based on the height of your navbar */
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.floating-audio-toggle i {
+  font-size: 1.5rem;
+}
+
+/* Hero Section Styles */
+#hero-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  z-index: 10; /* Ensure it floats over other content */
+  overflow: hidden;
+  transition: position 0.3s ease-in-out;
+  padding: 0;
+}
+
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 5s ease-in-out;
+}
+
+.hero-slide:first-child {
+  opacity: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-content .btn {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-content button:hover {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.hero-content .btn:active {
+  background-color: var(--primary-color);
+}
+
+/* Game Area Styles */
+
+#game-section {
+  background-color: var(--secondary-color);
+  opacity: 0.8;
+  border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
+}
+
+#gameTabs > .nav-item > .nav-link.active {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+}
+
+#gameTabs > .nav-item > .nav-link.active {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+}
+
+#gameTabs > .nav-item > .nav-link {
+  color: var(--text-color);
+  border-color: var(--tertiary-color);
+}
+
+/* Mole Game Styles */
+
+.mole-game-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Static width for larger screens */
+  margin: 0 auto;
+  padding: 3.3%;
+  box-sizing: border-box;
+  background-color: lightgreen; /* Default background color */
+  background-image: url('../images/mole-board.jpg');
+  background-size: cover;
+  transition: background-color 0.3s;
+  position: relative; /* Ensure the padding trick works */
+  z-index: 1;
+}
+
+.mole-game-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -1;
+  transition: background-color 0.5s;
+}
+
+.mole-game-area.miss-one::before {
+  background-color: rgba(255, 165, 0, 0.2);
+}
+
+.mole-game-area.miss-two::before {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
+.mole-game-area:hover,
+.mole-game-area:hover * {
+  cursor: url('../images/mallet-large.webp') 32 16, auto;
 }
 
 /* Mole Styles */
 
+#start-button {
+  background-color: var(--primary-color);
+  border-color: var(--secondary-color);
+}
+#start-button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
+}
 .mole {
   display: flex;
   justify-content: center;
@@ -192,25 +261,12 @@
   color: white;
   font-weight: bold;
 }
-
 /* adjust the middle row of moles */
-
 #mole-4,
 #mole-5,
 #mole-6 {
   margin-top: 50%;
   margin-bottom: 50%;
-}
-
-/* Hide default text */
-.mole.hide-default-text::before {
-  content: attr(data-default-text);
-  visibility: hidden;
-}
-
-/* Show user info */
-.mole.show-user-info::before {
-  visibility: visible;
 }
 
 .mole.up {
@@ -236,21 +292,6 @@
   color: black;
 }
 
-.mole.up {
-  background-color: green;
-  box-shadow: none;
-}
-
-.mole.whack {
-  background-color: chartreuse;
-  color: black;
-}
-
-.mole.miss {
-  background-color: red;
-  color: black;
-}
-
 /* Animation for the moles */
 @keyframes grow-shrink {
   25% {
@@ -260,10 +301,18 @@
   50% {
     scale: 110%;
   }
-
   75% {
     scale: 95%;
   }
+}
+
+/* Cornish Combination */
+#combo-question {
+  font-size: 1.5rem;
+}
+
+#combo-attempt {
+  text-transform: uppercase;
 }
 
 /* Oscar */
