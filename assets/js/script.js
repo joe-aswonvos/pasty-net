@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameArea = document.querySelector(".mole-game-area");
   const playPauseButton = document.getElementById("play-pause-button");
   const backgroundAudio = document.getElementById("background-audio");
+  const breakingGlassAudio = new Audio("assets/audio/breaking-glass-88411.mp3");
+  const missedMoleAudio = new Audio("assets/audio/loud-thud-45719.mp3");
   let lastMole;
   let timeUp = true;
   let score = 0;
@@ -44,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Set initial volume and play audio
   backgroundAudio.volume = 0.05;
+  breakingGlassAudio.volume = 0.5;
 
   // Attempt to play audio and handle autoplay restrictions
   function playAudio() {
@@ -167,6 +170,11 @@ document.addEventListener("DOMContentLoaded", () => {
       mole.classList.remove("up");
       mole.classList.add("whack");
       mole.textContent = "Whack!";
+
+      // Reset and play breaking glass Audio
+      breakingGlassAudio.currentTime = 0;
+      breakingGlassAudio.play();
+      
       score++;
       moleScoreBoard.textContent = score;
       consecutiveMisses = 0;
@@ -181,6 +189,11 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       mole.classList.add("miss");
       mole.textContent = "Miss!";
+
+      // Reset and play missed mole Audio
+      missedMoleAudio.currentTime = 0;
+      missedMoleAudio.play();
+      
       consecutiveMisses++;
       if (consecutiveMisses === 1) {
         gameArea.classList.add("miss-one");
@@ -261,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const heroSection = document.getElementById("hero-section");
 
-      if (heroSection.style.position = "absolute") {
+      if ((heroSection.style.position = "absolute")) {
         heroSection.style.position = "relative";
       }
 
