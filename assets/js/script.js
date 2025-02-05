@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Activate the specified tab if data-tab attribute is present
-      const tabId = this.getAttribute('data-tab')
+      const tabId = this.getAttribute('data-bs-tab')
       if (tabId) {
         if (tabId === 'random') {
           const tabs = [

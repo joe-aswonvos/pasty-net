@@ -31,6 +31,28 @@ main {
   font-family: var(--secondary-font);
 }
 
+#contactOffcanvas {
+  z-index: 1050;
+  background-color: var(--primary-color);
+}
+
+#contactOffcanvas .btn {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+#contactOffcanvas .btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+#contactOffcanvas .form-control {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
 /* Navbar styles */
 
 .navbar,
