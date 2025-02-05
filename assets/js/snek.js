@@ -1,34 +1,33 @@
 const canvas = document.getElementById('gameCanvas')
+const snakeDiv = document.getElementById('snakeDiv')
 const ctx = canvas.getContext('2d')
 const scoreElement = document.getElementById('snake-score')
 const timerElement = document.getElementById('snake-time')
 const fullscreenButton = document.getElementById('snake-fullscreen')
 
-console.log('canvas.width', canvas.width)
+// console.log('canvas.width', canvas.width)
 const frameRate = 1000 / 10
 
+// Game Variables
 let userInput = 'ArrowUp'
 let lastInput = 'ArrowUp'
 let frameCounter = 0
 
-// const gameWidth = 600
-// const gameHeight = 600
-
+// Canvas Size
 const gameWidth = 300
 const gameHeight = 300
 
 canvas.width = gameWidth
 canvas.height = gameHeight
-canvas.style.maxWidth = '600px'
 canvas.style.width = '100%'
-canvas.style.maxHeight = '600px'
 canvas.style.height = '100%'
-
-const sSize = 10
-const snakeStartingLength = 2
+canvas.style.maxWidth = '600px'
+canvas.style.maxHeight = '600px'
 
 // Snake Sprites & Declarations
 let snake = []
+const sSize = 15
+const snakeStartingLength = 2
 const spritePaths = {
   head_up: 'assets/snake/sprites/head_up.png',
   head_down: 'assets/snake/sprites/head_down.png',
@@ -45,7 +44,6 @@ const spritePaths = {
   bend_bottomright: 'assets/snake/sprites/body_bottomright.png',
   bend_bottomleft: 'assets/snake/sprites/body_bottomleft.png'
 }
-
 const sprites = {}
 for (const [key, path] of Object.entries(spritePaths)) {
   const img = new Image()
@@ -62,6 +60,10 @@ fruit = [
   Math.floor(Math.random() * 30) * 10
 ]
 
+// Title Image
+let titleImage = new Image()
+titleImage.src = 'assets/snake/Snek2048-title.gif'
+
 // Background Image
 let background = new Image()
 background.src = 'assets/snake/snek-bg.png'
@@ -70,10 +72,10 @@ background.src = 'assets/snake/snek-bg.png'
 const scoreText = 'Score: '
 const timerText = 'Time: '
 let score = 0
-let timer = 0
+let snakeTimer = 0
 
 // Intro & Game Over Text
-const introText = 'Welcome to Snake'
+const introText = 'Welcome to snek2048'
 const startText = 'Press Enter to Start'
 const gameOverText = 'Game Over'
 
@@ -95,62 +97,137 @@ fullscreenButton.addEventListener('click', () => {
   }
 })
 
+// Fullscreen Event Listener
 document.addEventListener('fullscreenchange', () => {
   if (document.fullscreenElement) {
-    canvas.style.width = '100vw'
-    canvas.style.height = '100vh'
+    if (window.innerWidth > window.innerHeight) {
+      canvas.style.width = `${window.innerHeight}px`
+      canvas.style.height = `${window.innerHeight}px`
+      canvas.style.maxWidth = `${window.innerHeight}px`
+      canvas.style.maxHeight = `${window.innerHeight}px`
+    } else if (window.innerHeight > window.innerWidth) {
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerWidth}px`
+      canvas.style.maxWidth = `${window.innerWidth}px`
+      canvas.style.maxHeight = `${window.innerWidth}px`
+    } else {
+      canvas.style.width = '100%'
+      canvas.style.height = '100%'
+      canvas.style.maxWidth = '600px'
+      canvas.style.maxHeight = '600px'
+    }
   } else {
     canvas.style.width = '100%'
     canvas.style.height = '100%'
+    canvas.style.maxWidth = '600px'
+    canvas.style.maxHeight = '600px'
   }
 })
 
-// Timer
-setInterval(() => {
-  timer++
-}, 1000)
+function startTimer () {
+  timerInterval = setInterval(() => {
+    if (gameState === 'playing') {
+      snakeTimer++
+      timerElement.innerText = snakeTimer
+    }
+  }, 1000)
+}
+
+function stopTimer () {
+  clearInterval(timerInterval)
+}
 
 // Start Button Event Listener
 let startButton = document.getElementById('snakeButton')
+let startButtonLabel = document.getElementById('snakeButtonLabel')
+startButtonLabel.innerText = 'Play'
 startButton.addEventListener('click', e => {
-  gameState = 'playing'
+  if (startButtonLabel.innerHTML === 'Play') {
+    gameState = 'playing'
+    startButtonLabel.innerText = 'Pause'
+    startTimer()
+  } else {
+    gameState = 'pause'
+    startButtonLabel.innerText = 'Play'
+    stopTimer()
+  }
 })
 
 // Keyboard Event Listener
 document.addEventListener('keydown', e => {
-  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-    e.preventDefault()
-  }
-  switch (e.key) {
-    case 'ArrowUp':
-    case 'w':
-      if (lastInput !== 'ArrowDown') userInput = 'ArrowUp'
-      break
-    case 'ArrowDown':
-    case 's':
-      if (lastInput !== 'ArrowUp') userInput = 'ArrowDown'
-      break
-    case 'ArrowLeft':
-    case 'a':
-      if (lastInput !== 'ArrowRight') userInput = 'ArrowLeft'
-      break
-    case 'ArrowRight':
-    case 'd':
-      if (lastInput !== 'ArrowLeft') userInput = 'ArrowRight'
-      break
-    case 'Enter':
-      gameState = 'playing'
-      break
+  const snakeTab = document.getElementById('snake-tab')
+  if (snakeTab && snakeTab.classList.contains('active')) {
+    if (
+      [
+        'ArrowUp',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
+        'Enter',
+        ' ',
+        'f',
+        'Escape'
+      ].includes(e.key)
+    ) {
+      e.preventDefault()
+    }
+    switch (e.key) {
+      case 'ArrowUp':
+      case 'w':
+        if (lastInput !== 'ArrowDown') userInput = 'ArrowUp'
+        break
+      case 'ArrowDown':
+      case 's':
+        if (lastInput !== 'ArrowUp') userInput = 'ArrowDown'
+        break
+      case 'ArrowLeft':
+      case 'a':
+        if (lastInput !== 'ArrowRight') userInput = 'ArrowLeft'
+        break
+      case 'ArrowRight':
+      case 'd':
+        if (lastInput !== 'ArrowLeft') userInput = 'ArrowRight'
+        break
+      case 'Enter':
+      case ' ':
+        gameState = 'playing'
+        break
+      case 'f':
+        if (document.fullscreenElement) {
+          document.exitFullscreen()
+        } else {
+          document.getElementById('snakeContainer').requestFullscreen()
+        }
+        break
+      case 'Escape':
+        pauseGame()
+        console.log('gameState', gameState)
+        break
+    }
   }
 })
+
+function updateTotalScore () {
+  const scoreElements = document.querySelectorAll('.scoreToTot')
+  let totalScore = 0
+
+  scoreElements.forEach(element => {
+    totalScore += parseInt(element.textContent, 10) || 0
+  })
+
+  const totalScoreElement = document.getElementById('totalscore')
+  if (totalScoreElement) {
+    totalScoreElement.textContent = totalScore
+  }
+}
 
 /**
  * Initialize the game & reset variables for new game
  */
 function initGame () {
   let spriteRotation = 0
-  score.innerText = '0'
-  timer.innerText = '0'
+  score = '0'
+  timer = '0'
   lastInput = 'ArrowUp'
   userInput = 'ArrowUp'
 
@@ -182,10 +259,11 @@ function drawScore () {
   ctx.font = '10px Arial'
   ctx.fillStyle = 'yellow'
   ctx.fillText(`${scoreText}${score}`, 10, 10)
-  ctx.fillText(`${timerText}${timer}`, 10, 20)
-  timerElement.innerText = timer
+  ctx.fillText(`${timerText}${snakeTimer}`, 10, 20)
+  timerElement.innerText = snakeTimer
   scoreElement.innerText = score
 }
+
 /**
  * Draw the snake to the screen & calculates segment direction
  */
@@ -233,6 +311,7 @@ function drawBackground () {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
 }
+
 /**
  * Draw a segment of the snake
  * @param {*} ctx
@@ -246,6 +325,7 @@ function drawSegment (ctx, image, segment) {
     console.error('Image not loaded or invalid:', image)
   }
 }
+
 /**
  * Returns the direction of the snake segment
  * @param {*} segment
@@ -313,6 +393,7 @@ function moveSnake (input, sSize) {
     }
   }
 
+  // Check if snake collides with canvas walls
   sLength = snake.length - 1
   if (
     snake[sLength][0] < 0 ||
@@ -361,32 +442,50 @@ function newHead (input, sSize) {
  * End the game and reset variables
  */
 function gameEnd () {
+  let msg = 'Game Over'
   initGame()
-  gameState = 'intro'
-}
-
-/**
- * Display intro screen
- */
-function gameIntro () {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-
   ctx.fillStyle = 'black'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
   ctx.font = '30px Arial'
   ctx.fillStyle = 'white'
   ctx.fillText(
-    introText,
-    canvas.width / 2 - ctx.measureText(introText).width / 2,
+    msg,
+    canvas.width / 2 - ctx.measureText(msg).width / 2,
     canvas.height / 2 - 30
   )
   ctx.fillStyle = 'red'
   ctx.fillText(
     startText,
-    canvas.width / 2 - ctx.measureText(introText).width / 2,
+    canvas.width / 2 - ctx.measureText(startText).width / 2,
     canvas.height / 2 + 30
   )
+  // gameState = 'intro'
+  startButtonLabel.innerText = 'Play'
+  // updateTotalScore()
+}
+
+function pauseGame () {
+  if (gameState === 'playing') {
+    gameState = 'pause'
+  } else if (gameState === 'pause') {
+    gameState = 'playing'
+  }
+  if (gameState === 'playing') {
+    startButtonLabel.innerText = 'Pause'
+    startTimer()
+  } else {
+    gameState = 'pause'
+    startButtonLabel.innerText = 'Play'
+    stopTimer()
+  }
+}
+/**
+ * Display intro screen
+ */
+function gameIntro () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(titleImage, 0, 0, canvas.width, canvas.height)
 }
 
 /**
@@ -398,9 +497,12 @@ function startGame () {
   } else if (gameState === 'playing') {
     moveSnake(userInput, sSize)
     draw()
-
     backgroundMusic.play()
+  } else if (gameState === 'pause') {
+    backgroundMusic.pause()
+    // pauseGame()
   } else if (gameState === 'gameover') {
+    updateTotalScore()
     backgroundMusic.pause()
     gameEnd()
   }
@@ -423,9 +525,32 @@ let touchStartX = 0
 let touchStartY = 0
 
 function handleTouchStart (event) {
+  event.preventDefault()
   const touch = event.touches[0]
   touchStartX = touch.clientX
   touchStartY = touch.clientY
+
+  // Check if the touch is near the center of the canvas
+  const canvasCenterX = canvas.width / 2
+  const canvasCenterY = canvas.height / 2
+  const touchThreshold = 100 // Adjust this value as needed
+
+  if (
+    Math.abs(touchStartX - canvasCenterX) < touchThreshold &&
+    Math.abs(touchStartY - canvasCenterY) < touchThreshold
+  ) {
+    // Start the game if the touch is near the center
+    if (gameState !== 'playing') {
+      gameState = 'playing'
+      startTimer()
+      gameIntro()
+      startButtonLabel.innerText = 'Pause'
+    } else {
+      gameState = 'pause'
+      // stopTimer()
+      startButtonLabel.innerText = 'Play'
+    }
+  }
 }
 
 function handleTouchMove (event) {
