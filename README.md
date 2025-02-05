@@ -149,3 +149,35 @@ Tasks:
 ![Balsamiq Tablet Wireframe](assets/images/wireframe-tablet.png)
 
 ![Balsamiq Mobile Wireframe](assets/images/wireframe-mobile.png)
+
+## Cornish Combination
+
+Cornish Combination is a portmanteau creating game, based on the *Answer Smash* round of BBC's *Richard Osman's House of Games*. The player is displayed a question and an image; the last letters of the answer to the question will be the same as the first letters of what is depicted in the image. The player must combine these two words or phrases, overlapping the matching letters, and make a new word or phrase that is a portmanteau of the two. The player has three attempts to get it right before being given the solution and a button to continue to the next question. A score of correct answers is displayed.
+
+### Accessibility
+
+Each image has alt text that does not simply state what the image is as it would give away the answer, so the alt text is descriptive and can effectively be used as a second text question.
+
+### Known Issues
+
+* The game only has three questions and loops indefinitely, therefore the player can gain infinite points after learning the correct answers
+* The enter key cannot be used to replace clicking the Next Question button
+* The game is not case sensitive but the answer must be an exact match otherwise, with no room for error such as missing "A"s and "The"s
+
+### Roadmap
+
+If work were to continue on the project, the following features would be considered:
+
+* Place the questions in an external file accessed by JavaScript -  they are currently in the JS file
+* The game would compare strings and create puzzles dynamically from a large selection of questions and images that share starting and ending letters
+* The questions would be randomised
+* There would be a way to have close enough but not quite matching answers be accepted
+* The game would have flashier styling and animations
+
+## Credits
+
+### Media
+
+* Botanical garden tourist attraction from [Wikimedia](https://commons.wikimedia.org/wiki/File:Eden_project.JPG) - public domain
+* Baked pastry from [Wikimedia](https://commons.wikimedia.org/wiki/File:Cornish_pasty.jpeg) - licensed under the Creative Commons Attribution-Share Alike 2.0 UK: England & Wales license
+* Red-beaked corvid from [Wikimedia](https://commons.wikimedia.org/wiki/File:Red-billed_chough_(Pyrrhocorax_pyrrhocorax).jpg) - public domain
