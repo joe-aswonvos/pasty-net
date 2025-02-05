@@ -140,7 +140,7 @@ function gameOver(winLose) {
     //Display a differnet modal depending on if they won or not.
     if (winLose == true) {
         runningScore = runningScore + 10;
-        $(".scoreToTot").text(runningScore);
+        $("#hangman-score").text(runningScore);
         updateTotalScore();
         $("#gameOverText").text("Congratulations! You won! The phrase was: " + randomWord.word);
      } else {
