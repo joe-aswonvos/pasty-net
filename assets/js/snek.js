@@ -5,6 +5,8 @@ const scoreElement = document.getElementById('snake-score')
 const timerElement = document.getElementById('snake-time')
 const fullscreenButton = document.getElementById('snake-fullscreen')
 
+const snakeTab = document.getElementById('snake-tab')
+
 // console.log('canvas.width', canvas.width)
 const frameRate = 1000 / 10
 
@@ -71,8 +73,9 @@ background.src = 'assets/snake/snek-bg.png'
 // Scores & Timer
 const scoreText = 'Score: '
 const timerText = 'Time: '
-let score = 0
+let snakeScore = 0
 let snakeTimer = 0
+var timerIntervalSnake
 
 // Intro & Game Over Text
 const introText = 'Welcome to snek2048'
@@ -124,8 +127,93 @@ document.addEventListener('fullscreenchange', () => {
   }
 })
 
+// experiment with the snake game
+
+// Add touch event listeners to the canvas
+canvas.addEventListener('touchstart', handleTouchStart, false)
+canvas.addEventListener('touchmove', handleTouchMove, false)
+canvas.addEventListener('touchend', handleTouchEnd, false)
+
+let touchStartX = 0
+let touchStartY = 0
+
+function handleTouchStart (event) {
+  event.preventDefault()
+  const touch = event.touches[0]
+  touchStartX = touch.clientX
+  touchStartY = touch.clientY
+
+  // Check if the touch is near the center of the canvas
+  const canvasCenterX = canvas.width / 2
+  const canvasCenterY = canvas.height / 2
+  const touchThreshold = 100 // Adjust this value as needed
+
+  if (
+    Math.abs(touchStartX - canvasCenterX) < touchThreshold &&
+    Math.abs(touchStartY - canvasCenterY) < touchThreshold
+  ) {
+    // Start the game if the touch is near the center
+    if (gameState !== 'playing') {
+      gameState = 'playing'
+      startTimer()
+      gameIntro()
+      startButtonLabel.innerText = 'Pause'
+    } else {
+      gameState = 'pause'
+      // stopTimer()
+      startButtonLabel.innerText = 'Play'
+    }
+  }
+}
+/**
+ * Handle touch move events
+ *
+ * @param {*} event
+ */
+function handleTouchMove (event) {
+  if (event.touches.length > 1) return // Ignore multi-touch
+  const touch = event.touches[0]
+  const touchEndX = touch.clientX
+  const touchEndY = touch.clientY
+
+  const deltaX = touchEndX - touchStartX
+  const deltaY = touchEndY - touchStartY
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe
+    if (deltaX > 0 && lastInput !== 'ArrowLeft') {
+      userInput = 'ArrowRight'
+    } else if (deltaX < 0 && lastInput !== 'ArrowRight') {
+      userInput = 'ArrowLeft'
+    }
+  } else {
+    // Vertical swipe
+    if (deltaY > 0 && lastInput !== 'ArrowUp') {
+      userInput = 'ArrowDown'
+    } else if (deltaY < 0 && lastInput !== 'ArrowDown') {
+      userInput = 'ArrowUp'
+    }
+  }
+
+  // Update touch start coordinates for continuous swipes
+  touchStartX = touchEndX
+  touchStartY = touchEndY
+}
+
+function handleTouchEnd (event) {
+  // Reset touch start coordinates
+  touchStartX = 0
+  touchStartY = 0
+}
+
+// Start the game loop when the tab becomes active
+document.getElementById('snake-tab').addEventListener('click', () => {
+  gameState = 'intro' // Set initial game state
+  requestAnimationFrame(startGame)
+})
+
 function startTimer () {
-  timerInterval = setInterval(() => {
+  timerIntervalSnake = setInterval(() => {
     if (gameState === 'playing') {
       snakeTimer++
       timerElement.innerText = snakeTimer
@@ -134,7 +222,7 @@ function startTimer () {
 }
 
 function stopTimer () {
-  clearInterval(timerInterval)
+  clearInterval(timerIntervalSnake)
 }
 
 // Start Button Event Listener
@@ -226,8 +314,8 @@ function updateTotalScore () {
  */
 function initGame () {
   let spriteRotation = 0
-  score = '0'
-  timer = '0'
+  snakeScore = '0'
+  snakeTimer = '0'
   lastInput = 'ArrowUp'
   userInput = 'ArrowUp'
 
@@ -258,10 +346,10 @@ function draw () {
 function drawScore () {
   ctx.font = '10px Arial'
   ctx.fillStyle = 'yellow'
-  ctx.fillText(`${scoreText}${score}`, 10, 10)
+  ctx.fillText(`${scoreText}${snakeScore}`, 10, 10)
   ctx.fillText(`${timerText}${snakeTimer}`, 10, 20)
   timerElement.innerText = snakeTimer
-  scoreElement.innerText = score
+  scoreElement.innerText = snakeScore
 }
 
 /**
@@ -383,7 +471,7 @@ function moveSnake (input, sSize) {
       head[1] + sSize > fruit[1]
     ) {
       eatSound.play()
-      score++
+      snakeScore++
       fruit = [
         Math.floor(Math.random() * (gameWidth / fruitSize)) * fruitSize,
         Math.floor(Math.random() * (gameHeight / fruitSize)) * fruitSize
@@ -491,100 +579,39 @@ function gameIntro () {
 /**
  * Start the game loop and call game functions
  */
-function startGame () {
-  if (gameState === 'intro') {
-    gameIntro()
-  } else if (gameState === 'playing') {
-    moveSnake(userInput, sSize)
-    draw()
-    backgroundMusic.play()
-  } else if (gameState === 'pause') {
-    backgroundMusic.pause()
-    // pauseGame()
-  } else if (gameState === 'gameover') {
-    updateTotalScore()
-    backgroundMusic.pause()
-    gameEnd()
-  }
+function startGame (timestamp) {
+  const snakeTab = document.getElementById('snake-tab')
+  if (snakeTab && snakeTab.classList.contains('active')) {
+    const deltaTime = timestamp - lastTime
 
-  setTimeout(() => {
-    startGame()
-  }, frameRate)
+    if (deltaTime >= frameRate) {
+      lastTime = timestamp
+
+      if (gameState === 'intro') {
+        gameIntro()
+      } else if (gameState === 'playing') {
+        moveSnake(userInput, sSize)
+        draw()
+        backgroundMusic.play()
+      } else if (gameState === 'pause') {
+        backgroundMusic.pause()
+        // pauseGame();
+      } else if (gameState === 'gameover') {
+        updateTotalScore()
+        backgroundMusic.pause()
+        gameEnd()
+      }
+    }
+
+    // Schedule the next frame
+    requestAnimationFrame(startGame)
+  } else {
+    // If the snake-tab is not active, stop the loop
+    initGame()
+    lastTime = 0
+    backgroundMusic.pause()
+  }
 }
+
 initGame()
 startGame()
-
-// experiment with the snake game
-
-// Add touch event listeners to the canvas
-canvas.addEventListener('touchstart', handleTouchStart, false)
-canvas.addEventListener('touchmove', handleTouchMove, false)
-canvas.addEventListener('touchend', handleTouchEnd, false)
-
-let touchStartX = 0
-let touchStartY = 0
-
-function handleTouchStart (event) {
-  event.preventDefault()
-  const touch = event.touches[0]
-  touchStartX = touch.clientX
-  touchStartY = touch.clientY
-
-  // Check if the touch is near the center of the canvas
-  const canvasCenterX = canvas.width / 2
-  const canvasCenterY = canvas.height / 2
-  const touchThreshold = 100 // Adjust this value as needed
-
-  if (
-    Math.abs(touchStartX - canvasCenterX) < touchThreshold &&
-    Math.abs(touchStartY - canvasCenterY) < touchThreshold
-  ) {
-    // Start the game if the touch is near the center
-    if (gameState !== 'playing') {
-      gameState = 'playing'
-      startTimer()
-      gameIntro()
-      startButtonLabel.innerText = 'Pause'
-    } else {
-      gameState = 'pause'
-      // stopTimer()
-      startButtonLabel.innerText = 'Play'
-    }
-  }
-}
-
-function handleTouchMove (event) {
-  if (event.touches.length > 1) return // Ignore multi-touch
-  const touch = event.touches[0]
-  const touchEndX = touch.clientX
-  const touchEndY = touch.clientY
-
-  const deltaX = touchEndX - touchStartX
-  const deltaY = touchEndY - touchStartY
-
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Horizontal swipe
-    if (deltaX > 0 && lastInput !== 'ArrowLeft') {
-      userInput = 'ArrowRight'
-    } else if (deltaX < 0 && lastInput !== 'ArrowRight') {
-      userInput = 'ArrowLeft'
-    }
-  } else {
-    // Vertical swipe
-    if (deltaY > 0 && lastInput !== 'ArrowUp') {
-      userInput = 'ArrowDown'
-    } else if (deltaY < 0 && lastInput !== 'ArrowDown') {
-      userInput = 'ArrowUp'
-    }
-  }
-
-  // Update touch start coordinates for continuous swipes
-  touchStartX = touchEndX
-  touchStartY = touchEndY
-}
-
-function handleTouchEnd (event) {
-  // Reset touch start coordinates
-  touchStartX = 0
-  touchStartY = 0
-}
