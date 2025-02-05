@@ -401,6 +401,16 @@ ul > li {
   display: none;
 }
 
+#hangman .btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border-color: var(--tertiary-color);
+}
+
+#hangman-img-space {
+  min-height: 400px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content h1 {

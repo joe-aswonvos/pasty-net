@@ -95,7 +95,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="smash-tab" data-toggle="tab" href="#smash" role="tab" aria-controls="smash"
-                        aria-selected="false">Smash!</a>
+                        aria-selected="false">Combo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="snake-tab" data-toggle="tab" href="#snake" role="tab" aria-controls="snake"
@@ -218,14 +218,18 @@
                 </div>
 
                 <!-- Hangman Game -->
-                <div class="tab-pane fade" id="hangman" role="tabpanel" aria-labelledby="hangman-tab">
-                    <div class="container game">
-                        <h1>Hangman</h1>
-                        <button class="btn btn-primary" id="hangman-play-btn" type="button">Play</button>
-                        <button class="btn btn-primary" id="hangman-reset-btn" type="button">Reset</button>
-                        <h2 id="gameOverText"></h2>
-                        <div>
-                            <div id="count-down">Time Left: 5:00</div>
+                <div class="tab-pane fade " id="hangman" role="tabpanel" aria-labelledby="hangman-tab">
+                    <div class="container game d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 row text-center">
+                        <h1 class="col-12 my-4">Hangman</h1>
+                         <div class="col-12 row justify-content-center align-items-center d-flex">
+                        <button class="btn btn-primary col-4" id="hangman-play-btn" type="button">Play</button>
+                        <button class="btn btn-primary col-4" id="hangman-reset-btn" type="button">Reset</button>
+                        <p id="count-down" class="col-4">Time Left: 5:00</p>
+                        </div>
+                        <h3 class="col-8 my-4" id="gameOverText"></h3>
+                        <div id="hangman-img-space" class="col-12">
+                            
                             <img id="hangman-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png"
                                 alt="hangman-img" />
                         </div>
@@ -235,6 +239,7 @@
                             <ul id="unguessed-letters"></ul>
                             <p id="hint-text">Hint: Blank</p>
                             <p class="guesses-count"> Incorrect Guesses: 0 / 6</p>
+                        </div>
                         </div>
                     </div>
                 </div>
