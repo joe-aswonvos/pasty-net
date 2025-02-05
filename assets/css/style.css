@@ -374,6 +374,17 @@ main {
   object-fit: contain; 
 } */
 
+/* Hangman styles */
+
+ul > li {
+  display: inline-block;
+  margin:5px;
+}
+
+#hangman-reset-btn {
+  display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content h1 {
