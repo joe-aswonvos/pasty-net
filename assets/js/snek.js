@@ -488,6 +488,7 @@ function startGame () {
     backgroundMusic.pause()
     // pauseGame()
   } else if (gameState === 'gameover') {
+    // updateTotalScore()
     backgroundMusic.pause()
     gameEnd()
   }
