@@ -249,7 +249,6 @@
           </div>
 
           <!-- Oscar's Snake -->
-
           <div
             class="tab-pane fade"
             id="snake"
@@ -274,45 +273,12 @@
           id="hangman"
           role="tabpanel"
           aria-labelledby="hangman-tab"
-        >
-          <div class="modal fade" id="won-modal" role="dialog" tabindex="-1">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Winner!</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p>You won! The correct word was: <span id="model-correct"></span></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" id="close-button" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="modal fade" id="lost-modal" role="dialog" tabindex="-1">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Game Over</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p>You ran out of guesses or time! The correct word was: <span id="model-correct2"></span></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" id="close-button2" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        
+        >        
           <div class="container game">
             <h1>Hangman</h1>
-            <button class="btn btn-primary" id="play-btn" type="button">Play</button>
-            <button class="btn btn-primary" id="reset-btn" type="button">Reset</button>
+            <button class="btn btn-primary" id="hangman-play-btn" type="button">Play</button>
+            <button class="btn btn-primary" id="hangman-reset-btn" type="button">Reset</button>
+            <h2 id="gameOverText"></h2>
             <div>
               <div id="count-down">Time Left: 5:00</div>
               <img id="hangman-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png"

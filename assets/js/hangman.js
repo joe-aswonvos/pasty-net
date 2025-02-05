@@ -8,21 +8,23 @@ var timerInterval;
 //When the document finishes loading, call the initialiseHangman function.
 $("#hangman-tab").click(function () {
     initialiseHangman();
+    clearInterval(timerInterval);
+    resetGame();
 });
 
 function initialiseHangman() {
 
     //Add the on click handler to the play button.
-    $("#play-btn").click(function () {
+    $("#hangman-play-btn").click(function () {
         //Hides the play button, shows the reset button and starts the game.
         $(this).css("display", "none");
-        $("#reset-btn").css("display", "block");
+        $("#hangman-reset-btn").css("display", "block");
         startGame();
     });
     //Add the on click handler to the reset button.
-    $("#reset-btn").click(function () {
+    $("#hangman-reset-btn").click(function () {
         //Hides the reset button, shows the play button and resets the game.
-        $("#play-btn").css("display", "block");
+        $("#hangman-play-btn").css("display", "block");
         $(this).css("display", "none");
         resetGame();
     });
@@ -134,32 +136,12 @@ function gameOver(winLose) {
     //End the timer.
     clearInterval(timerInterval);
 
-    //Get the two modals.
-    var wonModal = new bootstrap.Modal(document.getElementById('won-modal'), {
-        keyboard: false
-    });
-    var lostModal = new bootstrap.Modal(document.getElementById('lost-modal'), {
-        keyboard: false
-    });
-
     //Display a differnet modal depending on if they won or not.
     if (winLose == true) {
-        wonModal.show();
-        $("#model-correct").text(randomWord.word);
-        wonModal.focus();
-    } else {
-        lostModal.show();
-        $("#model-correct2").text(randomWord.word);
-        wonModal.focus();
+        $("#gameOverText").text("Congratulations! You won! The phrase was: " + randomWord.word);
+     } else {
+        $("#gameOverText").text("You Lost! You ran out of time or guesses! The correct phrase was: " + randomWord.word);
     }
-
-    //Couldn't get the close buttons on the modals to work correctly so here are two on click functions that do the same thing.
-    $("#close-button").click(function () {
-        wonModal.hide();
-    });
-    $("#close-button2").click(function () {
-        lostModal.hide();
-    });
 }
 
 //Reset everything back to how they were at the start.
@@ -167,11 +149,13 @@ function resetGame() {
     randomWord = "";
     wrongGuessCount = 0;
     clearInterval(timerInterval);
-    $(".guesses-count").text(`Incorrect Guesses: ${wrongGuessCount} / ${maxGuesses}`);
+    $("#count-down").text("Time Left: 5:00");
+    $(".guesses-count").text(`Incorrect Guesses: 0 / ${maxGuesses}`);
     $("#guessed-letters").text("_ _ _");
     $("#hangman-img").attr("src", "https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png");
     $("#hint-text").text("Hint: Blank");
     $("#unguessed-letters").empty();
+    $("#gameOverText").text("");
 }
 
 //Custom string function for replacing chars at specific indexes.
