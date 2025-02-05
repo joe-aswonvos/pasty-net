@@ -314,6 +314,10 @@ main {
   font-size: 1.5rem;
 }
 
+#combo-answer {
+  font-size: 1.5rem;
+}
+
 #combo-attempt {
   text-transform: uppercase;
 }
