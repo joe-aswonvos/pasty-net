@@ -398,6 +398,8 @@ ul > li {
 }
 
 #hangman-reset-btn {
+  background-color: gray !important; 
+  color: white !important;
   display: none;
 }
 
@@ -414,6 +416,10 @@ ul > li {
 
 #hangman-img-space {
   min-height: 400px;
+}
+
+#gameOverText {
+  width: 100%;
 }
 
 /* Responsive Design */
