@@ -58,17 +58,17 @@ function startGame() {
 }
 
 //Some magic that I do not understand. ¯\_(ツ)_/¯
-function startTimer() {
-    let timeLeft = gameTimeLimit;
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        $("#count-down").text(`Time Left: ${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? "0" : ""}${timeLeft % 60}`);
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            gameOver(false);
-        }
-    }, 1000);
-}
+// function startTimer() {
+//     let timeLeft = gameTimeLimit;
+//     timerInterval = setInterval(() => {
+//         timeLeft--;
+//         $("#count-down").text(`Time Left: ${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? "0" : ""}${timeLeft % 60}`);
+//         if (timeLeft <= 0) {
+//             clearInterval(timerInterval);
+//             gameOver(false);
+//         }
+//     }, 1000);
+// }
 
 //Creates the list of clickable letters.
 function populateLettersList() {
