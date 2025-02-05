@@ -473,8 +473,12 @@ function moveSnake (input, sSize) {
       eatSound.play()
       snakeScore++
       fruit = [
-        Math.floor(Math.random() * (gameWidth / fruitSize)) * fruitSize,
-        Math.floor(Math.random() * (gameHeight / fruitSize)) * fruitSize
+        // Math.floor(Math.random() * (gameWidth / fruitSize)) * fruitSize,
+        // Math.floor(Math.random() * (gameHeight / fruitSize)) * fruitSize
+        Math.floor(Math.random() * ((canvas.width - fruitSize) / fruitSize)) *
+          fruitSize,
+        Math.floor(Math.random() * ((canvas.height - fruitSize) / fruitSize)) *
+          fruitSize
       ]
     } else {
       snake.shift()
