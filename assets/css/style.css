@@ -350,7 +350,7 @@ footer {
   text-transform: uppercase;
 }
 
-/* Oscar */
+/* Oscar Snake */
 #snake h2 {
   padding: 1rem 0 1rem 0;
 }
@@ -372,7 +372,7 @@ footer {
   border-radius: 10px;
   border: 50px solid transparent; /* Set a transparent border to define the border width */
   border-image: url('../images/mole-board.jpg') 30 round;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.839);
 }
 button.snakeButton {
   background-color: var(--primary-color);
@@ -389,24 +389,23 @@ button.snakeButton:hover {
   border-color: var(--primary-color);
 }
 button.snakeButton:focus {
-  /* border: none; */
-  box-shadow: none;
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
 }
 button.snakeButton:active {
   background-color: var(--secondary-color) !important;
   border-color: var(--primary-color);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
 }
 
 /* Hangman styles */
 
 ul > li {
   display: inline-block;
-  margin:5px;
+  margin: 5px;
 }
 
 #hangman-reset-btn {
-  background-color: gray !important; 
+  background-color: gray !important;
   color: white !important;
   display: none;
 }
@@ -414,7 +413,6 @@ ul > li {
 #hangman-score {
   display: none;
 }
-
 
 #hangman .btn {
   background-color: var(--primary-color);
@@ -435,7 +433,8 @@ ul > li {
   align-items: center;
 }
 
-#hangman-img, #combo-picture {
+#hangman-img,
+#combo-picture {
   max-width: 100%;
   height: auto;
   display: block;

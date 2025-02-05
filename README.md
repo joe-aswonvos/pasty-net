@@ -93,8 +93,7 @@ In Snek2048, you control a snake that moves around the game board. The goal is t
 - The animated title doesn't work since a module is required to display animated gifs within a canvas
 - There is no highscore recorded
 - No local storage to save scores
-- Collision is buggy and the snake will go slightly offscreen
-- fruit placement is buggy and will go slightly offscreen
+- Collision is imperfect and the snake will go slightly offscreen
 
 ### Future Features
 
