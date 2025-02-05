@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const targetId = this.getAttribute("href").substring(1);
       const targetElement = document.getElementById(targetId);
-      const offset = 60; // Adjust this value based on the height of your navbar
+      const offset = 70; // Adjust this value based on the height of your navbar
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
