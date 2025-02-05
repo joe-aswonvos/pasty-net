@@ -207,6 +207,20 @@ document.addEventListener('keydown', e => {
   }
 })
 
+function updateTotalScore () {
+  const scoreElements = document.querySelectorAll('.scoreToTot')
+  let totalScore = 0
+
+  scoreElements.forEach(element => {
+    totalScore += parseInt(element.textContent, 10) || 0
+  })
+
+  const totalScoreElement = document.getElementById('totalscore')
+  if (totalScoreElement) {
+    totalScoreElement.textContent = totalScore
+  }
+}
+
 /**
  * Initialize the game & reset variables for new game
  */
@@ -488,7 +502,7 @@ function startGame () {
     backgroundMusic.pause()
     // pauseGame()
   } else if (gameState === 'gameover') {
-    // updateTotalScore()
+    updateTotalScore()
     backgroundMusic.pause()
     gameEnd()
   }
