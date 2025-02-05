@@ -401,6 +401,7 @@ ul > li {
   display: none;
 }
 
+
 #hangman .btn {
   background-color: var(--primary-color);
   color: var(--text-color);
@@ -409,6 +410,10 @@ ul > li {
 
 #hangman-img-space {
   min-height: 400px;
+
+#hangman-score {
+  display: none;
+
 }
 
 /* Responsive Design */
