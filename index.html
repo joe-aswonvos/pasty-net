@@ -94,20 +94,34 @@
                         aria-selected="false">Snake</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="hangman-tab" data-toggle="tab" href="#hangman" role="tab" aria-controls="hangman"
-                        aria-selected="false">Hangman</a>
+                    <a class="nav-link" id="hangman-tab" data-toggle="tab" href="#hangman" role="tab"
+                        aria-controls="hangman" aria-selected="false">Hangman</a>
                 </li>
             </ul>
             <div class="tab-content" id="gameTabsContent">
                 <!-- About Tab -->
                 <div class="tab-pane fade show active pb-4" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <h2 class="pt-2">About Pasty Net</h2>
-                    <p>
-                        Pasty Net is a collection of games created by the team at Pasty
-                        Net. We are a group of developers who love to create fun and
-                        engaging games for people to play. We hope you enjoy playing our
-                        games as much as we enjoyed creating them.
-                    </p>
+                    <div class="m-4">
+                        <h2 class="pt-2">About Pasty Net</h2>
+                        <p class="my-4">
+                            Cornwall, with its dramatic coastline and rugged beauty, is renowned for its ever-changing
+                            weather. While the sun often shines, those classic Cornish mists and sudden downpours can
+                            sometimes dampen the spirits. But fear not! This collection of Cornish mini-games is
+                            designed to
+                            keep you entertained and amused when the weather takes a turn for the worse. Whether you're
+                            sheltering from a summer shower in a cozy pub, or battling the winter gales at home, these
+                            games
+                            offer a delightful dose of Cornish charm and a welcome distraction from the elements.
+                        </p>
+                        <p class="my-4">
+                            From traditional pastimes like 'whack-a-mole' to quirky challenges inspired by Cornish
+                            folklore, these games celebrate the unique spirit of Cornwall. Whether you're a seasoned
+                            local
+                            or a curious visitor, you'll find something to pique your interest and test your skills. So
+                            grab
+                            a cuppa, settle in, and enjoy a taste of Cornwall, no matter what the weather may bring.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Whack a mole Tab -->
@@ -121,7 +135,7 @@
                             </button>
                         </div>
                         <div class="text-center col-6">
-                            <p>Score: <span id="molescore" class="scoreToTot">0</span></p>
+                            <p class="score-style">Score: <span id="molescore" class="scoreToTot">0</span></p>
                             <p>Time: <span id="time">60</span> seconds</p>
                         </div>
                     </div>
@@ -141,13 +155,13 @@
                 <!-- Beth's AnswerSmash -->
                 <div class="tab-pane fade" id="smash" role="tabpanel" aria-labelledby="smash-tab">
                     <div class="container row my-4 d-flex text-center align-items-center justify-content-center">
-                        <div class="row col-12 col-md-4 align-items-center">
-                        <h2 class="col-6 col-md-12 text-center">Cornish Combo</h2>
-                        <p class="col-6 col-md-12 text-center">
-                            Score: <span id="combo-score" class="scoreToTot">0</span>
-                        </p>
+                        <div class="row col-12 col-md-4">
+                            <h2 class="col-6 col-md-12 text-center">Cornish Combo</h2>
+                            <p class="col-6 col-md-12 score-style">Score: <span id="combo-score" class="scoreToTot">0</span>
+                            </p>
                         </div>
-                        <p class="col-12 col-md-8 mt-2">Instructions: The last letters of the answer to the question, and the
+                        <p class="col-12 col-md-8 mt-2">Instructions: The last letters of the answer to the question,
+                            and the
                             first letters of what's depicted in the image will be the same. Overlap them and combine
                             them together to make a new word or phrase!</p>
                         <div class="game-area col-12 text-center">
@@ -175,24 +189,24 @@
 
                 <div class="tab-pane fade" id="snake" role="tabpanel" aria-labelledby="snake-tab">
                     <div class="text-center my-4 d-flex justify-content-center align-items-center">
-                        <div class="col-12 row">
-                        <h2 class="pt-2 col-12 col-md-6">Snek - 9000</h2>
-                        <p class="col-12 col-md-3">Score: <span id="snake-score" class="scoreToTot">0</span></p>
-                        <p class="col-12 col-md-3">Time: <span id="snake-time">60</span> seconds</p>
-                        
-                        <div class="col-12">
-                        <button id="snakeButton" class="btn btn-primary">
-                            Start Game
-                        </button>
-                        <button id="snake-fullscreen">Fullscreen</button>
-                        </div>
-                        
-                        <div class="col-12 mt-4">
-                        <canvas id="gameCanvas"></canvas>
+                        <div class="col-12 row align-items-center">
+                            <h2 class="pt-2 col-12 col-md-6">Snek - 9000</h2>
+                            <p class="col-12 col-md-3 score-style">Score: <span id="snake-score" class="scoreToTot">0</span></p>
+                            <p class="col-12 col-md-3">Time: <span id="snake-time">60</span> seconds</p>
+
+                            <div class="col-12">
+                                <button id="snakeButton" class="btn btn-primary">
+                                    Start Game
+                                </button>
+                                <button id="snake-fullscreen">Fullscreen</button>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <canvas id="gameCanvas"></canvas>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    
+
                 </div>
 
                 <!-- Ewan's Game -->

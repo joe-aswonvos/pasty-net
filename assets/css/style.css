@@ -171,6 +171,22 @@ main {
 
 /* Game Area Styles */
 
+.score-style {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-color);
+  background-color: var(--tertiary-color);
+  border: var(--primary-color) 2px solid;
+  border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  white-space: pre;
+  max-height: 2rem;
+  min-width: 5rem;
+}
+
 #game-section {
   background-color: var(--secondary-color);
   opacity: 0.8;
