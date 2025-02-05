@@ -11,6 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setInterval(nextSlide, 5000)
 
+  // Update the total score logic
+
+  function updateTotalScore () {
+    const scoreElements = document.querySelectorAll('.scoreToTot')
+    let totalScore = 0
+
+    scoreElements.forEach(element => {
+      totalScore += parseInt(element.textContent, 10) || 0
+    })
+
+    const totalScoreElement = document.getElementById('totalscore')
+    if (totalScoreElement) {
+      totalScoreElement.textContent = totalScore
+    }
+  }
+
   // Whack-a-Mole Game Logic
   const moles = document.querySelectorAll('.mole')
   const moleScoreBoard = document.getElementById('molescore')
@@ -19,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const gameArea = document.querySelector('.mole-game-area')
   const playPauseButton = document.getElementById('play-pause-button')
   const backgroundAudio = document.getElementById('background-audio')
+  const breakingGlassAudio = new Audio('assets/audio/breaking-glass-88411.mp3')
+  const missedMoleAudio = new Audio('assets/audio/loud-thud-45719.mp3')
   let lastMole
   let timeUp = true
   let score = 0
@@ -28,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Set initial volume and play audio
   backgroundAudio.volume = 0.05
+  breakingGlassAudio.volume = 0.5
 
   // Attempt to play audio and handle autoplay restrictions
   function playAudio () {
@@ -130,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timer)
         timeUp = true
         startButton.textContent = 'Start Game'
+        updateTotalScore()
       }
     }, 1000)
   }
@@ -139,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(timer)
     timeUp = true
     startButton.textContent = 'Start Game'
+    updateTotalScore()
   }
 
   // Handle mole hit
@@ -149,6 +170,11 @@ document.addEventListener('DOMContentLoaded', () => {
       mole.classList.remove('up')
       mole.classList.add('whack')
       mole.textContent = 'Whack!'
+
+      // Reset and play breaking glass Audio
+      breakingGlassAudio.currentTime = 0
+      breakingGlassAudio.play()
+
       score++
       moleScoreBoard.textContent = score
       consecutiveMisses = 0
@@ -163,6 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       mole.classList.add('miss')
       mole.textContent = 'Miss!'
+
+      // Reset and play missed mole Audio
+      missedMoleAudio.currentTime = 0
+      missedMoleAudio.play()
+
       consecutiveMisses++
       if (consecutiveMisses === 1) {
         gameArea.classList.add('miss-one')
@@ -221,6 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
   backgroundAudio.addEventListener('play', updatePlayPauseButton)
   backgroundAudio.addEventListener('pause', updatePlayPauseButton)
 
+  // Other Page wide Scripts
+
   // Set initial state of play/pause button
   updatePlayPauseButton()
 
@@ -235,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Adjust scroll position for navbar offset
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('.linky').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
 
@@ -251,10 +284,50 @@ document.addEventListener('DOMContentLoaded', () => {
       const elementPosition = targetElement.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.scrollY - offset
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
+      // Check if the current scroll position is already at the target position
+      if (Math.abs(window.scrollY - offsetPosition) > 1) {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+
+      // Activate the specified tab if data-tab attribute is present
+      const tabId = this.getAttribute('data-tab')
+      if (tabId) {
+        if (tabId === 'random') {
+          const tabs = [
+            'whack-a-mole-tab',
+            'smash-tab',
+            'snake-tab',
+            'hangman-tab'
+          ]
+          const activeTab = document.querySelector('.nav-link.active').id
+          const availableTabs = tabs.filter(tab => tab !== activeTab)
+          const randomTabId =
+            availableTabs[Math.floor(Math.random() * availableTabs.length)]
+          const randomTabElement = document.getElementById(randomTabId)
+          if (randomTabElement) {
+            const randomTab = new bootstrap.Tab(randomTabElement)
+            randomTab.show()
+          }
+        } else {
+          const tabElement = document.getElementById(tabId)
+          if (tabElement) {
+            const tab = new bootstrap.Tab(tabElement)
+            tab.show()
+          }
+        }
+      }
+
+      // Collapse the navbar
+      const navbarCollapse = document.querySelector('.navbar-collapse')
+      if (navbarCollapse.classList.contains('show')) {
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+          toggle: true
+        })
+        bsCollapse.hide()
+      }
     })
   })
 })

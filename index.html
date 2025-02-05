@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +14,7 @@
         <!-- Custom Stylesheet -->
         <link rel="stylesheet" href="assets/css/style.css" />
         <!-- FA Icons -->
-        <script
-            src="https://kit.fontawesome.com/5c14c611eb.js"
+        <script src="https://kit.fontawesome.com/5c14c611eb.js"
             crossorigin="anonymous"></script>
     </head>
 
@@ -26,14 +26,16 @@
                 <div class="container">
                     <img id="icon" src="assets/images/pasty-icon.png"
                         alt="Pasty Icon" />
-                    <a class="navbar-brand" href="#">Pasty Net</a>
+                    <a class="navbar-brand" href="#top">Pasty Net</a>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Games</a>
+                                <a class="nav-link linky" href="#game-section"
+                                    data-tab="random">Games</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link linky" href="#game-section"
+                                    data-tab="about-tab">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contact Us</a>
@@ -43,13 +45,9 @@
                     <span class="navbar-text">
                         Total Score: <span id="totalscore">0</span>
                     </span>
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarNav"
-                        aria-controls="navbarNav"
-                        aria-expanded="false"
+                    <button class="navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -66,93 +64,61 @@
         <section id="hero-section" class="container-fluid">
             <div class="hero-carousel">
                 <div class="hero-slides">
-                    <div
-                        class="hero-slide"
-                        style="
+                    <div class="hero-slide" style="
               background-image: url('assets/images/wallhaven-lq897p-2893992123.jpg');
             "></div>
-                    <div
-                        class="hero-slide"
-                        style="
+                    <div class="hero-slide" style="
               background-image: url('assets/images/wp3142926-3617341430.jpg');
             "></div>
-                    <div
-                        class="hero-slide"
-                        style="
+                    <div class="hero-slide" style="
               background-image: url('assets/images/England_Coast_Houses_Boats_Motorboat_Cornwall_527346_1920x1080-3064057052.jpg');
             "></div>
                 </div>
                 <div class="hero-content">
                     <h1>Pasty Net Games</h1>
-                    <p>Stuff to occupy yourself until the sun comes out</p>
-                    <a href="#game-section" class="btn btn-primary">Go to
-                        Games</a>
+                    <p>Stuff to occupy you until the sun comes out</p>
+                    <a id="hero-btn" href="#game-section"
+                        class="btn btn-primary linky">Go to Games</a>
                 </div>
             </div>
         </section>
 
         <!-- Main Content -->
         <main>
+
             <section id="game-section" class="container mt-5 col-md-8 h-100">
                 <ul class="nav nav-tabs" id="gameTabs" role="tablist">
                     <li class="nav-item">
-                        <a
-                            class="nav-link active"
-                            id="about-tab"
-                            data-toggle="tab"
-                            href="#about"
-                            role="tab"
-                            aria-controls="about"
-                            aria-selected="true">About</a>
+                        <a class="nav-link active" id="about-tab"
+                            data-toggle="tab" href="#about" role="tab"
+                            aria-controls="about" aria-selected="true">About</a>
                     </li>
                     <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            id="whack-a-mole-tab"
-                            data-toggle="tab"
-                            href="#whack-a-mole"
-                            role="tab"
+                        <a class="nav-link" id="whack-a-mole-tab"
+                            data-toggle="tab" href="#whack-a-mole" role="tab"
                             aria-controls="whack-a-mole"
-                            aria-selected="true">Whack-a-Mole</a>
+                            aria-selected="false">Whack-a-Mole</a>
                     </li>
                     <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            id="smash-tab"
-                            data-toggle="tab"
-                            href="#smash"
-                            role="tab"
-                            aria-controls="smash"
+                        <a class="nav-link" id="smash-tab" data-toggle="tab"
+                            href="#smash" role="tab" aria-controls="smash"
                             aria-selected="false">Smash!</a>
                     </li>
                     <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            id="snake-tab"
-                            data-toggle="tab"
-                            href="#snake"
-                            role="tab"
-                            aria-controls="snake"
+                        <a class="nav-link" id="snake-tab" data-toggle="tab"
+                            href="#snake" role="tab" aria-controls="snake"
                             aria-selected="false">Snake</a>
                     </li>
                     <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            id="game4-tab"
-                            data-toggle="tab"
-                            href="#game4"
-                            role="tab"
-                            aria-controls="game4"
-                            aria-selected="false">Game 4</a>
+                        <a class="nav-link" id="hangman-tab" data-toggle="tab"
+                            href="#hangman" role="tab" aria-controls="hangman"
+                            aria-selected="false">Hangman</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="gameTabsContent">
                     <!-- About Tab -->
-                    <div
-                        class="tab-pane fade show active pb-4"
-                        id="about"
-                        role="tabpanel"
-                        aria-labelledby="about-tab">
+                    <div class="tab-pane fade show active pb-4" id="about"
+                        role="tabpanel" aria-labelledby="about-tab">
                         <h2 class="pt-2">About Pasty Net</h2>
                         <p>
                             Pasty Net is a collection of games created by the
@@ -167,11 +133,8 @@
 
                     <!-- Whack a mole Tab -->
 
-                    <div
-                        class="tab-pane fade spb-4"
-                        id="whack-a-mole"
-                        role="tabpanel"
-                        aria-labelledby="whack-a-mole-tab">
+                    <div class="tab-pane fade spb-4" id="whack-a-mole"
+                        role="tabpanel" aria-labelledby="whack-a-mole-tab">
                         <div
                             class="container row my-4 d-flex align-items-center">
                             <div class="text-center col-6">
@@ -182,7 +145,8 @@
                                 </button>
                             </div>
                             <div class="text-center col-6">
-                                <p>Score: <span id="molescore">0</span></p>
+                                <p>Score: <span id="molescore"
+                                        class="scoreToTot">0</span></p>
                                 <p>Time: <span id="time">60</span> seconds</p>
                             </div>
                         </div>
@@ -200,23 +164,24 @@
                     </div>
 
                     <!-- Beth's AnswerSmash -->
-                    <div
-                        class="tab-pane fade"
-                        id="smash"
-                        role="tabpanel"
+                    <div class="tab-pane fade" id="smash" role="tabpanel"
                         aria-labelledby="smash-tab">
                         <div
                             class="container row my-4 d-flex text-center align-items-center justify-content-center">
-                            <h2 class="col-6 col-md-4 text-center">Cornish
-                                Combination</h2>
-                            <p class="col-6 col-md-4 text-center">
-                                Score: <span id="combo-score">0</span>
-                            </p>
-                            <p class="col-12 col-md-4">Instructions: The last
-                                letters of the answer to the question, and the
+                            <div class="row col-12 col-md-4 align-items-center">
+                                <h2 class="col-6 col-md-12 text-center">Cornish
+                                    Combo</h2>
+                                <p class="col-6 col-md-12 text-center">
+                                    Score: <span id="combo-score"
+                                        class="scoreToTot">0</span>
+                                </p>
+                            </div>
+                            <p class="col-12 col-md-8 mt-2">Instructions: The
+                                last letters of the answer to the question, and
+                                the
                                 first letters of what's depicted in the image
-                                will be the same. Overlap them and combine them
-                                together to make a new word or phrase!</p>
+                                will be the same. Overlap them and combine
+                                them together to make a new word or phrase!</p>
                             <div class="game-area col-12 text-center">
                                 <div class="my-3">
                                     <p id="combo-question"></p>
@@ -244,7 +209,6 @@
                     <!-- Oscar's Snake -->
 
                     <!-- Oscar's Snake -->
-
                     <div class="tab-pane container text-center fade"
                         id="snake"
                         role="tabpanel"
@@ -252,11 +216,15 @@
                         <div
                             class="text-center justify-content-around row mb-4">
                             <h2 class="p-6 m-6">Snek2048</h2>
-                            <div class="col-12 col-md-4 text-left">
-                                <p>Score: <span
-                                        id="snake-score">0</span></p>
-                                <p>Time: <span id="snake-time">0</span>
-                                    seconds</p>
+                            <p>Use the arrow keys or WASD to move.
+                            </p>
+                            <p>Press Enter to begin & Escape to pause</p>
+                            <p>Press F to go fullscreen</p>
+                            <p>On a touchscreen you can swipe up/down &
+                                left/right to turn the snake</p>
+                            <div class="col-12 col-md-4 text-start">
+                                <p>Score: <span id="snake-score">0</span></p>
+                                <p>Time: <span id="snake-time">0</span></p>
                             </div>
                             <div class="col-12 col-md-4">
                                 <button id="snakeButton"
@@ -273,6 +241,7 @@
                                     Fullscreen
                                 </button>
                             </div>
+
                         </div>
 
                         <div id="snakeContainer">
@@ -283,11 +252,8 @@
                     </div>
 
                     <!-- Ewan's Game -->
-                    <div
-                        class="tab-pane fade"
-                        id="hangman"
-                        role="tabpanel"
-                        aria-labelledby="game4-tab">
+                    <div class="tab-pane fade" id="hangman" role="tabpanel"
+                        aria-labelledby="hangman-tab">
                         Game 4 content
                         <div class="game-modal" id="over"></div>
                     </div>
@@ -307,9 +273,7 @@
         </footer>
 
         <!-- Audio Element -->
-        <audio
-            id="background-audio"
-            src="assets/audio/background-music.mp3"
+        <audio id="background-audio" src="assets/audio/background-music.mp3"
             loop></audio>
 
         <!-- Bootstrap JS and dependencies -->
@@ -325,4 +289,5 @@
         <!-- Smash -->
         <script src="assets/js/combination.js"></script>
     </body>
+
 </html>

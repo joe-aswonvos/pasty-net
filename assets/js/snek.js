@@ -1,4 +1,5 @@
 const canvas = document.getElementById('gameCanvas')
+const snakeDiv = document.getElementById('snakeDiv')
 const ctx = canvas.getContext('2d')
 const scoreElement = document.getElementById('snake-score')
 const timerElement = document.getElementById('snake-time')
@@ -59,6 +60,10 @@ fruit = [
   Math.floor(Math.random() * 30) * 10
 ]
 
+// Title Image
+let titleImage = new Image()
+titleImage.src = 'assets/snake/Snek2048-title.gif'
+
 // Background Image
 let background = new Image()
 background.src = 'assets/snake/snek-bg.png'
@@ -111,27 +116,13 @@ document.addEventListener('fullscreenchange', () => {
       canvas.style.maxWidth = '600px'
       canvas.style.maxHeight = '600px'
     }
+  } else {
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
+    canvas.style.maxWidth = '600px'
+    canvas.style.maxHeight = '600px'
   }
 })
-
-//     canvas.style.width = `${window.innerWidth}px`
-//     canvas.style.height = `${window.innerHeight}px`
-//   } else {
-//     canvas.style.width = '100%'
-//     canvas.style.height = '100%'
-//   }
-// })
-
-// ...existing code...
-// document.addEventListener('fullscreenchange', () => {
-//   if (document.fullscreenElement) {
-//     canvas.style.width = '100vw'
-//     canvas.style.height = '100vh'
-//   } else {
-//     canvas.style.width = '100%'
-//     canvas.style.height = '100%'
-//   }
-// })
 
 function startTimer () {
   timerInterval = setInterval(() => {
@@ -166,7 +157,18 @@ startButton.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   const snakeTab = document.getElementById('snake-tab')
   if (snakeTab && snakeTab.classList.contains('active')) {
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+    if (
+      [
+        'ArrowUp',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
+        'Enter',
+        ' ',
+        'f',
+        'Escape'
+      ].includes(e.key)
+    ) {
       e.preventDefault()
     }
     switch (e.key) {
@@ -187,8 +189,19 @@ document.addEventListener('keydown', e => {
         if (lastInput !== 'ArrowLeft') userInput = 'ArrowRight'
         break
       case 'Enter':
-      case 'Space':
+      case ' ':
         gameState = 'playing'
+        break
+      case 'f':
+        if (document.fullscreenElement) {
+          document.exitFullscreen()
+        } else {
+          document.getElementById('snakeContainer').requestFullscreen()
+        }
+        break
+      case 'Escape':
+        pauseGame()
+        console.log('gameState', gameState)
         break
     }
   }
@@ -415,28 +428,16 @@ function newHead (input, sSize) {
  * End the game and reset variables
  */
 function gameEnd () {
+  let msg = 'Game Over'
   initGame()
-  gameState = 'intro'
-  startButtonLabel.innerText = 'Play'
-}
-
-function pauseGame () {
-  //
-}
-/**
- * Display intro screen
- */
-function gameIntro () {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-
   ctx.fillStyle = 'black'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
   ctx.font = '30px Arial'
   ctx.fillStyle = 'white'
   ctx.fillText(
-    introText,
-    canvas.width / 2 - ctx.measureText(introText).width / 2,
+    msg,
+    canvas.width / 2 - ctx.measureText(msg).width / 2,
     canvas.height / 2 - 30
   )
   ctx.fillStyle = 'red'
@@ -445,6 +446,32 @@ function gameIntro () {
     canvas.width / 2 - ctx.measureText(startText).width / 2,
     canvas.height / 2 + 30
   )
+  // gameState = 'intro'
+  startButtonLabel.innerText = 'Play'
+  // updateTotalScore()
+}
+
+function pauseGame () {
+  if (gameState === 'playing') {
+    gameState = 'pause'
+  } else if (gameState === 'pause') {
+    gameState = 'playing'
+  }
+  if (gameState === 'playing') {
+    startButtonLabel.innerText = 'Pause'
+    startTimer()
+  } else {
+    gameState = 'pause'
+    startButtonLabel.innerText = 'Play'
+    stopTimer()
+  }
+}
+/**
+ * Display intro screen
+ */
+function gameIntro () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(titleImage, 0, 0, canvas.width, canvas.height)
 }
 
 /**
@@ -459,7 +486,7 @@ function startGame () {
     backgroundMusic.play()
   } else if (gameState === 'pause') {
     backgroundMusic.pause()
-    pauseGame()
+    // pauseGame()
   } else if (gameState === 'gameover') {
     backgroundMusic.pause()
     gameEnd()
@@ -487,6 +514,28 @@ function handleTouchStart (event) {
   const touch = event.touches[0]
   touchStartX = touch.clientX
   touchStartY = touch.clientY
+
+  // Check if the touch is near the center of the canvas
+  const canvasCenterX = canvas.width / 2
+  const canvasCenterY = canvas.height / 2
+  const touchThreshold = 100 // Adjust this value as needed
+
+  if (
+    Math.abs(touchStartX - canvasCenterX) < touchThreshold &&
+    Math.abs(touchStartY - canvasCenterY) < touchThreshold
+  ) {
+    // Start the game if the touch is near the center
+    if (gameState !== 'playing') {
+      gameState = 'playing'
+      startTimer()
+      gameIntro()
+      startButtonLabel.innerText = 'Pause'
+    } else {
+      gameState = 'pause'
+      // stopTimer()
+      startButtonLabel.innerText = 'Play'
+    }
+  }
 }
 
 function handleTouchMove (event) {
