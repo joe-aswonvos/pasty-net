@@ -2,16 +2,16 @@
 
 ## User Stories
 
--As a visitor, I want to see a welcoming homepage with a Cornish theme, so that I immediately feel immersed in the culture and style of Cornwall.
--As a user, I want to browse a simple navigation menu, so that I can easily find different sections of the website.
--As a visitor, I want to read a short introduction about Cornwall and its culture, so that I understand the theme of the website.
--As a user, I want to play a Cornish-themed version of Whack-a-Mole, so that I can enjoy a fun and interactive experience.
--As a returning player, I want my high scores to be saved, so that I can try to beat my previous record.
--As a player, I want to “whack” Cornish-themed characters (e.g., smugglers, piskies, or seagulls stealing pasties), so that the game feels unique and fun.
--As a player, I want a timer and score counter displayed during the game, so that I can track my progress and compete for a high score.
--As a player, I want increasing difficulty levels, so that the game becomes more challenging and exciting the longer I play.
--As a player, I want fun Cornish sound effects (e.g., seagull squawks, “Proper Job!” voice clips), so that the game feels lively and engaging.
--As a competitive user, I want a leaderboard showcasing the top scores, so that I can compete with other players.
+- As a visitor, I want to see a welcoming homepage with a Cornish theme, so that I immediately feel immersed in the culture and style of Cornwall.
+- As a user, I want to browse a simple navigation menu, so that I can easily find different sections of the website.
+- As a visitor, I want to read a short introduction about Cornwall and its culture, so that I understand the theme of the website.
+- As a user, I want to play a Cornish-themed version of Whack-a-Mole, so that I can enjoy a fun and interactive experience.
+- As a returning player, I want my high scores to be saved, so that I can try to beat my previous record.
+- As a player, I want to “whack” Cornish-themed characters (e.g., smugglers, piskies, or seagulls stealing pasties), so that the game feels unique and fun.
+- As a player, I want a timer and score counter displayed during the game, so that I can track my progress and compete for a high score.
+- As a player, I want increasing difficulty levels, so that the game becomes more challenging and exciting the longer I play.
+- As a player, I want fun Cornish sound effects (e.g., seagull squawks, “Proper Job!” voice clips), so that the game feels lively and engaging.
+- As a competitive user, I want a leaderboard showcasing the top scores, so that I can compete with other players.
 
 ## Wireframes
 
