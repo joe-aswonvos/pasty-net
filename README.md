@@ -1,4 +1,4 @@
-# pasty-net
+# Pasty-Net
 
 1. Homepage with a Cornish Theme
    User Story:
@@ -147,6 +147,60 @@ Tasks:
 ![Balsamiq Tablet Wireframe](assets/images/wireframe-tablet.png)
 
 ![Balsamiq Mobile Wireframe](assets/images/wireframe-mobile.png)
+
+## Page Layout
+
+The overall page layout of Pasty Net is designed to provide a seamless and engaging user experience, with a focus on responsiveness and ease of navigation. The layout is structured into several key sections: the navigation bar, the hero section, and the main content area with tabs containing the game content.
+
+### Navigation Bar
+
+The navigation bar is fixed at the top of the page and provides easy access to different sections of the website. It includes links to the "Games" section, the "About" section, and a "Contact Us" link that triggers an off-canvas contact form. The navigation bar also displays the total score accumulated across all games, providing users with a quick overview of their progress.
+
+### Hero Section
+
+The hero section is a visually striking area at the top of the page, featuring a carousel of images that showcase the beauty of Cornwall. This section includes a welcoming message and a call-to-action button that directs users to the game section. The hero section is designed to capture the user's attention and set the tone for the rest of the website.
+
+### Bootstrap Tabs - Main Content
+
+The main content area is organized into tabs, each containing a different game or informational content. The tabs are implemented using Bootstrap's tab component, ensuring a responsive and user-friendly interface. The tabs include:
+
+About: Provides an introduction to Pasty Net and its Cornish-themed games.
+Whack-a-Mole: A fun and interactive game where users can whack moles to score points.
+Combo: A game where users create portmanteau words by combining answers to questions and images.
+Snake: A classic snake game with a Cornish twist.
+Hangman: A traditional hangman game with Cornish-themed words and phrases.
+
+#### Navigation and Random Game Selection
+
+The navigation bar includes a link to the "Games" section that incorporates JavaScript to select a game at random. When the user clicks the "Games" link, the JavaScript code randomly selects one of the game tabs and activates it, providing a dynamic and engaging experience.
+
+#### Separate and Total Scores
+
+Each game has its own separate score, which is displayed within the respective game tab. Additionally, the total score across all games is displayed in the navigation bar, allowing users to track their overall progress. The scores are updated in real-time, ensuring that users always have the most up-to-date information.
+
+#### Contact Form
+
+The website includes a contact form that is accessible via an off-canvas component. The form allows users to enter their name, email address, and a message. This form is designed to be simple and user-friendly, providing an easy way for users to get in touch with the website administrators.
+
+#### Responsiveness
+
+The entire layout of Pasty Net is designed with responsiveness in mind. Bootstrap's utility classes and components are used extensively to ensure that the website looks and functions well on a variety of devices and screen sizes. The hero section, navigation bar, and game tabs all adapt to different screen sizes, providing a consistent and enjoyable experience for users on desktops, tablets, and mobile devices.
+
+### Summary
+
+The page layout of Pasty Net is carefully designed to provide a seamless and engaging user experience. The navigation bar, hero section, and tabbed content areas are all implemented with responsiveness and ease of navigation in mind. The inclusion of separate and total scores for the games, along with a user-friendly contact form, ensures that users can easily track their progress and get in touch with the website administrators. The use of JavaScript to select a random game adds an element of surprise and excitement, making Pasty Net a fun and interactive website for users of all ages.
+
+## Whack a Mole
+
+The Whack-a-Mole game on Pasty Net is a fun and interactive experience designed to keep users entertained. The game is built using Bootstrap for the layout and styling, ensuring a responsive and visually appealing interface. The game area is designed with a grid layout where moles pop up randomly, and users can click or tap on them to score points. The game incorporates various Bootstrap components to enhance the user experience. The use of Bootstrap's utility classes ensures that the game is responsive and works well on different screen sizes, providing a consistent experience across devices.
+
+The JavaScript game loop is the core of the Whack-a-Mole game, managing the timing and logic of mole appearances and user interactions. The game loop uses setInterval to control the frequency of mole appearances, and event listeners to handle user clicks on the moles. When a mole is clicked, the game logic updates the score and provides visual feedback to the user. The game loop also includes a timer that counts down from 60 seconds, and the game ends when the timer reaches zero. The game logic ensures that the difficulty increases as the game progresses, with moles appearing more frequently and in greater numbers.
+
+### Stages of Development
+
+The development of the Whack-a-Mole game followed a structured approach, starting with a working outline and gradually adding more features and enhancements. The initial stage involved creating a basic game loop and layout using HTML, CSS, and JavaScript. This working outline provided a foundation for further development, allowing the team to test and refine the core game mechanics. Once the basic functionality was in place, the focus shifted to enhancing the user experience by incorporating AI-generated images and sound effects. These assets were carefully selected to match the Cornish theme of the game, adding an extra layer of immersion and enjoyment for the players.
+
+Throughout the development process, the team used Bootstrap to ensure a responsive and visually appealing design. The integration of AI-generated images and sound effects added a unique touch to the game, making it more engaging and enjoyable. The final stage of development involved thorough testing and optimization to ensure that the game ran smoothly on different devices and screen sizes. By following a structured development process and incorporating feedback from testers, the team was able to create a polished and entertaining Whack-a-Mole game that users can enjoy on Pasty Net.
 
 ## Cornish Combination
 
