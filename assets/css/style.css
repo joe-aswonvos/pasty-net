@@ -375,6 +375,10 @@ ul > li {
   display: none;
 }
 
+#hangman-score {
+  display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content h1 {
