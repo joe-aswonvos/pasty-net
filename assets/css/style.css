@@ -220,7 +220,7 @@ main {
   height: 100%;
   background-color: transparent;
   z-index: -1;
-  transition: background-color 0.5s;
+  transition: background-color 1s;
 }
 
 .mole-game-area.miss-one::before {
@@ -228,7 +228,7 @@ main {
 }
 
 .mole-game-area.miss-two::before {
-  background-color: rgba(255, 0, 0, 0.4);
+  animation: flash 1s infinite alternate; /* Apply flash animation */
 }
 
 .mole-game-area:hover, .mole-game-area:hover * {
@@ -296,6 +296,15 @@ main {
   }
   75% {
       scale: 95%;
+  }
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 0, 0, 0.4);
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0.1);
   }
 }
 

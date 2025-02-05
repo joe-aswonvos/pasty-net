@@ -11,6 +11,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(nextSlide, 5000);
 
+  // Update the total score logic
+
+  function updateTotalScore() {
+    const scoreElements = document.querySelectorAll(".scoreToTot");
+    let totalScore = 0;
+
+    scoreElements.forEach((element) => {
+      totalScore += parseInt(element.textContent, 10) || 0;
+    });
+
+    const totalScoreElement = document.getElementById("totalscore");
+    if (totalScoreElement) {
+      totalScoreElement.textContent = totalScore;
+    }
+  }
+
   // Whack-a-Mole Game Logic
   const moles = document.querySelectorAll(".mole");
   const moleScoreBoard = document.getElementById("molescore");
@@ -130,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(timer);
         timeUp = true;
         startButton.textContent = "Start Game";
+        updateTotalScore();
       }
     }, 1000);
   }
@@ -139,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(timer);
     timeUp = true;
     startButton.textContent = "Start Game";
+    updateTotalScore();
   }
 
   // Handle mole hit
@@ -221,6 +239,8 @@ document.addEventListener("DOMContentLoaded", () => {
   backgroundAudio.addEventListener("play", updatePlayPauseButton);
   backgroundAudio.addEventListener("pause", updatePlayPauseButton);
 
+  // Other Page wide Scripts
+
   // Set initial state of play/pause button
   updatePlayPauseButton();
 
@@ -235,13 +255,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Adjust scroll position for navbar offset
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  document.querySelectorAll(".linky").forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
 
       const heroSection = document.getElementById("hero-section");
 
-      if (heroSection.style.position = "absolute") {heroSection.style.position = "relative"};
+      if (heroSection.style.position === "absolute") {
+        heroSection.style.position = "relative";
+      }
 
       const targetId = this.getAttribute("href").substring(1);
       const targetElement = document.getElementById(targetId);
@@ -249,10 +271,41 @@ document.addEventListener("DOMContentLoaded", () => {
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      // Check if the current scroll position is already at the target position
+      if (Math.abs(window.scrollY - offsetPosition) > 1) {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+
+      // Activate the specified tab if data-tab attribute is present
+      const tabId = this.getAttribute("data-tab");
+      if (tabId) {
+        if (tabId === "random") {
+          const tabs = [
+            "whack-a-mole-tab",
+            "smash-tab",
+            "snake-tab",
+            "game4-tab",
+          ];
+          const activeTab = document.querySelector(".nav-link.active").id;
+          const availableTabs = tabs.filter((tab) => tab !== activeTab);
+          const randomTabId =
+            availableTabs[Math.floor(Math.random() * availableTabs.length)];
+          const randomTabElement = document.getElementById(randomTabId);
+          if (randomTabElement) {
+            const randomTab = new bootstrap.Tab(randomTabElement);
+            randomTab.show();
+          }
+        } else {
+          const tabElement = document.getElementById(tabId);
+          if (tabElement) {
+            const tab = new bootstrap.Tab(tabElement);
+            tab.show();
+          }
+        }
+      }
     });
   });
 });
