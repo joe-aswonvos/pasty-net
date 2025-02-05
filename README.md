@@ -129,6 +129,18 @@ These features would enhance the gameplay experience, provide more variety and c
 
 Cornish Combination is a portmanteau creating game, based on the _Answer Smash_ round of BBC's _Richard Osman's House of Games_. The player is displayed a question and an image; the last letters of the answer to the question will be the same as the first letters of what is depicted in the image. The player must combine these two words or phrases, overlapping the matching letters, and make a new word or phrase that is a portmanteau of the two. The player has three attempts to get it right before being given the solution and a button to continue to the next question. A score of correct answers is displayed.
 
+## Hangman
+
+The Hangman game on Pasty Net is a classic word-guessing game with a Cornish twist. The game is built using Bootstrap for layout and styling, ensuring a responsive and visually appealing interface. The game area displays a series of blank spaces representing the letters of the word to be guessed, and users can click or tap on letters to make their guesses. The game incorporates various Bootstrap components to enhance the user experience. The use of Bootstrap's utility classes ensures that the game is responsive and works well on different screen sizes, providing a consistent experience across devices.
+
+The JavaScript game logic is the core of the Hangman game, managing the word selection, user interactions, and game state. The game logic uses event listeners to handle user guesses and updates the display accordingly. When a user guesses a letter correctly, the corresponding blank spaces are filled in. If the guess is incorrect, a part of the hangman figure is drawn. The game continues until the user either guesses the word correctly or the hangman figure is fully drawn. The game logic ensures that the difficulty is balanced, providing a challenging yet enjoyable experience for players.
+
+### Stages of Development
+
+The development of the Hangman game followed a structured approach, starting with a working outline and gradually adding more features and enhancements. The initial stage involved creating a basic game loop and layout using HTML, CSS, and JavaScript. This working outline provided a foundation for further development, allowing the team to test and refine the core game mechanics. Once the basic functionality was in place, the focus shifted to enhancing the user experience by incorporating Cornish-themed words and phrases. These elements were carefully selected to match the Cornish theme of the game, adding an extra layer of immersion and enjoyment for the players.
+
+Throughout the development process, the team used Bootstrap to ensure a responsive and visually appealing design. The integration of Cornish-themed words and phrases added a unique touch to the game, making it more engaging and enjoyable. The final stage of development involved thorough testing and optimisation to ensure that the game ran smoothly on different devices and screen sizes. By following a structured development process and incorporating feedback from testers, the team was able to create a polished and entertaining Hangman game that users can enjoy on Pasty Net.
+
 ### Accessibility
 
 Each image has alt text that does not simply state what the image is as it would give away the answer, so the alt text is descriptive and can effectively be used as a second text question.
