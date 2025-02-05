@@ -149,3 +149,11 @@ Tasks:
 ![Balsamiq Tablet Wireframe](assets/images/wireframe-tablet.png)
 
 ![Balsamiq Mobile Wireframe](assets/images/wireframe-mobile.png)
+
+## Credits
+
+### Media
+
+* Botanical garden tourist attraction from [Wikimedia](https://commons.wikimedia.org/wiki/File:Eden_project.JPG) - public domain
+* Baked pastry from [Wikimedia](https://commons.wikimedia.org/wiki/File:Cornish_pasty.jpeg) - licensed under the Creative Commons Attribution-Share Alike 2.0 UK: England & Wales license
+* Red-beaked corvid from [Wikimedia](https://commons.wikimedia.org/wiki/File:Red-billed_chough_(Pyrrhocorax_pyrrhocorax).jpg) - public domain
