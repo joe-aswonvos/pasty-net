@@ -173,7 +173,7 @@ footer {
 
 #game-section {
   background-color: var(--secondary-color);
-  opacity: 0.8;
+  opacity: 0.95;
   border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
 }
 
