@@ -282,16 +282,22 @@
 /* } */
 #snakeDiv {
   padding: 0;
-  width: 100%;
-  height: 100%;
-  max-width: 600px;
-  max-height: 600px;
-  margin: 1rem;
+  /* width: 100%;
+  height: 100%; */
+  /* max-width: 600px;
+  max-height: 600px; */
+  margin: 0;
   overflow: hidden;
   border-radius: 10px;
   border: 50px solid transparent; /* Set a transparent border to define the border width */
   border-image: url('../images/mole-board.jpg') 30 round;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.839);
+}
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  /* border-radius: 10px; */
 }
 button.snakeButton {
   background-color: var(--primary-color);

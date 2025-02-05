@@ -4,31 +4,29 @@ const scoreElement = document.getElementById('snake-score')
 const timerElement = document.getElementById('snake-time')
 const fullscreenButton = document.getElementById('snake-fullscreen')
 
-console.log('canvas.width', canvas.width)
+// console.log('canvas.width', canvas.width)
 const frameRate = 1000 / 10
 
+// Game Variables
 let userInput = 'ArrowUp'
 let lastInput = 'ArrowUp'
 let frameCounter = 0
 
-// const gameWidth = 600
-// const gameHeight = 600
-
+// Canvas Size
 const gameWidth = 300
 const gameHeight = 300
 
 canvas.width = gameWidth
 canvas.height = gameHeight
-canvas.style.maxWidth = '600px'
 canvas.style.width = '100%'
-canvas.style.maxHeight = '600px'
 canvas.style.height = '100%'
-
-const sSize = 10
-const snakeStartingLength = 2
+canvas.style.maxWidth = '600px'
+canvas.style.maxHeight = '600px'
 
 // Snake Sprites & Declarations
 let snake = []
+const sSize = 15
+const snakeStartingLength = 2
 const spritePaths = {
   head_up: 'assets/snake/sprites/head_up.png',
   head_down: 'assets/snake/sprites/head_down.png',
@@ -45,7 +43,6 @@ const spritePaths = {
   bend_bottomright: 'assets/snake/sprites/body_bottomright.png',
   bend_bottomleft: 'assets/snake/sprites/body_bottomleft.png'
 }
-
 const sprites = {}
 for (const [key, path] of Object.entries(spritePaths)) {
   const img = new Image()
@@ -95,15 +92,46 @@ fullscreenButton.addEventListener('click', () => {
   }
 })
 
+// Fullscreen Event Listener
 document.addEventListener('fullscreenchange', () => {
   if (document.fullscreenElement) {
-    canvas.style.width = '100vw'
-    canvas.style.height = '100vh'
-  } else {
-    canvas.style.width = '100%'
-    canvas.style.height = '100%'
+    if (window.innerWidth > window.innerHeight) {
+      canvas.style.width = `${window.innerHeight}px`
+      canvas.style.height = `${window.innerHeight}px`
+      canvas.style.maxWidth = `${window.innerHeight}px`
+      canvas.style.maxHeight = `${window.innerHeight}px`
+    } else if (window.innerHeight > window.innerWidth) {
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerWidth}px`
+      canvas.style.maxWidth = `${window.innerWidth}px`
+      canvas.style.maxHeight = `${window.innerWidth}px`
+    } else {
+      canvas.style.width = '100%'
+      canvas.style.height = '100%'
+      canvas.style.maxWidth = '600px'
+      canvas.style.maxHeight = '600px'
+    }
   }
 })
+
+//     canvas.style.width = `${window.innerWidth}px`
+//     canvas.style.height = `${window.innerHeight}px`
+//   } else {
+//     canvas.style.width = '100%'
+//     canvas.style.height = '100%'
+//   }
+// })
+
+// ...existing code...
+// document.addEventListener('fullscreenchange', () => {
+//   if (document.fullscreenElement) {
+//     canvas.style.width = '100vw'
+//     canvas.style.height = '100vh'
+//   } else {
+//     canvas.style.width = '100%'
+//     canvas.style.height = '100%'
+//   }
+// })
 
 function startTimer () {
   timerInterval = setInterval(() => {
@@ -334,6 +362,7 @@ function moveSnake (input, sSize) {
     }
   }
 
+  // Check if snake collides with canvas walls
   sLength = snake.length - 1
   if (
     snake[sLength][0] < 0 ||
