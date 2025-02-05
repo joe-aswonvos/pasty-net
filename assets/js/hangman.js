@@ -30,7 +30,7 @@ function initialiseHangman() {
         $(this).css("display", "none");
         resetGame();
     });
-
+  }
 
 
 function startHangmanGame() {
