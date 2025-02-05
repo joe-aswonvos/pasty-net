@@ -27,25 +27,30 @@ body {
   position: relative;
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 210vh;
-  background-color: var(--secondary-color);
-  opacity: 0.5;
-  z-index: -1;
+main {
+  font-family: var(--secondary-font);
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-family: var(--secondary-font);
+#contactOffcanvas {
+  z-index: 1050;
+  background-color: var(--primary-color);
+}
+
+#contactOffcanvas .btn {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+#contactOffcanvas .btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+#contactOffcanvas .form-control {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
 
 /* Navbar styles */
@@ -190,7 +195,7 @@ footer {
 
 #game-section {
   background-color: var(--secondary-color);
-  opacity: 0.8;
+  opacity: 0.95;
   border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
 }
 
@@ -419,6 +424,22 @@ ul > li {
 
 #hangman-img-space {
   min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#combo-img-space {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hangman-img, #combo-picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 #gameOverText {

@@ -267,6 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+
   // Adjust scroll position for navbar offset
   document.querySelectorAll('.linky').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -293,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Activate the specified tab if data-tab attribute is present
-      const tabId = this.getAttribute('data-tab')
+      const tabId = this.getAttribute('data-bs-tab')
       if (tabId) {
         if (tabId === 'random') {
           const tabs = [
