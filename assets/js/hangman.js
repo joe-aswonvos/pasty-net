@@ -1,94 +1,96 @@
-const maxGuesses = 6
-const gameTimeLimit = 180
-var randomWord
-var wrongGuessCount = 0
-var guesses
-var timerInterval
-var runningScore = 0
+
+const maxGuesses = 6;
+const gameTimeLimit = 180;
+var randomWord;
+var wrongGuessCount = 0;
+var guesses;
+var runningScore = 0;
+var count = 0;
+var timerRunning = false;
 
 //When the document finishes loading, call the initialiseHangman function.
-$('#hangman-tab').click(function () {
-  initialiseHangman()
-  clearInterval(timerInterval)
-  resetGame()
-})
+$("#hangman-tab").click(function () {
+    initialiseHangman();
+    resetGame();
+});
 
-function initialiseHangman () {
-  //Add the on click handler to the play button.
-  $('#hangman-play-btn').click(function () {
-    //Hides the play button, shows the reset button and starts the game.
-    $(this).css('display', 'none')
-    $('#hangman-reset-btn').css('display', 'block')
-    startGame()
-  })
-  //Add the on click handler to the reset button.
-  $('#hangman-reset-btn').click(function () {
-    //Hides the reset button, shows the play button and resets the game.
-    $('#hangman-play-btn').css('display', 'block')
-    $(this).css('display', 'none')
-    resetGame()
-  })
+function initialiseHangman() {
+
+    //Add the on click handler to the play button.
+    $("#hangman-play-btn").click(function () {
+        //Hides the play button, shows the reset button and starts the game.
+        $(this).css("display", "none");
+        $("#hangman-reset-btn").css("display", "block");
+        startHangmanGame();
+    });
+    //Add the on click handler to the reset button.
+    $("#hangman-reset-btn").click(function () {
+        //Hides the reset button, shows the play button and resets the game.
+        $("#hangman-play-btn").css("display", "block");
+        $(this).css("display", "none");
+        resetGame();
+    });
+
+
+
+function startHangmanGame() {
+    //Get a random word from the array of phrases.
+    randomWord = phrases[Math.floor(Math.random() * phrases.length)];
+    console.log(randomWord);
+
+    //Set the hint text to the randomly chosen words hint.
+    $("#hint-text").text("Hint: " + randomWord.hint);
+
+    guesses = "_";
+    //Loop for the length of the word, building up a string of guesses.
+    for (i = 0; i < randomWord.word.length - 1; i++) {
+        //console.log(randomWord.word.charAt(i));
+        if(randomWord.word.charAt(i+1) == " " ){
+            guesses = `${guesses} -`;
+        } else {
+            guesses = `${guesses} _`;
+        }
+    };
+    //Add the string of guesses to the page.
+    $("#guessed-letters").text(guesses);
+
+    timerRunning = true;
+    startHangmanTimer();
+    populateLettersList();
 }
 
-function startGame () {
-  //Get a random word from the array of phrases.
-  randomWord = phrases[Math.floor(Math.random() * phrases.length)]
-  console.log(randomWord)
+function startHangmanTimer() {
+    if (!timerRunning) return; // Stop the timer if running is false
+    timeLeft = gameTimeLimit - count;
+    $("#count-down").text(`Time Left: ${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? "0" : ""}${timeLeft % 60}`);
+    count++;
 
-  //Set the hint text to the randomly chosen words hint.
-  $('#hint-text').text('Hint: ' + randomWord.hint)
-
-  guesses = '_'
-  //Loop for the length of the word, building up a string of guesses.
-  for (i = 0; i < randomWord.word.length - 1; i++) {
-    //console.log(randomWord.word.charAt(i));
-    if (randomWord.word.charAt(i + 1) == ' ') {
-      guesses = `${guesses} -`
-    } else {
-      guesses = `${guesses} _`
-    }
-  }
-  //Add the string of guesses to the page.
-  $('#guessed-letters').text(guesses)
-
-  startTimer()
-  populateLettersList()
-}
-
-//Some magic that I do not understand. ¯\_(ツ)_/¯
-function startTimer () {
-  let timeLeft = gameTimeLimit
-  timerInterval = setInterval(() => {
-    timeLeft--
-    $('#count-down').text(
-      `Time Left: ${Math.floor(timeLeft / 60)}:${
-        timeLeft % 60 < 10 ? '0' : ''
-      }${timeLeft % 60}`
-    )
     if (timeLeft <= 0) {
-      clearInterval(timerInterval)
-      gameOver(false)
+        //Stop timer.
+        timerRunning = false;
+        gameOver(false);
+        count=0;
     }
-  }, 1000)
+    setTimeout(startHangmanTimer, 1000); // Call timer again after 1 second
 }
 
 //Creates the list of clickable letters.
-function populateLettersList () {
-  //Loop for each letter in the alphabet.
-  for (i = 65; i <= 90; i++) {
-    let letter = String.fromCharCode(i)
-    //Add a new list item containing a button with a letter.
-    $('#unguessed-letters').append(
-      `<li><button id="${letter}">${letter}</button></li>`
-    )
+function populateLettersList() {
+    //Loop for each letter in the alphabet.
+    $("#unguessed-letters").empty();
+    for (i = 65; i <= 90; i++) {
+        let letter = String.fromCharCode(i);
+        //Add a new list item containing a button with a letter.
+        $("#unguessed-letters").append(`<li><button id="${letter}">${letter}</button></li>`);
 
-    //When a letter button is clicked.
-    $(`#${letter}`).click(function () {
-      //Get the button's ID (which is the letter).
-      var clickedLetter = $(this).attr('id').toLowerCase()
-      gameLogic(clickedLetter)
-    })
-  }
+        //When a letter button is clicked.
+        $(`#${letter}`).click(function () {
+            //Get the button's ID (which is the letter).
+            var clickedLetter = $(this).attr("id").toLowerCase();
+            gameLogic(clickedLetter);
+        });
+    }
+
 }
 
 //Main game logic. Is the guessed letter in the word? etc.
@@ -137,44 +139,38 @@ function gameLogic (clickedLetter) {
 }
 
 //Pass in either true or false to display the different modals. true = won, false = lost
-function gameOver (winLose) {
-  //Empty the list of letters so they can't keep playing.
-  $('#unguessed-letters').empty()
+function gameOver(winLose) {
+    //Stop timer.
+    timerRunning = false;
+    count = 0;
 
-  //End the timer.
-  clearInterval(timerInterval)
+    //Empty the list of letters so they can't keep playing.
+    $("#unguessed-letters").empty();
 
-  //Display a differnet modal depending on if they won or not.
-  if (winLose == true) {
-    runningScore = runningScore + 10
-    $('#hangman-score').text(runningScore)
-    updateTotalScore()
-    $('#gameOverText').text(
-      'Congratulations! You won! The phrase was: ' + randomWord.word
-    )
-  } else {
-    $('#gameOverText').text(
-      'You Lost! You ran out of time or guesses! The correct phrase was: ' +
-        randomWord.word
-    )
-  }
+    //Display a different message depending on if they won or not.
+    if (winLose == true) {
+        runningScore = runningScore + 10;
+        $("#hangman-score").text(runningScore);
+        updateTotalScore();
+        $("#hangmanGameOverText").text("Congratulations! You won! The phrase was: " + randomWord.word);
+     } else {
+        $("#hangmanGameOverText").text("You Lost! You ran out of time or guesses! The correct phrase was: " + randomWord.word);
+    }
 }
 
 //Reset everything back to how they were at the start.
-function resetGame () {
-  randomWord = ''
-  wrongGuessCount = 0
-  clearInterval(timerInterval)
-  $('#count-down').text('Time Left: 3:00')
-  $('.guesses-count').text(`Incorrect Guesses: 0 / ${maxGuesses}`)
-  $('#guessed-letters').text('_ _ _')
-  $('#hangman-img').attr(
-    'src',
-    'https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png'
-  )
-  $('#hint-text').text('Hint: Blank')
-  $('#unguessed-letters').empty()
-  $('#gameOverText').text('')
+function resetGame() {
+    randomWord = "";
+    wrongGuessCount = 0;
+    $("#count-down").text("Time Left: 3:00");
+    $(".guesses-count").text(`Incorrect Guesses: 0 / ${maxGuesses}`);
+    $("#guessed-letters").text("_ _ _");
+    $("#hangman-img").attr("src", "https://media.geeksforgeeks.org/wp-content/uploads/20240215173028/0.png");
+    $("#hint-text").text("Hint: Blank");
+    $("#unguessed-letters").empty();
+    $("#hangmanGameOverText").text("");
+    timerRunning = false;
+    count = 0;
 }
 
 //Update the total score. stolen from joe ;)
