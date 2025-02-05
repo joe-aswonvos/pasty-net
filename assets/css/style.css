@@ -171,6 +171,22 @@ main {
 
 /* Game Area Styles */
 
+.score-style {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-color);
+  background-color: var(--tertiary-color);
+  border: var(--primary-color) 2px solid;
+  border-radius: 0.25rem; /* Matches Bootstrap's default border radius */
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  white-space: pre;
+  max-height: 2rem;
+  min-width: 5rem;
+}
+
 #game-section {
   background-color: var(--secondary-color);
   opacity: 0.8;
@@ -373,6 +389,27 @@ main {
   height: 100%;
   object-fit: contain; 
 } */
+
+/* Hangman styles */
+
+ul > li {
+  display: inline-block;
+  margin:5px;
+}
+
+#hangman-reset-btn {
+  display: none;
+}
+
+#hangman .btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border-color: var(--tertiary-color);
+}
+
+#hangman-img-space {
+  min-height: 400px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
