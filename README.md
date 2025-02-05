@@ -148,6 +148,57 @@ Tasks:
 
 ![Balsamiq Mobile Wireframe](assets/images/wireframe-mobile.png)
 
+## Snek2048
+
+In Snek2048, you control a snake that moves around the game board. The goal is to collect fruits that appear randomly on the board. Each fruit you collect increases the snake's length and the players score. The game ends if the snake collides with the walls or itself.
+
+### Features
+
+- The Game is responsive and will resize to fit any screen size while maintaining the aspect ratio.
+- It can be controlled with WASD or the arrow keys.
+- It can also be controlled with the touchscreen.
+- There is a fullscreen mode which can be initiated with either a button or a keyboard shortcut.
+- There is background music and sound effects.
+- There is a title screen and game over screen.
+
+### Known Issues & Limitations
+
+- The animated title doesn't work since a module is required to display animated gifs within a canvas
+- There is no highscore recorded
+- No local storage to save scores
+- Collision is buggy and the snake will go slightly offscreen
+- fruit placement is buggy and will go slightly offscreen
+
+### Future Features
+
+Here are some potential features that could be added to enhance the Snek2048 game:
+
+1. **Multiple Levels**:
+
+   - Introduce different levels with increasing difficulty.
+   - Each level could have unique challenges, such as obstacles or faster-moving fruits.
+
+2. **Power-Ups**:
+
+   - Add power-ups that provide temporary benefits, such as increased speed, invincibility, or the ability to pass through walls.
+   - Power-ups could appear randomly on the game board and be collected by the snake.
+
+3. **Achievements and Leaderboards**:
+
+   - Add a system of achievements that players can unlock by completing specific tasks or reaching milestones.
+   - Implement a global leaderboard to showcase the top scores and allow players to compete for the highest rank.
+
+4. **Enhanced Graphics and Animations**:
+
+   - Improve the visual quality of the game with enhanced graphics and smoother animations.
+   - Add special effects for actions such as collecting fruits, growing the snake, and game over events.
+
+5. **Tutorial and Help Section**:
+   - Add a tutorial mode to guide new players through the basics of the game.
+   - Include a help section with detailed explanations of game mechanics, controls, and power-ups.
+
+These features would enhance the gameplay experience, provide more variety and challenges, and make Snek2048 even more engaging for players.
+
 ## Cornish Combination
 
 Cornish Combination is a portmanteau creating game, based on the _Answer Smash_ round of BBC's _Richard Osman's House of Games_. The player is displayed a question and an image; the last letters of the answer to the question will be the same as the first letters of what is depicted in the image. The player must combine these two words or phrases, overlapping the matching letters, and make a new word or phrase that is a portmanteau of the two. The player has three attempts to get it right before being given the solution and a button to continue to the next question. A score of correct answers is displayed.
@@ -171,6 +222,13 @@ If work were to continue on the project, the following features would be conside
 - The questions would be randomised
 - There would be a way to have close enough but not quite matching answers be accepted
 - The game would have flashier styling and animations
+
+## Screenshots
+
+### Snek2048 Screenshots
+
+![Title Card](assets/readme/Snek2048-title.gif)
+![Gameplay](assets/readme/snake-gameplay.png)
 
 ## Credits
 
