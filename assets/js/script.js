@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const heroSection = document.getElementById("hero-section");
 
-      if (heroSection.style.position === "absolute") {
+      if (heroSection.style.position = "absolute") {
         heroSection.style.position = "relative";
       }
 
