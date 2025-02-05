@@ -1,140 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pasty Net</title>
-        <!-- Custom Stylesheet -->
-        <link rel="stylesheet" href="assets/css/style.css">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <!-- FA Icons -->
-        <script src="https://kit.fontawesome.com/5c14c611eb.js" crossorigin="anonymous"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pasty Net</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- FA Icons -->
+    <script
+      src="https://kit.fontawesome.com/5c14c611eb.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-    <body>
-
+  <body>
     <!-- Header with Navbar -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <a class="navbar-brand" href="#">Pasty Net</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Games</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-            <span class="navbar-text">
-                Total Score: <span id="totalscore">0</span>
-            </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+          <img id="icon" src="assets/images/pasty-icon.png" alt="Pasty Icon" />
+          <a class="navbar-brand" href="#">Pasty Net</a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Games</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <span class="navbar-text">
+            Total Score: <span id="totalscore">0</span>
+          </span>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <!-- Floating Play/Pause Button -->
     <div class="floating-audio-toggle">
-        <i id="play-pause-button" class="fa-solid fa-pause"></i>
+      <i id="play-pause-button" class="fa-solid fa-pause"></i>
     </div>
+    <!-- hero section -->
+
+    <section id="hero-section" class="container-fluid">
+      <div class="hero-carousel">
+        <div class="hero-slides">
+          <div
+            class="hero-slide"
+            style="
+              background-image: url('assets/images/wallhaven-lq897p-2893992123.jpg');
+            "
+          ></div>
+          <div
+            class="hero-slide"
+            style="
+              background-image: url('assets/images/wp3142926-3617341430.jpg');
+            "
+          ></div>
+          <div
+            class="hero-slide"
+            style="
+              background-image: url('assets/images/England_Coast_Houses_Boats_Motorboat_Cornwall_527346_1920x1080-3064057052.jpg');
+            "
+          ></div>
+        </div>
+        <div class="hero-content">
+          <h1>Pasty Net Games</h1>
+          <p>Stuff to occupy yourself until the sun comes out</p>
+          <a href="#game-section" class="btn btn-primary">Go to Games</a>
+        </div>
+      </div>
+    </section>
 
     <!-- Main Content -->
-    <main class="container mt-5 pt-5 col-md-8 h-100">
+    <main>
+      <section id="game-section" class="container mt-5 col-md-8 h-100">
+        <ul class="nav nav-tabs" id="gameTabs" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="about-tab"
+              data-toggle="tab"
+              href="#about"
+              role="tab"
+              aria-controls="about"
+              aria-selected="true"
+              >About</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="whack-a-mole-tab"
+              data-toggle="tab"
+              href="#whack-a-mole"
+              role="tab"
+              aria-controls="whack-a-mole"
+              aria-selected="true"
+              >Whack-a-Mole</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="smash-tab"
+              data-toggle="tab"
+              href="#smash"
+              role="tab"
+              aria-controls="smash"
+              aria-selected="false"
+              >Smash!</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="snake-tab"
+              data-toggle="tab"
+              href="#snake"
+              role="tab"
+              aria-controls="snake"
+              aria-selected="false"
+              >Snake</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="game4-tab"
+              data-toggle="tab"
+              href="#game4"
+              role="tab"
+              aria-controls="game4"
+              aria-selected="false"
+              >Game 4</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="gameTabsContent">
+          <!-- About Tab -->
+          <div
+            class="tab-pane fade show active pb-4"
+            id="about"
+            role="tabpanel"
+            aria-labelledby="about-tab"
+          >
+            <h2 class="pt-2">About Pasty Net</h2>
+            <p>
+              Pasty Net is a collection of games created by the team at Pasty
+              Net. We are a group of developers who love to create fun and
+              engaging games for people to play. We hope you enjoy playing our
+              games as much as we enjoyed creating them.
+            </p>
+          </div>
 
-        <!-- hero section -->
+          <!-- Whack a mole Tab -->
 
-
-        <section class="hero-carousel">
-            <div class="hero-slides">
-                <div class="hero-slide" style="background-image: url('assets/images/wallhaven-lq897p-2893992123.jpg')"></div>
-                <div class="hero-slide" style="background-image: url('assets/images/wp3142926-3617341430.jpg')"></div>
-                <div class="hero-slide" style="background-image: url('assets/images/England_Coast_Houses_Boats_Motorboat_Cornwall_527346_1920x1080-3064057052.jpg')"></div>
+          <div
+            class="tab-pane fade spb-4"
+            id="whack-a-mole"
+            role="tabpanel"
+            aria-labelledby="whack-a-mole-tab"
+          >
+            <div class="container row my-4 d-flex align-items-center">
+              <div class="text-center col-6">
+                <h2 class="pt-2">Whack-a-Mole</h2>
+                <button id="start-button" class="btn btn-primary">
+                  Start Game
+                </button>
+              </div>
+              <div class="text-center col-6">
+                <p>Score: <span id="molescore">0</span></p>
+                <p>Time: <span id="time">60</span> seconds</p>
+              </div>
             </div>
-            <div class="hero-content">
-                <h1>Pasty Net Games </h1>
-                <p>Discover Epic Games</p>
-                <button>Explore Games</button>
+            <div class="mole-game-area">
+              <div class="mole" id="mole1">Q</div>
+              <div class="mole" id="mole2">W</div>
+              <div class="mole" id="mole3">E</div>
+              <div class="mole" id="mole4">A</div>
+              <div class="mole" id="mole5">S</div>
+              <div class="mole" id="mole6">D</div>
+              <div class="mole" id="mole7">Z</div>
+              <div class="mole" id="mole8">X</div>
+              <div class="mole" id="mole9">C</div>
             </div>
-            </section>
-            <br>
-  
+          </div>
 
-
-        <!-- game tabs -->
-
-        <section>
-            <ul class="nav nav-tabs" id="gameTabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
-                <li class="nav-item">
-                    <a class="nav-link" id="whack-a-mole-tab" data-toggle="tab" href="#whack-a-mole" role="tab" aria-controls="whack-a-mole" aria-selected="true">Whack-a-Mole</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="smash-tab" data-toggle="tab" href="#smash" role="tab" aria-controls="smash" aria-selected="false">Smash!</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="snake-tab" data-toggle="tab" href="#snake" role="tab" aria-controls="snake" aria-selected="false">Snake</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="game4-tab" data-toggle="tab" href="#game4" role="tab" aria-controls="game4" aria-selected="false">Game 4</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="gameTabsContent">
-            
-            <!-- About Tab -->
-                <div class="tab-pane fade show active pb-4" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <h2 class="pt-2">About Pasty Net</h2>
-                    <p>Pasty Net is a collection of games created by the team at Pasty Net. We are a group of developers who love to create fun and engaging games for people to play. We hope you enjoy playing our games as much as we enjoyed creating them.</p>
-
+          <!-- Beth's AnswerSmash -->
+          <div
+            class="tab-pane fade"
+            id="smash"
+            role="tabpanel"
+            aria-labelledby="smash-tab"
+          >
+            <div
+              class="container row my-4 d-flex text-center align-items-center justify-content-center"
+            >
+              <h2 class="col-6 col-md-4 text-center">Cornish Combination</h2>
+              <p class="col-6 col-md-4 text-center">
+                Score: <span id="combo-score">0</span>
+              </p>
+              <p class="col-12 col-md-4">Instructions: The last letters of the answer to the question, and the first letters of what's depicted in the image will be the same. Overlap them and combine them together to make a new word or phrase!</p>
+              <div class="game-area col-12 text-center">
+                <div class="my-3">
+                  <p id="combo-question"></p>
+                  <img id="combo-picture" src=".." alt=".." />
                 </div>
-
-            <!-- Whack a mole Tab -->
-
-                <div class="tab-pane fade spb-4" id="whack-a-mole" role="tabpanel" aria-labelledby="whack-a-mole-tab">
-                    <div class="text-center mb-4">
-                        <h2 class="pt-2">Whack-a-Mole</h2>
-                        <p>Score: <span id="score">0</span></p>
-                        <p>Time: <span id="time">60</span> seconds</p>
-                        <button id="start-button" class="btn btn-primary">Start Game</button>
-                    </div>
-                    <div class="game-area">
-                        <div class="mole" id="mole1">Q</div>
-                        <div class="mole" id="mole2">W</div>
-                        <div class="mole" id="mole3">E</div>
-                        <div class="mole" id="mole4">A</div>
-                        <div class="mole" id="mole5">S</div>
-                        <div class="mole" id="mole6">D</div>
-                        <div class="mole" id="mole7">Z</div>
-                        <div class="mole" id="mole8">X</div>
-                        <div class="mole" id="mole9">C</div>
-                    </div>
+                <div id="combo-input" class="my-3">
+                  <p>Enter answer:</p>
+                  <input id="combo-attempt" maxlength="30" autocapitalize="on" />
+                  <button id="combo-submit">Submit Answer</button>
                 </div>
-
-            <!-- Beth's AnswerSmash -->
-                <div class="tab-pane fade" id="smash" role="tabpanel" aria-labelledby="smash-tab">
+                <div id="combo-result">
+                  <p id="combo-answer"></p>
+                  <p id="combo-feedback"></p>
                 </div>
-
-            <!-- Oscar's Snake -->
-
-                <div class="tab-pane fade" id="snake" role="tabpanel" aria-labelledby="snake-tab">A Game of Snake</div>
+                <div>
+                  <button id="combo-next">Next Question</button>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <!-- Ewan's Game -->
-           <div class="tab-pane fade" id="hangman" role="tabpanel" aria-labelledby="game4-tab">Game 4 content
-                    <div class="game-modal" id="over"> 
-                    
-        </section>
+          <!-- Oscar's Snake -->
+
+          <div
+            class="tab-pane fade"
+            id="snake"
+            role="tabpanel"
+            aria-labelledby="snake-tab"
+          >
+            <div class="text-center mb-4">
+              <h2 class="pt-2">Snek - 9000</h2>
+              <p>Score: <span id="snake-score">0</span></p>
+              <p>Time: <span id="snake-time">60</span> seconds</p>
+              <button id="snakeButton" class="btn btn-primary">
+                Start Game
+              </button>
+              <button id="snake-fullscreen">Fullscreen</button>
+            </div>
+            <canvas id="gameCanvas"></canvas>
+          </div>
+
+          <!-- Ewan's Game -->
+          <div
+            class="tab-pane fade"
+            id="hangman"
+            role="tabpanel"
+            aria-labelledby="game4-tab"
+          >
+            Game 4 content
+            <div class="game-modal" id="over"></div>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <!-- Footer -->
+    <footer class="text-center text-lg-start mt-5">
+      <div class="container p-4">
+        <div class="text-center p-3">
+          &copy; <span id="currentYear"></span> Pasty Net. All rights reserved.
+          <a class="text-dark" href="#">Contact Us</a>
+        </div>
+      </div>
+    </footer>
+
     <!-- Audio Element -->
-    <audio id="background-audio" src="assets/audio/background-music.mp3" loop></audio>
+    <audio
+      id="background-audio"
+      src="assets/audio/background-music.mp3"
+      loop
+    ></audio>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -142,5 +302,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Custom Script -->
     <script src="assets/js/script.js"></script>
-    </body>
+    <!-- snek -->
+    <script src="assets/js/snek.js"></script>
+    <!-- Smash -->
+    <script src="assets/js/combination.js"></script>
+  </body>
 </html>
