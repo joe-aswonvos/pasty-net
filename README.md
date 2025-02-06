@@ -1,6 +1,12 @@
 # Pasty-Net
 
+Pasty-Net is a website designed to entertained those trapped indoors by bad weather. The site includes four games with a integrated scoring system!
+
+![responsiveness](assets/readme/image.png)
+
 ## User Stories
+
+User stories were managed using a Kanban board on github with each user story being asigned must-have should-have or could-have, in order to establish a MVP. As we have no actual users they were provided by AI with a controlled brief of our site and careful checking.
 
 - As a visitor, I want to see a welcoming homepage with a Cornish theme, so that I immediately feel immersed in the culture and style of Cornwall.
 - As a user, I want to browse a simple navigation menu, so that I can easily find different sections of the website.
@@ -14,6 +20,8 @@
 - As a competitive user, I want a leaderboard showcasing the top scores, so that I can compete with other players.
 
 ## Wireframes
+
+The wireframes were designed with Balsamiq to provide an outline of the main features we wanted, this is discussed further in page layout.
 
 ![Balsamiq Desktop Wireframe](assets/images/wireframe-desktop.png)
 
@@ -142,6 +150,13 @@ The development of the Hangman game followed a structured approach, starting wit
 
 Throughout the development process, the team used Bootstrap to ensure a responsive and visually appealing design. The integration of Cornish-themed words and phrases added a unique touch to the game, making it more engaging and enjoyable. The final stage of development involved thorough testing and optimisation to ensure that the game ran smoothly on different devices and screen sizes. By following a structured development process and incorporating feedback from testers, the team was able to create a polished and entertaining Hangman game that users can enjoy on Pasty Net.
 
+## Screenshots
+
+### Snek2048 Screenshots
+
+![Title Card](assets/readme/Snek2048-title.gif)
+![Gameplay](assets/readme/snake-gameplay.png)
+
 ### Accessibility
 
 Each image has alt text that does not simply state what the image is as it would give away the answer, so the alt text is descriptive and can effectively be used as a second text question.
@@ -162,12 +177,11 @@ If work were to continue on the project, the following features would be conside
 - There would be a way to have close enough but not quite matching answers be accepted
 - The game would have flashier styling and animations
 
-## Screenshots
+## AI
 
-### Snek2048 Screenshots
+## Validation 
 
-![Title Card](assets/readme/Snek2048-title.gif)
-![Gameplay](assets/readme/snake-gameplay.png)
+### W3 Validator
 
 ## Credits
 
