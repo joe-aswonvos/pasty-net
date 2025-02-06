@@ -181,6 +181,14 @@ If work were to continue on the project, the following features would be conside
 
 ## Validation 
 
+### HTML
+
+![Title Card](assets/readme/HTMLCheck.png)
+
+Testing highlighted minor issues in syntax, such as removing trailing /'s from self closing tags and an uneccesary </div> element
+
+The only remaining issue flagged, is an empty heading - however content is added to this field by JS, so has been disregarded.
+
 ### W3 Validator
 
 ## Credits
