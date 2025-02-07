@@ -4,7 +4,7 @@ Pasty-Net is a website designed to entertained those trapped indoors by bad weat
 
 This project was created as part of our first Hackathon as part of the Code Institute Full Stack Developer Bootcamp, supported by Headforwards.
 
-[Visit Pasty-Net](https://joe-aswonvos.github.io/pasty-net/){:target="\_blank"}
+<a href="https://joe-aswonvos.github.io/pasty-net/" target="_blank">Visit Pasty-Net</a>
 
 ![responsiveness](assets/readme/image.png)
 
