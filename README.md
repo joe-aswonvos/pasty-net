@@ -2,7 +2,45 @@
 
 Pasty-Net is a website designed to entertained those trapped indoors by bad weather. The site includes four games with a integrated scoring system!
 
+This project was created as part of our first Hackathon as part of the Code Institute Full Stack Developer Bootcamp, supported by Headforwards.
+
+[Visit Pasty-Net](https://joe-aswonvos.github.io/pasty-net/)
+
 ![responsiveness](assets/readme/image.png)
+
+## Table of Contents
+
+- [User Stories](#user-stories)
+- [Wireframes](#wireframes)
+- [Page Layout](#page-layout)
+  - [Navigation Bar](#navigation-bar)
+  - [Hero Section](#hero-section)
+  - [Bootstrap Tabs - Main Content](#bootstrap-tabs---main-content)
+    - [Navigation and Random Game Selection](#navigation-and-random-game-selection)
+    - [Separate and Total Scores](#separate-and-total-scores)
+    - [Contact Form](#contact-form)
+    - [Responsiveness](#responsiveness)
+  - [Summary](#summary)
+- [Whack a Mole](#whack-a-mole)
+  - [Stages of Development](#stages-of-development)
+- [Snek2048](#snek2048)
+  - [Features](#features)
+  - [Known Issues & Limitations](#known-issues--limitations)
+  - [Future Features](#future-features)
+- [Cornish Combination](#cornish-combination)
+- [Hangman](#hangman)
+  - [Stages of Development](#stages-of-development-1)
+- [Screenshots](#screenshots)
+  - [Snek2048 Screenshots](#snek2048-screenshots)
+- [Accessibility](#accessibility)
+- [Known Issues](#known-issues)
+- [Roadmap](#roadmap)
+- [AI](#ai)
+- [Validation](#validation)
+  - [HTML](#html)
+  - [W3 Validator](#w3-validator)
+- [Credits](#credits)
+  - [Media](#media)
 
 ## User Stories
 
@@ -178,7 +216,15 @@ If work were to continue on the project, the following features would be conside
 
 ## AI
 
-## Validation 
+A critical part of the learning outcomes of the Bootcamp is the intelligent use of AI to help speed development. As such our MVP made use of a number of different AI tools. All AI generated content was parsed by a human being to ensure it was correct/appropriate.
+
+GitHub CoPilot - This was used to create the detail of our initial user stories. Structured promts were used to produce elements of the HTML, CSS and JS within the project. When issues were identified, it was used to query the reason for the issue/error and to suggest different approaches to resolve. It was also utilised to compose elements of this readme, taking advantage of the @workspace prompt functionality to tell CoPilot to review the entire repository before providing an answer.
+
+Leonardo AI - This AI art tool was used to generate a background image for the site and the board and pieces for the whack-a-mole game. Repeated iteration on image prompts is certainly quicker than human generated art, but it struggles slightly when producing very specific images (and it doesn't know what a pasty is!).
+
+Google Gemini - Was used to generate the 'about' text.
+
+## Validation
 
 ### HTML
 
