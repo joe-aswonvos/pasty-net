@@ -1,13 +1,13 @@
 /* Global styles */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
   --primary-color: #84a4af;
   --secondary-color: #d0c8ba;
   --tertiary-color: #f4f4f4;
   --text-color: #090b0b;
-  --primary-font: 'Cinzel', serif;
-  --secondary-font: 'Josefin Sans', serif;
+  --primary-font: "Cinzel", serif;
+  --secondary-font: "Josefin Sans", serif;
   --primary-blue: #84a4af;
   --secondary-beige: #d0c8ba;
   --dark-background: #090b0b;
@@ -16,7 +16,7 @@
 /* Body styles */
 
 body {
-  background-image: url('../images/background-image.jpg');
+  background-image: url("../images/background-image.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -227,7 +227,7 @@ footer {
   padding: 3.3%;
   box-sizing: border-box;
   background-color: lightgreen; /* Default background color */
-  background-image: url('../images/mole-board.jpg');
+  background-image: url("../images/mole-board.jpg");
   background-size: cover;
   transition: background-color 0.3s;
   position: relative; /* Ensure the padding trick works */
@@ -235,7 +235,7 @@ footer {
 }
 
 .mole-game-area::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -256,7 +256,7 @@ footer {
 
 .mole-game-area:hover,
 .mole-game-area:hover * {
-  cursor: url('../images/mallet-large.webp') 32 16, auto;
+  cursor: url("../images/mallet-large.webp") 32 16, auto;
 }
 
 /* Mole Styles */
@@ -292,14 +292,14 @@ footer {
 }
 
 .mole.up {
-  background-image: url('../images/mole-token.jpg');
+  background-image: url("../images/mole-token.jpg");
   background-size: cover;
   animation-name: grow-shrink;
   animation-duration: 0.5s;
 }
 
 .mole.whack {
-  background-image: url('../images/mole-token-broken.png');
+  background-image: url("../images/mole-token-broken.png");
   background-size: cover;
 }
 
@@ -317,14 +317,14 @@ footer {
 /* Animation for the moles */
 @keyframes grow-shrink {
   25% {
-    scale: 80%;
+    transform: scale(0.8);
   }
 
   50% {
-    scale: 110%;
+    transform: scale(1.1);
   }
   75% {
-    scale: 95%;
+    transform: scale(0.95);
   }
 }
 
@@ -371,7 +371,7 @@ footer {
   overflow: hidden;
   border-radius: 10px;
   border: 50px solid transparent; /* Set a transparent border to define the border width */
-  border-image: url('../images/mole-board.jpg') 30 round;
+  border-image: url("../images/mole-board.jpg") 30 round;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.839);
 }
 button.snakeButton {

@@ -2,11 +2,60 @@
 
 Pasty-Net is a website designed to entertained those trapped indoors by bad weather. The site includes four games with a integrated scoring system!
 
+This project was created as part of our first Hackathon as part of the Code Institute Full Stack Developer Bootcamp, supported by Headforwards.
+
+<a href="https://joe-aswonvos.github.io/pasty-net/" target="_blank">Visit Pasty-Net</a>
+
 ![responsiveness](assets/readme/image.png)
+
+## Collaborators
+
+Working together on this project was a highly rewarding experience for all of us. We enjoyed collaborating, sharing ideas, and learning from each other. The outcome of our efforts exceeded our expectations, and we are proud of what we have achieved. One of the biggest lessons we learned was the challenge of coordinating Git across a team. Ensuring that everyone was on the same page and managing merge conflicts required effective communication and organization. This experience has significantly improved our teamwork and version control skills.
+
+- <a href="https://github.com/joe-aswonvos" target="_blank">Joe</a> - Lead & Whack-a-mole
+- <a href="https://github.com/oscar-sabet" target="_blank">Oscar</a> - Snake
+- <a href="https://github.com/ShockSchool" target="_blank">Beth</a> - Cornish Combo
+- <a href="https://github.com/ewanw1lls" target="_blank">Ewan</a> - Hangman
+
+## Table of Contents
+
+- [User Stories](#user-stories)
+- [Wireframes](#wireframes)
+- [Page Layout](#page-layout)
+  - [Navigation Bar](#navigation-bar)
+  - [Hero Section](#hero-section)
+  - [Bootstrap Tabs - Main Content](#bootstrap-tabs---main-content)
+    - [Navigation and Random Game Selection](#navigation-and-random-game-selection)
+    - [Separate and Total Scores](#separate-and-total-scores)
+    - [Contact Form](#contact-form)
+    - [Responsiveness](#responsiveness)
+  - [Summary](#summary)
+- [Whack a Mole](#whack-a-mole)
+  - [Stages of Development](#stages-of-development)
+- [Snek2048](#snek2048)
+  - [Features](#features)
+  - [Known Issues & Limitations](#known-issues--limitations)
+  - [Future Features](#future-features)
+- [Cornish Combination](#cornish-combination)
+- [Hangman](#hangman)
+  - [Stages of Development](#stages-of-development-1)
+- [Screenshots](#screenshots)
+  - [Snek2048 Screenshots](#snek2048-screenshots)
+- [Accessibility](#accessibility)
+- [Known Issues](#known-issues)
+- [Roadmap](#roadmap)
+- [AI](#ai)
+- [Validation](#validation)
+  - [HTML](#html)
+  - [W3 Validator](#w3-validator)
+- [Credits](#credits)
+  - [Media](#media)
 
 ## User Stories
 
 User stories were managed using a Kanban board on github with each user story being asigned must-have should-have or could-have, in order to establish a MVP. As we have no actual users they were provided by AI with a controlled brief of our site and careful checking.
+
+<a href="https://github.com/users/joe-aswonvos/projects/4" target="_blank">Link to Board</a>
 
 - As a visitor, I want to see a welcoming homepage with a Cornish theme, so that I immediately feel immersed in the culture and style of Cornwall.
 - As a user, I want to browse a simple navigation menu, so that I can easily find different sections of the website.
@@ -137,25 +186,6 @@ These features would enhance the gameplay experience, provide more variety and c
 
 Cornish Combination is a portmanteau creating game, based on the _Answer Smash_ round of BBC's _Richard Osman's House of Games_. The player is displayed a question and an image; the last letters of the answer to the question will be the same as the first letters of what is depicted in the image. The player must combine these two words or phrases, overlapping the matching letters, and make a new word or phrase that is a portmanteau of the two. The player has three attempts to get it right before being given the solution and a button to continue to the next question. A score of correct answers is displayed.
 
-## Hangman
-
-The Hangman game on Pasty Net is a classic word-guessing game with a Cornish twist. The game is built using Bootstrap for layout and styling, ensuring a responsive and visually appealing interface. The game area displays a series of blank spaces representing the letters of the word to be guessed, and users can click or tap on letters to make their guesses. The game incorporates various Bootstrap components to enhance the user experience. The use of Bootstrap's utility classes ensures that the game is responsive and works well on different screen sizes, providing a consistent experience across devices.
-
-The JavaScript game logic is the core of the Hangman game, managing the word selection, user interactions, and game state. The game logic uses event listeners to handle user guesses and updates the display accordingly. When a user guesses a letter correctly, the corresponding blank spaces are filled in. If the guess is incorrect, a part of the hangman figure is drawn. The game continues until the user either guesses the word correctly or the hangman figure is fully drawn. The game logic ensures that the difficulty is balanced, providing a challenging yet enjoyable experience for players.
-
-### Stages of Development
-
-The development of the Hangman game followed a structured approach, starting with a working outline and gradually adding more features and enhancements. The initial stage involved creating a basic game loop and layout using HTML, CSS, and JavaScript. This working outline provided a foundation for further development, allowing the team to test and refine the core game mechanics. Once the basic functionality was in place, the focus shifted to enhancing the user experience by incorporating Cornish-themed words and phrases. These elements were carefully selected to match the Cornish theme of the game, adding an extra layer of immersion and enjoyment for the players.
-
-Throughout the development process, the team used Bootstrap to ensure a responsive and visually appealing design. The integration of Cornish-themed words and phrases added a unique touch to the game, making it more engaging and enjoyable. The final stage of development involved thorough testing and optimisation to ensure that the game ran smoothly on different devices and screen sizes. By following a structured development process and incorporating feedback from testers, the team was able to create a polished and entertaining Hangman game that users can enjoy on Pasty Net.
-
-## Screenshots
-
-### Snek2048 Screenshots
-
-![Title Card](assets/readme/Snek2048-title.gif)
-![Gameplay](assets/readme/snake-gameplay.png)
-
 ### Accessibility
 
 Each image has alt text that does not simply state what the image is as it would give away the answer, so the alt text is descriptive and can effectively be used as a second text question.
@@ -176,19 +206,50 @@ If work were to continue on the project, the following features would be conside
 - There would be a way to have close enough but not quite matching answers be accepted
 - The game would have flashier styling and animations
 
+## Hangman
+
+The Hangman game on Pasty Net is a classic word-guessing game with a Cornish twist. The game is built using Bootstrap for layout and styling, ensuring a responsive and visually appealing interface. The game area displays a series of blank spaces representing the letters of the word to be guessed, and users can click or tap on letters to make their guesses. The game incorporates various Bootstrap components to enhance the user experience. The use of Bootstrap's utility classes ensures that the game is responsive and works well on different screen sizes, providing a consistent experience across devices.
+
+The JavaScript game logic is the core of the Hangman game, managing the word selection, user interactions, and game state. The game logic uses event listeners to handle user guesses and updates the display accordingly. When a user guesses a letter correctly, the corresponding blank spaces are filled in. If the guess is incorrect, a part of the hangman figure is drawn. The game continues until the user either guesses the word correctly or the hangman figure is fully drawn. The game logic ensures that the difficulty is balanced, providing a challenging yet enjoyable experience for players.
+
+### Stages of Development
+
+The development of the Hangman game followed a structured approach, starting with a working outline and gradually adding more features and enhancements. The initial stage involved creating a basic game loop and layout using HTML, CSS, and JavaScript. This working outline provided a foundation for further development, allowing the team to test and refine the core game mechanics. Once the basic functionality was in place, the focus shifted to enhancing the user experience by incorporating Cornish-themed words and phrases. These elements were carefully selected to match the Cornish theme of the game, adding an extra layer of immersion and enjoyment for the players.
+
+Throughout the development process, the team used Bootstrap to ensure a responsive and visually appealing design. The integration of Cornish-themed words and phrases added a unique touch to the game, making it more engaging and enjoyable. The final stage of development involved thorough testing and optimisation to ensure that the game ran smoothly on different devices and screen sizes. By following a structured development process and incorporating feedback from testers, the team was able to create a polished and entertaining Hangman game that users can enjoy on Pasty Net.
+
+## Screenshots
+
+### Snek2048 Screenshots
+
+![Title Card](assets/readme/Snek2048-title.gif)
+![Gameplay](assets/readme/snake-gameplay.png)
+
 ## AI
 
-## Validation 
+A critical part of the learning outcomes of the Bootcamp is the intelligent use of AI to help speed development. As such our MVP made use of a number of different AI tools. All AI generated content was parsed by a human being to ensure it was correct/appropriate.
+
+GitHub CoPilot - This was used to create the detail of our initial user stories. Structured promts were used to produce elements of the HTML, CSS and JS within the project. When issues were identified, it was used to query the reason for the issue/error and to suggest different approaches to resolve. It was also utilised to compose elements of this readme, taking advantage of the @workspace prompt functionality to tell CoPilot to review the entire repository before providing an answer.
+
+Leonardo AI - This AI art tool was used to generate a background image for the site and the board and pieces for the whack-a-mole game. Repeated iteration on image prompts is certainly quicker than human generated art, but it struggles slightly when producing very specific images (and it doesn't know what a pasty is!).
+
+Google Gemini - Was used to generate the 'about' text.
+
+## Validation
 
 ### HTML
 
 ![Title Card](assets/readme/HTMLCheck.png)
 
-Testing highlighted minor issues in syntax, such as removing trailing /'s from self closing tags and an uneccesary </div> element
+Testing highlighted minor issues in syntax, such as removing trailing slashes from self-closing tags and an unnecessary closing `</div>` element.
 
 The only remaining issue flagged, is an empty heading - however content is added to this field by JS, so has been disregarded.
 
-### W3 Validator
+### CSS
+
+![CSSPass](assets/readme/CSSCheck.png)
+
+Testing highlighted a couple of minor issues with syntax on image animations, the code worked, but was not entirely compliant, so minor changes were made.
 
 ## Credits
 
